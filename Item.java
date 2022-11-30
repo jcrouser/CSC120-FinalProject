@@ -4,7 +4,12 @@
  * Class Item
 */
 public class Item {
-    public Item(String name, String description, Object useableOn) {
-        System.out.println("A " + name + " has been built! It is useable on " + useableOn + " .");
+    String name;
+    String description;
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+        System.out.println("A " + name + " has been built!");
     }
 }

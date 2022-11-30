@@ -11,7 +11,7 @@ public class Passenger {
     public Passenger(String name, String description, String dialogue) {
         this.name = name;
         this.description = description;
-        this.dialogue=dialogue;
+        this.dialogue = dialogue;
         System.out.println("A passenger has been built. Their name is " + name + ".");
     }
 

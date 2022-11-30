@@ -15,3 +15,16 @@ Unofficial interfaces:
 Credit: https://www.codersarts.com/post/java-sample-project-1-text-adventure-game
 
 Maybe helpful resources: https://www.youtube.com/watch?v=j99EeUjvLVQ
+
+
+
+
+Stuff to do:
+    - build the scanner so we can get user input. the user should be able to at least use the commands we have, like nextCar() or previousCar()
+    
+    lookAround():
+    - fill out description of cars in player lookAround() method. car 1 is populated with passengers, is kinda nice looking, car two is empty like for storage and kinda decrepid. Car three is   almost at the front of the train. Dont know what vibe it should be giving off. you should notice a door that leads outside in this car though.
+    -lookAround should have a condition for if youre outside the cabin. maybe then location=3. might have to update next car also, idk yet.
+    -fix bug with lookAround() where the else statements always gets called in addition to the correct if statement
+
+    -end condition. what you see as you are outside the cabin. cat and stuff.
