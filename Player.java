@@ -62,12 +62,14 @@ public class Player {
     }
 
     public void lookAround(){
-        if (location == 0) {
-            System.out.println("--DESCRIPTION OF CAR 0--");
-        } if (location == 1) {
-            System.out.println("--DESCRIPTION OF CAR 1--");
-        } if (location == 2) {
-            System.out.println("--DESCRIPTION OF CAR 2--");
+        if (location == 0 || location == 1 || location == 2) {
+            if (location == 0) {
+                System.out.println("--DESCRIPTION OF CAR 0--");
+            } if (location == 1) {
+                System.out.println("--DESCRIPTION OF CAR 1--");
+            } if (location == 2) {
+                System.out.println("--DESCRIPTION OF CAR 2--");
+            }
         } else {
             System.out.println("You are in the void. Restart game or try to fix your location.");
             System.out.println("Your location is: " + location);
@@ -82,5 +84,9 @@ public class Player {
         } else {
             System.out.println("Item not found.");
         }
+    }
+
+    public void checkPockets() {
+        System.out.println("POCKETS STUB: NEEDS TO BE BUILT");
     }
 }

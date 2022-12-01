@@ -9,7 +9,7 @@ public class Game {
     
     public static void main(String[] args) {
         Train train = new Train();
-        Player player = new Player("Laika",2, train);
+        Player player = new Player("LAIKA",2, train);
 
         //(uncomment this stuff when we have a functioning gameloop)
         boolean stillPlaying = true;
@@ -17,12 +17,12 @@ public class Game {
         String userResponse = "";
 
         //populate cars with passengers
-        train.cars[0].addPassenger("Linda", "long flowy red hair and a few freckles, and is looking absently out the window.", "Hello young man; you look confused. Haha, aren't we all. Why don't you go talk to my son Anton. He's about your age.");
-        train.cars[0].addPassenger("William", "courdouroy pants, a cotton t-shirt, and is smoking a pipe.", "My great grandmother told me of a beast that lurks these tracks. You don't believe in such things though, do you?");
-        train.cars[0].addPassenger("Anton", "a cozy hoodie with headphones and is reading a book.", "I saw you stole that keycard. Whatever you're up to, I get half, okay?");
+        train.cars[0].addPassenger("LINDA", "long flowy red hair and a few freckles, and is looking absently out the window.", "Hello young man; you look confused. Haha, aren't we all. Why don't you go talk to my son Anton. He's about your age.");
+        train.cars[0].addPassenger("WILLIAM", "courdouroy pants, a cotton t-shirt, and is smoking a pipe.", "My great grandmother told me of a beast that lurks these tracks. You don't believe in such things though, do you?");
+        train.cars[0].addPassenger("ANTON", "a cozy hoodie with headphones and is reading a book.", "I saw you stole that keycard. Whatever you're up to, I get half, okay?");
 
         //load items into the cars
-        train.cars[0].addItem("keycard", "A thin plastic card. The only parts you can read are \"Lionel...130 Peice");
+        train.cars[0].addItem("KEYCARD", "A thin plastic card. The only parts you can read are \"Lionel...130 Peice");
 
         //load the player in with a pair of glasses
         player.givePlayer("glasses", "Large round spectacles. Carved on the inside are the letters \"LAIKA\".\n" +
@@ -39,26 +39,37 @@ public class Game {
         while (stillPlaying == true) {
             userResponse = userInput.nextLine().toUpperCase();
 
-            // as the player interacts, you'll check to see if the game should end↓
+            if (userResponse.contains("EXITGAME")) {
+                stillPlaying = false;
+            }
             if (userResponse.equals("LOOKAROUND")) {
                 player.lookAround();
             }
-
-            if (userResponse.equals("EXITLOOP")) {
-                stillPlaying = false;
+            if (userResponse.contains("TALKTO")) {
+                String name = userResponse.split(" ")[1]; // split user response at every space and take the second word. this should be all uppercase
+                if (!train.cars[player.location].carPassengers.containsKey(name)) { // if name not in carPassengers, print error
+                    System.out.println("Please enter valid passenger.");
+                } else {
+                    player.talkTo(name);
+                }
             }
-
-            stillPlaying = false;
+            if (userResponse.contains("PICKUP")) {
+                String name = userResponse.split(" ")[1];
+                if (!train.cars[player.location].carItems.containsKey(name)) {
+                    System.out.println("Please enter valid item name.");
+                } else {
+                    player.pickUp(name);
+                }
+            }
+            if (userResponse.contains("NEXTCAR")) {
+                player.nextCar();
+            }
+            if (userResponse.contains("PREVIOUSCAR") && player.holding("KEYCARD")) {
+                player.previousCar();
+            }
         }
-
-        //Testing stuff
-        System.out.println("\nI'M TESTING HARDCODED STUFF HERE\n");
-        player.talkTo("William");
-        player.pickUp("keycard");
-        player.nextCar();
 
         //Close out game
         userInput.close();
     }
-
 }
