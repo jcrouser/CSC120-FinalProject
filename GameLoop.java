@@ -15,11 +15,15 @@ public class GameLoop {
 
         // This could be replaced with a more interesting opening
         System.out.println("******************");
-        System.out.println("WELCOME TO MY GAME");
+        System.out.println("WELCOME TO THE HAUNTING OF HOLLOW'S HOUSE");
         System.out.println("******************");
 
         // Instructions are sometimes helpful
-        System.out.println("Enter WIN to win, LOSE to lose, anything else to continue playing.");
+        System.out.println("Enter ENTER HOUSE to continue playing.");
+
+        // if(userResponse = "ENTER HOUSE"){            <------------------------------ pseudocode for the start of the game 
+        //     System.out.println(HauntedHouse);        <------------------------------ prints out all of the available rooms, maybe actions?
+        // }
 
         // The do...while structure means we execute the body of the loop once before
         // checking the stopping condition
