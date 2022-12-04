@@ -32,9 +32,12 @@ public class Rooms {
     public void setAmount(String objects) {
         this.objects = objects;
     }
+    public String toString() {
+        return this.name + " is a room with" + this.description + ". In this room there is a " + this.objects + ".";
+    }
 
     public static void main(String[] args) {
-        Rooms claRooms = new Rooms("DTI", "white tile floors with white painted walls", "desk");
+        Rooms claRooms = new Rooms("DTI", " white tile floors with white painted walls", "desk");
         System.out.println(claRooms);
       }
 }
