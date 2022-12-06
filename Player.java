@@ -33,4 +33,13 @@ public class Player{
         inventory.remove(Item);
         System.out.println(Item.getName() + " was removed from your inventory.");
     }
+
+    public String toString() {
+        return this.name + " has" + this.inventory;
+    }
+
+    public static void main(String[] args) {
+        Player Person = new Player("Jerry");
+        System.out.println(Person);
+      }
 }
