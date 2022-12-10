@@ -4,12 +4,11 @@
  * Class Item
 */
 public class Item {
-    String name;
-    String description;
+  String name;
+  String description;
 
-    public Item(String name, String description) {
-        this.name = name;
-        this.description = description;
-        System.out.println("A " + name + " has been built!");
-    }
+  public Item(String name, String description) {
+    this.name = name;
+    this.description = description;
+  }
 }
