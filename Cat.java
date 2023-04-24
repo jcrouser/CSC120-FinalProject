@@ -22,6 +22,9 @@ public class Cat{
     public void bite(){
         System.out.println("bite");
     }
+    public void escape(){
+        System.out.println("escaped!");
+    }
     public void scratch(){
         System.out.println("scratch");
     }
