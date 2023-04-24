@@ -1,10 +1,11 @@
 public class Cat{
-    public static int dexterity;
-    public static int strength;
-    public static int iq;
-    public static int hp; 
+    public String name;
+    public int dexterity;
+    public int strength;
+    public int iq;
+    public int hp; 
 
-    public Cat(int dexterity,int strength,int iq, int hp){
+    public Cat(String name,int dexterity,int strength,int iq, int hp){
         this.dexterity=dexterity;
         this.strength=strength;
         this.iq=iq;
