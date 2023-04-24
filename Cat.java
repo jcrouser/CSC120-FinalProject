@@ -1,8 +1,9 @@
+import java.util.Random;
 public class Cat{
-    public static int dexterity;
-    public static int strength;
-    public static int iq;
-    public static int hp; 
+    public static int dexterity;//dex is the number you add on to a long range attack, which is a random attack number from 0-20, specifically for kick 
+    public static int strength;//strength is the number you add onto a attack, specifically for bite 
+    public static int iq; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
+    public static int hp; //hp means the total amount of life that you have 
 
     public void hunt(){
         System.out.println("Hunt");
