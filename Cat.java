@@ -36,10 +36,13 @@ public class Cat{
         return ttl_IQ;
     }
     public void scratch(){
-        System.out.println("scratch");
+        System.out.println("The cats collectively scratches on the rug");
     }
     public  void meow(){
-        System.out.println("meow");
+        System.out.println("meow! meow! meow!");
+    }
+    public  void purr(){
+        System.out.println("The cats collectively purrs");
     }
     public String getName(){
         return this.name;

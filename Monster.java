@@ -22,6 +22,12 @@ public class Monster {
         int enemy_IQ = randomNumber + this.iq;
         return enemy_IQ;
     }
+    public int blockAttack(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(21); 
+        int enemy_IQ = randomNumber + this.iq;
+        return enemy_IQ;
+    }
     public String getName() {
         return this.name;
     }
