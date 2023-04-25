@@ -16,14 +16,23 @@ public class Cat{
     public void hunt(){
         System.out.println("Hunt");
     }
-    public  void kick(){
-        System.out.println("kick");
+    public  int kick(){ 
+        Random random = new Random();
+        int randomNumber = random.nextInt(21); 
+        int ttldmg = randomNumber + this.dexterity;
+        return ttldmg;
     }
-    public void bite(){
-        System.out.println("bite");
+    public int bite(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(21); 
+        int ttldmg = randomNumber + this.strength;
+        return ttldmg;
     }
-    public void escape(){
-        System.out.println("escaped!");
+    public int escape(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(21); 
+        int ttliq = randomNumber + this.iq;
+        return ttliq;
     }
     public void scratch(){
         System.out.println("scratch");
