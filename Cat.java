@@ -41,7 +41,7 @@ public class Cat{
     public  void meow(){
         System.out.println("meow");
     }
-    public String getName() {
+    public String getName(){
         return this.name;
     }
     public int getDexterity(){
