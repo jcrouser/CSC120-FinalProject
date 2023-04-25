@@ -4,11 +4,11 @@ public class Black extends Cat{
         super(name, dexterity, strength, iq, hp);
     }
 
-    public int luckfloor(){
+    public int attackPointFloor(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        if (randomNumber <= 3){
-            return 3;
+        if (randomNumber <= 6){
+            return 6;
         }else{
             return randomNumber;
         }
