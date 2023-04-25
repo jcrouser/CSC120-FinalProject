@@ -12,7 +12,6 @@ public class Cat{
         this.strength = strength;
         this.iq = iq;
         this.hp = hp;
-
     }
 
     public void hunt(){
@@ -41,6 +40,21 @@ public class Cat{
     }
     public  void meow(){
         System.out.println("meow");
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getDexterity(){
+        return this.dexterity;
+    }
+    public int getStrength(){
+        return this.strength;
+    }
+    public int getIQ(){
+        return this.iq;
+    }
+    public int getHP(){
+        return this.hp;
     }
 
 }

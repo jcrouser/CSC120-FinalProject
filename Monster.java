@@ -13,7 +13,7 @@ public class Monster {
     public int tear(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        int idmg = randomNumber + this.strength;
+        int idmg = randomNumber + this.strength; //incoming dmg
         return idmg;
     }
     public int blockEscape(){
@@ -21,5 +21,17 @@ public class Monster {
         int randomNumber = random.nextInt(21); 
         int enemy_IQ = randomNumber + this.iq;
         return enemy_IQ;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getStrength(){
+        return this.strength;
+    }
+    public int getIQ(){
+        return this.iq;
+    }
+    public int getHP(){
+        return this.hp;
     }
 }
