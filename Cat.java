@@ -11,30 +11,30 @@ public class Cat{
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
-        this.hp = 9;
+        this.hp = hp;
 
     }
 
     public void hunt(){
         System.out.println("Hunt");
     }
-    public  int kick(){ 
+    public int kick(){ 
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        int ttldmg = randomNumber + this.dexterity;
-        return ttldmg;
+        int ttl_dmg = randomNumber + this.dexterity;
+        return ttl_dmg;
     }
     public int bite(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        int ttldmg = randomNumber + this.strength;
-        return ttldmg;
+        int ttl_dmg = randomNumber + this.strength;
+        return ttl_dmg;
     }
     public int escape(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        int ttliq = randomNumber + this.iq;
-        return ttliq;
+        int ttl_IQ = randomNumber + this.iq;
+        return ttl_IQ;
     }
     public void scratch(){
         System.out.println("scratch");

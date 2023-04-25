@@ -2,7 +2,7 @@ import java.util.Random;
 public class Monster {
     public static String name;
     public static int strength;//strength is the number you add onto a attack
-    public static int iq; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
+    public static int iq; //iq is intelligence and the ability to block escape, it adds onto a random 0-20 number 
     public static int hp; //hp means the total amount of life that you have 
     public Monster(String name,int strength,int iq, int hp){
         this.name = name;
