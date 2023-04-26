@@ -5,7 +5,6 @@ public class Cat{
     public static int strength = 5;//strength is the number you add onto a attack, specifically for bite 
     public static int iq = 5; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
     public static int hp = 9; //hp means the total amount of life that you have 
-
     public Cat(String name,int dexterity,int strength,int iq, int hp){
         this.name = name;
         this.dexterity = dexterity;
@@ -59,5 +58,4 @@ public class Cat{
     public int getHP(){
         return this.hp;
     }
-
 }

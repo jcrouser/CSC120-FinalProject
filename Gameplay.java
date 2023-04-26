@@ -1,6 +1,40 @@
 import java.util.Scanner;
 
 public class Gameplay {
+    private Cat cat;
+    private Monster monster;
+
+    public Gameplay(Cat cat, Monster monster){
+        this.cat = cat;
+        this.monster = monster;
+    }
+    public int strengthBattle(){
+        if (cat.bite() > monster.tear()){
+            return 1;
+        }else if (cat.bite() < monster.tear()){
+            return 2;
+        }else{
+            return 3;
+        }
+    }
+    public int dexBattle(){
+        if (cat.kick() > monster.grabAndThrow()){
+            return 1;
+        }else if (cat.kick() < monster.grabAndThrow()){
+            return 2;
+        }else{
+            return 3;
+        }
+    }
+    public int iqBattle(){
+        if (cat.escape() > monster.blockEscape()){
+            return 1;
+        }else if (cat.escape() < monster.blockEscape()){
+            return 2;
+        }else{
+            return 3;
+        }
+    }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String playerName;
