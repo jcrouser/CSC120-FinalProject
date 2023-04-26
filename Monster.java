@@ -120,7 +120,7 @@ import java.util.Random;
     * Reduces the health points of the monster by 1 if the attack is successful.
     * An attack is successful if the gameplay's dexBattle() or strengthBattle() method returns 1.
     */
-    public void reduceHp() {
+    public int reduceHp() {
         if (gameplay.dexBattle() == 1 || gameplay.strengthBattle() == 1) {
             return hp--;
         }else{
