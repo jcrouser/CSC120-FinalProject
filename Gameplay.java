@@ -38,7 +38,7 @@ public class Gameplay {
     public void winLose(){
         if (monster.reduceHp() <= 0){
             System.out.println("Cat win!");
-        }else if (cat.resultingHP() <= 0){
+        }else if (cat.updateHP() <= 0){
             System.out.println("Monster win!");
         }
     }

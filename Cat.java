@@ -21,31 +21,24 @@ public class Cat {
         System.out.println("Hunt");
     }
 
-    public int kick(Cat target) {
+    public int kick() {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_dmg = randomNumber + this.dexterity;
-        target.setHP(target.getHP() - ttl_dmg);
         return ttl_dmg;
     }
 
-    public int bite(Cat target) {
+    public int bite() {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_dmg = randomNumber + this.strength;
-        target.setHP(target.getHP() - ttl_dmg);
         return ttl_dmg;
     }
 
-    public int escape(Cat target) {
+    public int escape() {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_IQ = randomNumber + this.iq;
-        if (ttl_IQ > target.getIQ()) {
-            System.out.println("You successfully escaped!");
-        } else {
-            System.out.println("You failed to escape.");
-        }
         return ttl_IQ;
     }
 
@@ -83,7 +76,7 @@ public class Cat {
 
     public int updateHP() {
         if (gameplay.dexBattle() == 2 || gameplay.strengthBattle() == 2 || gameplay.iqBattle() == 2){
-        return this.hp--;
+            return this.hp--;
         }else{
             return this.hp;
         }
