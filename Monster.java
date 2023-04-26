@@ -24,22 +24,9 @@ public class Monster {
         int idmg = getRandomNumber() + dexterity; //incoming dmg
         return idmg;
     }
-<<<<<<< HEAD
-    public int grabAndThrow(){
-        Random random = new Random();
-        int randomNumber = random.nextInt(21); 
-        int incomingDMG = randomNumber + this.dexterity; //incoming dmg
-        return incomingDMG;
-    }
-    public int blockEscape(){
-        Random random = new Random();
-        int randomNumber = random.nextInt(21); 
-        int enemy_IQ = randomNumber + this.iq;
-=======
     
     public int blockEscape() {
         int enemy_IQ = getRandomNumber() + iq;
->>>>>>> 6d10478fb9a200d890c6b3082b2cfc693c719715
         return enemy_IQ;
     }
     
@@ -73,9 +60,11 @@ public class Monster {
         return dexterity;
     }
     
-    public void reduceHp() {
+    public int reduceHp() {
         if (gameplay.dexBattle() == 1 || gameplay.strengthBattle() == 1) {
-            hp--;
+            return hp--;
+        }else{
+            return hp;
         }
     }
 }
