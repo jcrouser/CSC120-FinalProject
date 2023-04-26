@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Gameplay {
-    public Cat cat;
-    public Monster monster;
+    private Cat cat;
+    private Monster monster;
 
     public Gameplay(Cat cat, Monster monster){
         this.cat = cat;
@@ -38,7 +38,7 @@ public class Gameplay {
     public void winLose(){
         if (monster.reduceHp() <= 0){
             System.out.println("Cat win!");
-        }else if (cat.updateHP() <= 0){
+        }else if (cat.resultingHP() <= 0){
             System.out.println("Monster win!");
         }
     }
