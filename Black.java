@@ -1,5 +1,6 @@
 import java.util.Random;
 public class Black extends Cat{
+
     public Black(String name,int dexterity,int strength,int iq, int hp, Gameplay gameplay){
         super(name, dexterity, strength, iq, hp, gameplay);
     }
