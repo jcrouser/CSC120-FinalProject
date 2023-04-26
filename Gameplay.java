@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Gameplay {
-    private Cat cat;
-    private Monster monster;
+    public Cat cat;
+    public Monster monster;
 
     public Gameplay(Cat cat, Monster monster){
         this.cat = cat;

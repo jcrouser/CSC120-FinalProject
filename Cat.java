@@ -1,18 +1,20 @@
 import java.util.Random;
 
 public class Cat {
-    private String name;
-    private int dexterity;
-    private int strength;
-    private int iq;
-    private int hp;
+    public static String name;
+    public static int dexterity;
+    public static int strength;
+    public static int iq;
+    public static int hp;
+    public static Gameplay gameplay;
 
-    public Cat(String name, int dexterity, int strength, int iq, int hp) {
+    public Cat(String name, int dexterity, int strength, int iq, int hp, Gameplay gameplay) {
         this.name = name;
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
         this.hp = hp;
+        this.gameplay = gameplay;
     }
 
     public void hunt() {
@@ -79,7 +81,11 @@ public class Cat {
         this.hp = hp;
     }
 
-    public void updateHP(int damage) {
-        this.hp -= damage;
+    public int updateHP() {
+        if (gameplay.dexBattle() == 2 || gameplay.strengthBattle() == 2 || gameplay.iqBattle() == 2){
+        return this.hp--;
+        }else{
+            return this.hp;
+        }
     }
 }
