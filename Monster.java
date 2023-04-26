@@ -15,13 +15,13 @@ import java.util.Random;
     
     /**
     
-    Creates a new Monster object with the specified name, strength, intelligence, health points, dexterity, and gameplay object.
-    @param name the name of the monster
-    @param strength the strength of the monster
-    @param iq the intelligence of the monster
-    @param hp the health points of the monster
-    @param dexterity the dexterity of the monster
-    @param gameplay the gameplay object that the monster is a part of
+    *Creates a new Monster object with the specified name, strength, intelligence, health points, dexterity, and gameplay object.
+    *@param name the name of the monster
+    *@param strength the strength of the monster
+    *@param iq the intelligence of the monster
+    *@param hp the health points of the monster
+    *@param dexterity the dexterity of the monster
+    *@param gameplay the gameplay object that the monster is a part of
     */
     public Monster(String name, int strength, int iq, int hp, int dexterity, Gameplay gameplay) {
     this.name = name;
@@ -33,8 +33,8 @@ import java.util.Random;
     }
     /**
     
-    Calculates the damage done by a tear attack and returns it.
-    @return the amount of damage done by the tear attack
+    *Calculates the damage done by a tear attack and returns it.
+    *@return the amount of damage done by the tear attack
     */
     public int tear() {
     int incomingDmg = getRandomNumber() + strength;
@@ -42,22 +42,26 @@ import java.util.Random;
     }
     /**
     
-    Calculates the damage done by a grab and throw attack and returns it.
-    @return the amount of damage done by the grab and throw attack
+    *Calculates the damage done by a grab and throw attack and returns it.
+    *@return the amount of damage done by the grab and throw attack
     */
     public int grabAndThrow() {
     int idmg = getRandomNumber() + dexterity;
     return idmg;
     }
-    
+    /**
+
+    *Calculates the enemy's intelligence for blocking and escaping.
+    *@return the enemy's intelligence for blocking and escaping.
+    */
     public int blockEscape() {
         int enemy_IQ = getRandomNumber() + iq;
         return enemy_IQ;
     }
     /**
     
-    Calculates the monster's IQ and returns it. The IQ is used for blocking attacks.
-    @return the monster's IQ
+    *Calculates the monster's IQ and returns it. The IQ is used for blocking attacks.
+    * @return the monster's IQ
     */
     public int blockAttack() {
     int enemy_IQ = getRandomNumber() + iq;
@@ -65,8 +69,8 @@ import java.util.Random;
     }
     /**
     
-    Returns a random number between 0 and 20.
-    @return a random number between 0 and 20
+    *Returns a random number between 0 and 20.
+    *@return a random number between 0 and 20
     */
     private int getRandomNumber() {
     Random random = new Random();
@@ -74,32 +78,32 @@ import java.util.Random;
     }
     /**
     
-    Returns the name of the monster.
-    @return the name of the monster
+    *Returns the name of the monster.
+    *@return the name of the monster
     */
     public String getName() {
     return name;
     }
     /**
     
-    Returns the strength of the monster.
-    @return the strength of the monster
+    *Returns the strength of the monster.
+    *@return the strength of the monster
     */
     public int getStrength() {
     return strength;
     }
     /**
     
-    Returns the intelligence of the monster.
-    @return the intelligence of the monster
+    *Returns the intelligence of the monster.
+    *@return the intelligence of the monster
     */
     public int getIntelligence() {
     return iq;
     }
     /**
     
-    Returns the health points of the monster.
-    @return the health points of the monster
+    *Returns the health points of the monster.
+    *@return the health points of the monster
     */
     public int getHealthPoints() {
         return hp;
