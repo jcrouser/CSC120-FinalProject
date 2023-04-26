@@ -1,71 +1,85 @@
 import java.util.Random;
-public class Cat{
-    public static String name;
-    public static int dexterity = 5;//dex is the number you add on to a long range attack, which is a random attack number from 0-20, specifically for kick 
-    public static int strength = 5;//strength is the number you add onto a attack, specifically for bite 
-    public static int iq = 5; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
-    public static int hp = 9; //hp means the total amount of life that you have 
-    public static Gameplay gameplay;
-    public Cat(String name,int dexterity,int strength,int iq, int hp, Gameplay gameplay){
+
+public class Cat {
+    private String name;
+    private int dexterity;
+    private int strength;
+    private int iq;
+    private int hp;
+
+    public Cat(String name, int dexterity, int strength, int iq, int hp) {
         this.name = name;
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
         this.hp = hp;
-        this.gameplay = gameplay;
     }
 
-    public void hunt(){
+    public void hunt() {
         System.out.println("Hunt");
     }
-    public int kick(){ 
+
+    public int kick(Cat target) {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_dmg = randomNumber + this.dexterity;
+        target.setHP(target.getHP() - ttl_dmg);
         return ttl_dmg;
     }
-    public int bite(){
+
+    public int bite(Cat target) {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_dmg = randomNumber + this.strength;
+        target.setHP(target.getHP() - ttl_dmg);
         return ttl_dmg;
     }
-    public int escape(){
+
+    public int escape(Cat target) {
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         int ttl_IQ = randomNumber + this.iq;
+        if (ttl_IQ > target.getIQ()) {
+            System.out.println("You successfully escaped!");
+        } else {
+            System.out.println("You failed to escape.");
+        }
         return ttl_IQ;
     }
-    public void scratch(){
+
+    public void scratch() {
         System.out.println("The cats collectively scratches on the rug");
     }
-    public  void meow(){
-        System.out.println("meow! meow! meow!");
+
+    public void talk(String message) {
+        System.out.println(message);
     }
-    public  void purr(){
-        System.out.println("The cats collectively purrs");
-    }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
-    public int getDexterity(){
+
+    public int getDexterity() {
         return this.dexterity;
     }
-    public int getStrength(){
+
+    public int getStrength() {
         return this.strength;
     }
-    public int getIQ(){
+
+    public int getIQ() {
         return this.iq;
     }
-    public int getHP(){
+
+    public int getHP() {
         return this.hp;
     }
-    public int resultingHP(){
-        if (gameplay.dexBattle() ==2 || gameplay.strengthBattle() ==2 || gameplay.iqBattle() == 2){
-            this.hp =- 1;
-            return this.hp;
-        }else{;
-            return this.hp;
-        }
+
+    public void setHP(int hp) {
+        this.hp = hp;
+    }
+
+    public void updateHP(int damage) {
+        this.hp -= damage;
     }
 }
