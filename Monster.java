@@ -16,8 +16,8 @@ public class Monster {
     }
     
     public int tear() {
-        int idmg = getRandomNumber() + strength; //incoming dmg
-        return idmg;
+        int incomingDmg = getRandomNumber() + strength; //incoming dmg
+        return incomingDmg;
     }
     
     public int grabAndThrow() {
