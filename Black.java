@@ -4,7 +4,7 @@ public class Black extends Cat{
         super(name, dexterity, strength, iq, hp, gameplay);
     }
 
-    public int pointFloor(){
+    public int leastPoint(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         if (randomNumber <= 3){
@@ -14,15 +14,15 @@ public class Black extends Cat{
         }
     }
     public int kick(){
-        int ttl_dmg = pointFloor() + this.dexterity;
+        int ttl_dmg = leastPoint() + this.dexterity;
         return ttl_dmg;
     }
     public int bite(){
-        int ttl_dmg = pointFloor() + this.strength;
+        int ttl_dmg = leastPoint() + this.strength;
         return ttl_dmg;
     }
     public int escape(){
-        int ttl_IQ = pointFloor() + this.iq;
+        int ttl_IQ = leastPoint() + this.iq;
         return ttl_IQ;
     }
 

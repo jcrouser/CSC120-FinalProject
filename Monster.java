@@ -23,8 +23,8 @@ public class Monster {
     public int grabAndThrow(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
-        int idmg = randomNumber + this.dexterity; //incoming dmg
-        return idmg;
+        int incomingDMG = randomNumber + this.dexterity; //incoming dmg
+        return incomingDMG;
     }
     public int blockEscape(){
         Random random = new Random();
