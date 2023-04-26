@@ -1,10 +1,15 @@
 import java.util.Random;
 public class Black extends Cat{
+<<<<<<< HEAD
     public Black(String name,int dexterity,int strength,int iq, int hp){
         super("Joe", dexterity, strength, iq, hp);
+=======
+    public Black(String name,int dexterity,int strength,int iq, int hp, Gameplay gameplay){
+        super(name, dexterity, strength, iq, hp, gameplay);
+>>>>>>> f32fb133a2f0ed12b22895cf76b1d0f9a4ee55ac
     }
 
-    public int luckfloor(){
+    public int pointFloor(){
         Random random = new Random();
         int randomNumber = random.nextInt(21); 
         if (randomNumber <= 3){
@@ -13,5 +18,18 @@ public class Black extends Cat{
             return randomNumber;
         }
     }
+    public int kick(){
+        int ttl_dmg = pointFloor() + this.dexterity;
+        return ttl_dmg;
+    }
+    public int bite(){
+        int ttl_dmg = pointFloor() + this.strength;
+        return ttl_dmg;
+    }
+    public int escape(){
+        int ttl_IQ = pointFloor() + this.iq;
+        return ttl_IQ;
+    }
+
 
     }

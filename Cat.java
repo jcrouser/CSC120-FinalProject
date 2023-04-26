@@ -5,14 +5,14 @@ public class Cat{
     public static int strength = 5;//strength is the number you add onto a attack, specifically for bite 
     public static int iq = 5; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
     public static int hp = 9; //hp means the total amount of life that you have 
-
-    public Cat(String name,int dexterity,int strength,int iq, int hp){
+    public static Gameplay gameplay;
+    public Cat(String name,int dexterity,int strength,int iq, int hp, Gameplay gameplay){
         this.name = name;
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
         this.hp = hp;
-
+        this.gameplay = gameplay;
     }
 
     public void hunt(){
@@ -37,10 +37,35 @@ public class Cat{
         return ttl_IQ;
     }
     public void scratch(){
-        System.out.println("scratch");
+        System.out.println("The cats collectively scratches on the rug");
     }
     public  void meow(){
-        System.out.println("meow");
+        System.out.println("meow! meow! meow!");
     }
-
+    public  void purr(){
+        System.out.println("The cats collectively purrs");
+    }
+    public String getName(){
+        return this.name;
+    }
+    public int getDexterity(){
+        return this.dexterity;
+    }
+    public int getStrength(){
+        return this.strength;
+    }
+    public int getIQ(){
+        return this.iq;
+    }
+    public int getHP(){
+        return this.hp;
+    }
+    public int resultingHP(){
+        if (gameplay.dexBattle() ==2 || gameplay.strengthBattle() ==2 || gameplay.iqBattle() == 2){
+            this.hp =- 1;
+            return this.hp;
+        }else{;
+            return this.hp;
+        }
+    }
 }
