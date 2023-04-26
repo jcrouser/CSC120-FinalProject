@@ -49,7 +49,7 @@ public class Gameplay {
         int playerScore = 0;
         
         System.out.println("Welcome to Cat Adventure!");
-        System.out.print("What's your name? ");
+        System.out.print("What cat do you want to be? You can be Sunny who is slighty stupid but strong, Yuki who is nimble but tiny, Cookie who is lucky despite being a black cat, and Babka who is wise but ancient ");
         playerName = input.nextLine();
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
@@ -60,7 +60,7 @@ public class Gameplay {
             System.out.println("Your score is " + playerScore);
 
             // Prompt for player's next action
-            System.out.print("What do you want to do next? ");
+            System.out.print("What do you want to do next? (explore or rest) ");
             String action = input.nextLine();
             
             // Process player's action
