@@ -6,7 +6,6 @@ public class Orange extends Cat {
         super("Sunny", dexterity, 7, 3, hp, gameplay);
     }
 
-    public void 
 
 
     public static void main(String[] args) {
