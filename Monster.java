@@ -49,14 +49,10 @@ import java.util.Random;
     int idmg = getRandomNumber() + dexterity;
     return idmg;
     }
-    /**
     
-    Calculates the monster's IQ and returns it. The IQ is used for blocking escape attempts.
-    @return the monster's IQ
-    */
     public int blockEscape() {
-    int enemy_IQ = getRandomNumber() + iq;
-    return enemy_IQ;
+        int enemy_IQ = getRandomNumber() + iq;
+        return enemy_IQ;
     }
     /**
     
