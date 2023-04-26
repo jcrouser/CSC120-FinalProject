@@ -116,6 +116,9 @@ import java.util.Random;
     public int getDexterity() {
         return dexterity;
     }
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
     /**
     * Reduces the health points of the monster by 1 if the attack is successful.
     * An attack is successful if the gameplay's dexBattle() or strengthBattle() method returns 1.
@@ -127,6 +130,26 @@ import java.util.Random;
             return hp;
         }
     }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setIntelligence(int iq) {
+        this.iq = iq;
+    }
+
+    public void setHealthPoints(int hp) {
+        this.hp = hp;
+    }
+    
+
+
+    
 }
 
     
