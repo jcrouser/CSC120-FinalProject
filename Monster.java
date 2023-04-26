@@ -54,11 +54,10 @@ public class Monster {
         return this.dexterity;
     }
     public int resultingHP(){
-        if (gameplay.dexBattle() ==1 || gameplay.strengthBattle() ==1 || gameplay.iqBattle() == 1){
+        if (gameplay.dexBattle() ==1 || gameplay.strengthBattle() ==1){
             this.hp =- 1;
             return this.hp;
-        }else{
-            this.hp = this.hp;
+        }else{;
             return this.hp;
         }
     }

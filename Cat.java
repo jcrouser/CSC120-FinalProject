@@ -64,8 +64,7 @@ public class Cat{
         if (gameplay.dexBattle() ==2 || gameplay.strengthBattle() ==2 || gameplay.iqBattle() == 2){
             this.hp =- 1;
             return this.hp;
-        }else{
-            this.hp = this.hp;
+        }else{;
             return this.hp;
         }
     }

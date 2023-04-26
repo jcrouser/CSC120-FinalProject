@@ -35,6 +35,13 @@ public class Gameplay {
             return 3;
         }
     }
+    public void winLose(){
+        if (monster.resultingHP() <= 0){
+            System.out.println("Cat win!");
+        }else if (cat.resultingHP() <= 0){
+            System.out.println("Monster win!");
+        }
+    }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String playerName;
