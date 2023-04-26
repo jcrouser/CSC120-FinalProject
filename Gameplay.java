@@ -60,7 +60,7 @@ public class Gameplay {
             System.out.println("Your score is " + playerScore);
 
             // Prompt for player's next action
-            System.out.print("What do you want to do next? (explore pr rest) ");
+            System.out.print("What do you want to do next? (explore or rest) ");
             String action = input.nextLine();
             
             // Process player's action
