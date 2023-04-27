@@ -49,7 +49,37 @@ public class Gameplay {
         int playerScore = 0;
         
         System.out.println("Welcome to Cat Adventure!");
-        System.out.print("What cat do you want to be? You can be Sunny who is slighty stupid but strong, Yuki who is nimble but tiny, Cookie who is lucky despite being a black cat, and Babka who is wise but ancient ");
+        //i feel like we could make a selection menu here? it's all in one line. maybe we can add ascii art of cats 
+        /*
+         *     |\__/,|   (`\
+             _.|o o  |_   ) )
+            -(((---(((--------
+         */
+        /*
+         *                 /\_/\
+                      /\  / o o \
+                    / /\\ \~(*)~/
+                   `    \/   ^ /
+                        | \|| ||
+                        \ '|| ||
+                         \)()-())
+         */
+        /*
+         *  |\__/,|   (`\
+            |_ _  |.--.) )
+            ( T   )     /
+          (((^_(((/(((_/
+         */
+        /*
+         * 
+         * /\_/\  (
+          ( ^.^ ) _)
+            \"/  (
+          ( | | )
+         (__d b__)
+         */
+
+        System.out.print("What cat do you want to be? You can be Sunny who is slighty slow but strong, Yuki who is nimble but tiny, Cookie who is lucky despite being a black cat, and Babka who is wise but ancient ");
         playerName = input.nextLine();
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
