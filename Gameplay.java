@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class Gameplay {
     private Cat cat;
@@ -44,11 +46,12 @@ public class Gameplay {
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Random random = new Random();
         String playerName;
         int playerLives = 9;
         int playerScore = 0;
         
-        System.out.println("Welcome to Cat Adventure!");
+        System.out.println("Welcome to CATaclysm!");
         //i feel like we could make a selection menu here? it's all in one line. maybe we can add ascii art of cats 
         /*
          *     |\__/,|   (`\
@@ -97,6 +100,30 @@ public class Gameplay {
             if (action.equalsIgnoreCase("explore")) {
                 // Player chooses to explore the ruins
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
+                 // Generate a random number between 1 and 100
+            int randomNumber = random.nextInt(100) + 1;
+
+            // Determine which event occurs based on the random number
+            if (randomNumber <= 25) {
+            // 25% chance of finding a treasure
+            System.out.println("You stumble upon a hidden treasure and gain 10 points.");
+            playerScore += 10;
+            } else if (randomNumber <= 50) {
+            // 25% chance of encountering a monster
+            //here we can throw in the batter mode and call methods from cat and monster class?
+            //we are going to have to build cat and monster objects 
+            //also we could add a way to keep score through battle wins
+            //we could do random again for type of battle/see what method above to call? 
+            System.out.println("You encounter a monster and lose a life.");
+            playerLives -= 1;
+            } else if (randomNumber <= 75) {
+            // 25% chance of finding nothing
+            System.out.println("You find nothing of interest.");
+            } else {
+            // 25% chance of finding a first aid kit
+            System.out.println("You find a first aid kit and gain a life.");
+            playerLives += 1;
+            }
                 // TODO: add more code here to advance the game
             } else if (action.equalsIgnoreCase("rest")) {
                 // Player chooses to rest and regain some lives
@@ -112,5 +139,6 @@ public class Gameplay {
         System.out.println("You have no lives left. Game over!");
         System.out.println("Your final score is " + playerScore);
     }
+    
 }
 
