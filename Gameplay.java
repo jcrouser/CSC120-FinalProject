@@ -48,43 +48,64 @@ public class Gameplay {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
-        String playerName;
+        String playerName = " ";
         int playerLives = 9;
         int playerScore = 0;
         
         System.out.println("Welcome to CATaclysm!");
-        //i feel like we could make a selection menu here? it's all in one line. maybe we can add ascii art of cats 
-        /*
-         *     |\__/,|   (`\
-             _.|o o  |_   ) )
-            -(((---(((--------
-         */
-        /*
-         *                 /\_/\
-                      /\  / o o \
-                    / /\\ \~(*)~/
-                   `    \/   ^ /
-                        | \|| ||
-                        \ '|| ||
-                         \)()-())
-         */
-        /*
-         *  |\__/,|   (`\
-            |_ _  |.--.) )
-            ( T   )     /
-          (((^_(((/(((_/
-         */
-        /*
-         * 
-         * /\_/\  (
-          ( ^.^ ) _)
-            \"/  (
-          ( | | )
-         (__d b__)
-         */
 
-        System.out.print("What cat do you want to be? You can be Sunny who is slighty slow but strong, Yuki who is nimble but tiny, Cookie who is lucky despite being a black cat, and Babka who is wise but ancient ");
-        playerName = input.nextLine();
+        System.out.println("What cat do you want to be?");
+        System.out.println("1. Sunny - Slightly slow but strong");
+        System.out.println("2. Yuki - Nimble but tiny");
+        System.out.println("3. Cookie - Lucky despite being a black cat");
+        System.out.println("4. Babka - Wise but ancient");
+
+        System.out.print("Enter the number of the cat you want to be: ");
+        int choice = input.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("You have chosen Sunny.");
+                System.out.println("  |\\__/,|   (`\\");
+                System.out.println("  |_ _  |.--.) )");
+                System.out.println("  ( T   )     /");
+                System.out.println(" (((^_(((/(((_/");
+                playerName = "Sunny";             
+                break;
+            case 2:
+                System.out.println("You have chosen Yuki.");
+                System.out.println("/\\_/\\  (");
+                System.out.println("( ^ .^ ) _)");
+                System.out.println("  \\\"\\  (");
+                System.out.println("( | | )");
+                System.out.println(" ( d b )");
+                playerName = "Yuki";
+
+                break;
+            case 3:
+                System.out.println("You have chosen Cookie.");
+                System.out.println("     |\\__/,|   (`\\");
+                System.out.println("    _.|o o  |_   ) )");
+                System.out.println("   -(((---(((--------");
+                playerName = "Cookie";
+
+                break;
+            case 4:
+                System.out.println("You have chosen Babka.");
+                System.out.println(" *                      /\\_/\\");
+                System.out.println("                  /\\  / o o \\");
+                System.out.println("                / /\\\\ \\~(*)~/");
+                System.out.println("               `    \\/   ^ /");
+                System.out.println("                    | \\|| ||");
+                System.out.println("                    \\ '|| ||");
+                System.out.println("                     \\)()-())");
+                playerName = "Babka";
+                break;
+            default:
+                System.out.println("Invalid choice.");
+                break;
+        }
+        
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
@@ -123,7 +144,13 @@ public class Gameplay {
             } else {
             // 25% chance of finding a first aid kit
             System.out.println("You find a first aid kit and gain a life.");
+            if (playerLives < 9){
             playerLives += 1;
+
+            } else {
+                System.out.println("You are already healthy so you give it to a friend.");
+            }
+            
             }
                 // TODO: add more code here to advance the game
             } else if (action.equalsIgnoreCase("rest")) {
