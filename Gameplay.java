@@ -58,7 +58,7 @@ public class Gameplay {
         System.out.println("1. Sunny - Slightly slow but strong");
         System.out.println("2. Yuki - Nimble but tiny");
         System.out.println("3. Cookie - Lucky despite being a black cat");
-        System.out.println("4. Babka - Wise but ancient");
+        System.out.println("4. Babka - Wise but wrinkly");
 
         System.out.print("Enter the number of the cat you want to be: ");
         int choice = input.nextInt();
@@ -85,7 +85,7 @@ public class Gameplay {
             case 3:
                 System.out.println("You have chosen Cookie.");
                 System.out.println("     |\\__/,|   (`\\");
-                System.out.println("    _.|o o  |_   ) )");
+                System.out.println("   _.|o o   |_   ) )");
                 System.out.println("   -(((---(((--------");
                 playerName = "Cookie";
 
@@ -107,6 +107,7 @@ public class Gameplay {
         }
         
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
+        input.nextLine();
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
         // Game loop
@@ -115,7 +116,8 @@ public class Gameplay {
             System.out.println("Your score is " + playerScore);
 
             // Prompt for player's next action
-            System.out.print("What do you want to do next? (explore or rest) ");
+            
+            System.out.print("What do you want to do next? (explore or rest)");
             String action = input.nextLine();
             
             // Process player's action
@@ -149,7 +151,7 @@ public class Gameplay {
             playerLives += 1;
 
             } else {
-                System.out.println("You are already healthy so you give it to a friend.");
+                System.out.println("You're fully healthy so you give it to a friend.");
             }
             
             }
