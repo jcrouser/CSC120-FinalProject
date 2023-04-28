@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
+//input needs to be closed
 
 public class Gameplay {
     private Cat cat;
@@ -127,6 +128,15 @@ public class Gameplay {
                 // TODO: add more code here to advance the game
             } else if (action.equalsIgnoreCase("rest")) {
                 // Player chooses to rest and regain some lives
+                /*
+                 * 
+                 * if (playerLives < 9) {
+                    playerLives += 1;
+                  System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
+                    } else {
+                    System.out.println("Youare fully rested and already have the maximum number of lives.");
+                    }
+                 */
                 playerLives += 1;
                 System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
             } else {
