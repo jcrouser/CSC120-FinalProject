@@ -136,6 +136,7 @@ public class Gameplay {
             //we are going to have to build cat and monster objects 
             //also we could add a way to keep score through battle wins
             //we could do random again for type of battle/see what method above to call? 
+            //we could make a battle mode class?
             System.out.println("You encounter a monster and lose a life.");
             playerLives -= 1;
             } else if (randomNumber <= 75) {
