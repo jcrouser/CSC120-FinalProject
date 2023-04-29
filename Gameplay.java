@@ -76,9 +76,9 @@ public class Gameplay {
                 System.out.println("You have chosen Yuki.");
                 System.out.println("/\\_/\\  (");
                 System.out.println("( ^ .^ ) _)");
-                System.out.println("  \\\"\\  (");
+                System.out.println(" \\\"\\  (");
                 System.out.println("( | | )");
-                System.out.println(" ( d b )");
+                System.out.println("( d b )");
                 playerName = "Yuki";
 
                 break;
@@ -92,7 +92,7 @@ public class Gameplay {
                 break;
             case 4:
                 System.out.println("You have chosen Babka.");
-                System.out.println(" *                      /\\_/\\");
+                System.out.println(" *                     /\\_/\\");
                 System.out.println("                  /\\  / o o \\");
                 System.out.println("                / /\\\\ \\~(*)~/");
                 System.out.println("               `    \\/   ^ /");
