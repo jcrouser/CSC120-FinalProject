@@ -7,7 +7,6 @@ public class Orange extends Cat {
     }
 
 
-
     public static void main(String[] args) {
         Orange myOrangeCat = new Orange(name, dexterity, strength, iq, hp, gameplay);
     
