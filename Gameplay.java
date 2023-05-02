@@ -70,7 +70,8 @@ public class Gameplay {
                 System.out.println("  |_ _  |.--.) )");
                 System.out.println("  ( T   )     /");
                 System.out.println(" (((^_(((/(((_/");
-                playerName = "Sunny";             
+                playerName = "Sunny";
+                Orange sunny = new Orange(playerName, 5, 10, 8, 100, null);             
                 break;
             case 2:
                 System.out.println("You have chosen Yuki.");
