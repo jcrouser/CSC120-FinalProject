@@ -81,6 +81,7 @@ public class Gameplay {
                 System.out.println("( | | )");
                 System.out.println("( d b )");
                 playerName = "Yuki";
+                White yuki = new White(playerName, 8, 3, 5, 100, null);
 
                 break;
             case 3:
@@ -89,6 +90,7 @@ public class Gameplay {
                 System.out.println("   _.|o o   |_   ) )");
                 System.out.println("   -(((---(((--------");
                 playerName = "Cookie";
+                Black cookie = new Black ()
 
                 break;
             case 4:
