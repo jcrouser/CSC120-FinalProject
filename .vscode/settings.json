@@ -2,6 +2,7 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "guava-31.0.1-jre.jar",
-        "failureaccess-1.0.1.jar"
+        "failureaccess-1.0.1.jar",
+        "guavademo/guava-31.0.1-jre.jar"
     ]
 }
