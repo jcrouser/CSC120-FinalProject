@@ -1,4 +1,7 @@
 import java.util.Random;
+import java.util.ArrayList;
+import com.google.common.graph.*;
+import java.util.Arrays;
 /**
 
 The Cat class represents a cat in the game.
@@ -10,6 +13,9 @@ public class Cat{
     public static int iq = 5; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
     public static int hp = 9; //hp means the total amount of life that you have 
     public static Gameplay gameplay;
+    public int east;
+    public int north;
+    public ArrayList<String> directionalcmd =new ArrayList<String>(Arrays.asList("North", "East", "South", "West"));
     /**
     * Constructor for the Cat class.
     * @param name The name of the cat.
@@ -104,6 +110,25 @@ public class Cat{
             return this.hp;
         }
     }
+    public boolean walk(String direction){
+        this.north = 0;
+        this.east = 0;
+        this.south = 0;
+        this.west = 0;
+        if (direction ==directionalcmd.get(0)){
+            this.north += 1;    
+        }else if (direction ==directionalcmd.get(1)){
+            this.east += 1;
+        }else if (direction ==directionalcmd.get(2)){
+            this.north -= 1;
+        }else if (direction ==directionalcmd.get(3)){
+            this.east -= 1;
+        }else{
+        throw new RuntimeException("I don't understand where to go...");
+        }
+        return true;
+        }
+    
     
 
 }
