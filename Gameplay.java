@@ -89,9 +89,8 @@ public class Gameplay {
                 System.out.println("     |\\__/,|   (`\\");
                 System.out.println("   _.|o o   |_   ) )");
                 System.out.println("   -(((---(((--------");
-                playerName = "Cookie";
-                Black cookie = new Black ()
-
+                playerName = "Cookie"; 
+                Black cookie = new Black (playerName, 5, 5, 5, 100, null);
                 break;
             case 4:
                 System.out.println("You have chosen Babka.");
@@ -103,6 +102,7 @@ public class Gameplay {
                 System.out.println("                    \\ '|| ||");
                 System.out.println("                     \\)()-())");
                 playerName = "Babka";
+                Grey babka = new Grey (playerName, 2, 3, 7, 100, null);
                 break;
             default:
                 System.out.println("Invalid choice.");
