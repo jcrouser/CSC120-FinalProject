@@ -90,7 +90,7 @@ public class Gameplay {
                 System.out.println("   _.|o o   |_   ) )");
                 System.out.println("   -(((---(((--------");
                 playerName = "Cookie";
-                Black cookie = new Black ()
+                Black cookie = new Black(playerName, choice, playerLives, playerScore, choice, null);
 
                 break;
             case 4:
