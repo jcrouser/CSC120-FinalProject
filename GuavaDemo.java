@@ -1,4 +1,4 @@
-package guavademo;
+
 
 import com.google.common.graph.*;
 
@@ -8,9 +8,10 @@ public class GuavaDemo {
     // Example ImmutableGraph with Strings as Node data
     ImmutableGraph<String> myGraph = GraphBuilder.undirected()
       .<String>immutable()
-      .putEdge("Bass", "McConnell")
-      .putEdge("McConnell", "Sabin-Reed")
-      .putEdge("Sabin-Reed", "Burton")
+      .putEdge("Node 1", "Node 2")
+      .putEdge("Node 1", "Node 3")
+      .putEdge("Node 2", "Bunker 1")
+      .putEdge("Bunker 1", "Bunker 1")
       .build();
 
     //System.out.println(myGraph);

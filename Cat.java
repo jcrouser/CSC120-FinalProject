@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.util.ArrayList;
-import com.google.common.graph.*;
 import java.util.Arrays;
 /**
 
@@ -113,8 +112,6 @@ public class Cat{
     public boolean walk(String direction){
         this.north = 0;
         this.east = 0;
-        this.south = 0;
-        this.west = 0;
         if (direction ==directionalcmd.get(0)){
             this.north += 1;    
         }else if (direction ==directionalcmd.get(1)){
