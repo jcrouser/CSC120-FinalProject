@@ -62,45 +62,56 @@ public class Gameplay {
 
         System.out.print("Enter the number of the cat you want to be: ");
         int choice = input.nextInt();
+        
+        
 
-        if (choice == 1) {
-            System.out.println("You have chosen Sunny.");
-            System.out.println("  |\\__/,|   (`\\");
-            System.out.println("  |_ _  |.--.) )");
-            System.out.println("  ( T   )     /");
-            System.out.println(" (((^_(((/(((_/");
-            playerName = "Sunny";
-            Cat sunny = new Cat(playerName, 5, 10, 8, 100, null);             
-        } else if (choice == 2) {
-            System.out.println("You have chosen Yuki.");
-            System.out.println("/\\_/\\  (");
-            System.out.println("( ^ .^ ) _)");
-            System.out.println(" \\\"\\  (");
-            System.out.println("( | | )");
-            System.out.println("( d b )");
-            playerName = "Yuki";
-            Cat yuki = new Cat(playerName, 8, 3, 5, 100, null);
-        } else if (choice == 3) {
-            System.out.println("You have chosen Cookie.");
-            System.out.println("     |\\__/,|   (`\\");
-            System.out.println("   _.|o o   |_   ) )");
-            System.out.println("   -(((---(((--------");
-            playerName = "Cookie";
-            Cat cookie = new Cat(playerName, choice, playerLives, playerScore, choice, null);
-        } else if (choice == 4) {
-            System.out.println("You have chosen Babka.");
-            System.out.println(" *                     /\\_/\\");
-            System.out.println("                  /\\  / o o \\");
-            System.out.println("                / /\\\\ \\~(*)~/");
-            System.out.println("               `    \\/   ^ /");
-            System.out.println("                    | \\|| ||");
-            System.out.println("                    \\ '|| ||");
-            System.out.println("                     \\)()-())");
-            playerName = "Babka";
-            Cat babka = new Cat(playerName, 2, 3, 7, 100, null);
-        } else {
-            System.out.println("Invalid choice.");
-        }
+        // switch (choice) {
+        //     case 1:
+        //         System.out.println("You have chosen Sunny.");
+        //         System.out.println("  |\\__/,|   (`\\");
+        //         System.out.println("  |_ _  |.--.) )");
+        //         System.out.println("  ( T   )     /");
+        //         System.out.println(" (((^_(((/(((_/");
+        //         playerName = "Sunny";
+        //         // sunny = new Orange(playerName, 5, 10, 8, 100, null);             
+        //         break;
+        //     case 2:
+        //         System.out.println("You have chosen Yuki.");
+        //         System.out.println("/\\_/\\  (");
+        //         System.out.println("( ^ .^ ) _)");
+        //         System.out.println(" \\\"\\  (");
+        //         System.out.println("( | | )");
+        //         System.out.println("( d b )");
+        //         playerName = "Yuki";
+        //         White yuki = new White(playerName, 8, 3, 5, 100, null);
+
+        //         break;
+        //     case 3:
+        //         System.out.println("You have chosen Cookie.");
+        //         System.out.println("     |\\__/,|   (`\\");
+        //         System.out.println("   _.|o o   |_   ) )");
+        //         System.out.println("   -(((---(((--------");
+        //         playerName = "Cookie";
+        //         Black cookie = new Black(playerName, choice, playerLives, playerScore, choice, null);
+
+        //         break;
+        //     case 4:
+        //         System.out.println("You have chosen Babka.");
+        //         System.out.println(" *                     /\\_/\\");
+        //         System.out.println("                  /\\  / o o \\");
+        //         System.out.println("                / /\\\\ \\~(*)~/");
+        //         System.out.println("               `    \\/   ^ /");
+        //         System.out.println("                    | \\|| ||");
+        //         System.out.println("                    \\ '|| ||");
+        //         System.out.println("                     \\)()-())");
+        //         playerName = "Babka";
+        //         Grey babka = new Grey (playerName, 2, 3, 7, 100, null);
+        //         break;
+        //     default:
+        //         System.out.println("Invalid choice.");
+        //         break;
+        // }
+
         
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
         input.nextLine();
@@ -108,6 +119,7 @@ public class Gameplay {
 
         // Game loop
         while (playerLives > 0) {
+           Orange sunny = new Orange(playerName, 5, 10, 8, 100, null); 
             System.out.println("You have " + playerLives + " lives left.");
             System.out.println("Your score is " + playerScore);
 
@@ -138,8 +150,7 @@ public class Gameplay {
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
             if (action1.equalsIgnoreCase("kick")) {
-                // sunny.kick();
-                //cat action here
+               sunny.kick();
 
 
                 }
