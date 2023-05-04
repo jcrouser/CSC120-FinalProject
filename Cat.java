@@ -110,24 +110,24 @@ public class Cat{
             return this.hp;
         }
     }
-    public boolean walk(String direction){
-        this.north = 0;
-        this.east = 0;
-        this.south = 0;
-        this.west = 0;
-        if (direction ==directionalcmd.get(0)){
-            this.north += 1;    
-        }else if (direction ==directionalcmd.get(1)){
-            this.east += 1;
-        }else if (direction ==directionalcmd.get(2)){
-            this.north -= 1;
-        }else if (direction ==directionalcmd.get(3)){
-            this.east -= 1;
-        }else{
-        throw new RuntimeException("I don't understand where to go...");
-        }
-        return true;
-        }
+    // public boolean walk(String direction){
+    //     this.north = 0;
+    //     this.east = 0;
+    //     this.south = 0;
+    //     this.west = 0;
+    //     if (direction ==directionalcmd.get(0)){
+    //         this.north += 1;    
+    //     }else if (direction ==directionalcmd.get(1)){
+    //         this.east += 1;
+    //     }else if (direction ==directionalcmd.get(2)){
+    //         this.north -= 1;
+    //     }else if (direction ==directionalcmd.get(3)){
+    //         this.east -= 1;
+    //     }else{
+    //     throw new RuntimeException("I don't understand where to go...");
+    //     }
+    //     return true;
+    //     }
     
     
 
