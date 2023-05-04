@@ -5,15 +5,13 @@ import java.util.Random;
 //input needs to be closed
 
 public class Gameplay {
+
     public static int playerLives = 9;
     public static int playerScore = 0;
     public static Cat cat = new Cat("Sunny", 5, 5, 5, 1);
     public static Monster monster = new Monster("Hala", 5, 5, 1, 5);
 
-    // public Gameplay(Cat cat, Monster monster){
-    //     this.cat = cat;
-    //     this.monster = monster;
-    // }
+ 
     public static int strengthBattle(){
         if (cat.bite() > monster.tear()){
             return 1;
@@ -34,43 +32,38 @@ public class Gameplay {
         }
       
     }
-    public static int iqBattle(){
-        if (cat.escape() > monster.blockEscape()){
-            // System.out.println("you are smart enough to escape");
-            return 1;
-        }else{
-            // System.out.println("you are not smart enough to escape");
-            return 2;
 
+    public static int iqBattle() {
+        if (cat.escape() > monster.blockEscape()) {
+            return 1;
+        } else {
+            return 2;
         }
     }
- 
-        public static int winLoseDex(){
-        if (dexBattle() == 1 ) {
-            System.out.println(" Your attack was stronger than the monster");
-            System.out.println("Cat wins!");
-            return playerLives;
-        }
-        else if(dexBattle() == 2){
-            System.out.println(" the monster was stronger than you");
-            System.out.println("Monster wins!");
-             playerLives--;}
-      
-            return playerLives;
-        }
-        public static int winLoseStrength(){
-            if (strengthBattle()==1) {
-                System.out.println("you are strong enough to win");
+
+    
+        public static void winLoseDex() {
+            if (dexBattle() == 1) {
+                System.out.println("Your attack was stronger than the monster.");
                 System.out.println("Cat wins!");
-                return playerLives;
-            }
-            else if( strengthBattle()==2){
-                System.out.println("you are not strong enough to win");
+            } else {
+                System.out.println("The monster was stronger than you.");
                 System.out.println("Monster wins!");
-                 playerLives--;}
-                return playerLives;
+                playerLives--;
             }
+        }
+    
         
+    public static void winLoseStrength() {
+        if (strengthBattle() == 1) {
+            System.out.println("You are strong enough to win.");
+            System.out.println("Cat wins!");
+        } else {
+            System.out.println("You are not strong enough to win.");
+            System.out.println("Monster wins!");
+            playerLives--;
+        }
+    }
             public static int winLoseIq(){
                 if ( iqBattle()==1) {
                     System.out.println("you are smart enough to escape");
@@ -83,6 +76,22 @@ public class Gameplay {
                      playerLives--;}
                     return playerLives;
                 }
+            public static void monsterencounter(String action1){
+            if (action1.equalsIgnoreCase("kick")) {
+            winLoseDex();
+                }
+             else if ( action1.equalsIgnoreCase("escape")){
+                    winLoseIq();
+                }
+             else if ( action1.equalsIgnoreCase("bite")){
+                    winLoseStrength();
+                }
+            else{
+                // Player enters an invalid action
+                System.out.println("I don't understand what you want to do. Please try again.");
+
+            }
+            }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
@@ -96,12 +105,21 @@ public class Gameplay {
         System.out.println("What cat do you want to be?");
         System.out.println("1. Sunny - Slightly slow but strong");
         System.out.println("2. Yuki - Nimble but tiny");
-        System.out.println("3. Cookie - Lucky despite being a black cat");
-        System.out.println("4. Babka - Wise but wrinkly");
+        System.out.println("3. Babka - Wise but wrinkly");
 
         System.out.print("Enter the number of the cat you want to be: ");
         int choice = input.nextInt();
-
+        if (choice==1){
+        Cat sunny = new Cat("Sunny", 5, 7, 3, 1);
+        }
+        else  if (choice==2){
+            Cat Yuki = new Cat("Yuki", 7, 5, 5, 1);
+            }
+            else  if (choice==3){
+                Cat Bapka = new Cat("Bapka", 5, 5, 7, 1);
+                }
+        
+        
         System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
         input.nextLine();
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
@@ -123,8 +141,8 @@ public class Gameplay {
                 // Player chooses to explore the ruins
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                  // Generate a random number between 1 and 100
-            int randomNumber = random.nextInt(100) + 1;
-            
+            // int randomNumber = random.nextInt(100) + 1;
+            int randomNumber =75;
 
             // Determine which event occurs based on the random number
             if (randomNumber <= 25) {
@@ -140,25 +158,26 @@ public class Gameplay {
             //we could make a battle mode class?
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
-            if (action1.equalsIgnoreCase("kick")) {
-            winLoseDex();
-                }
-             else if ( action1.equalsIgnoreCase("escape")){
-                    winLoseIq();
-                }
-             else if ( action1.equalsIgnoreCase("bite")){
-                    winLoseStrength();
-                }
-            else{
-                // Player enters an invalid action
-                System.out.println("I don't understand what you want to do. Please try again.");
-
-            }
+            monsterencounter(action1);
 
 
             } else if (randomNumber <= 75) {
             // 25% chance of finding nothing
             System.out.println("You find nothing of interest.");
+            System.out.println("do you want to meow?(Yes,No)");
+            String answer1= input.next();
+           
+            if ( answer1.equalsIgnoreCase("Yes")){
+                cat.meow();
+                System.out.println("A monster heard you and approached you quickly");
+                System.out.println("Do you want to kick, bite,or escape?");
+                String action2 = input.next();
+                monsterencounter(action2);}
+            else{
+                System.out.print("n");
+            }
+
+
             } else {
             // 25% chance of finding a first aid kit
             System.out.println("You find a first aid kit and gain a life.");
@@ -171,7 +190,8 @@ public class Gameplay {
             
             }
                 // TODO: add more code here to advance the game
-            } else if (action.equalsIgnoreCase("rest")) {
+            } 
+            else if (action.equalsIgnoreCase("rest")) {
                 if (playerLives <9){
                     playerLives += 1; 
                     System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
@@ -179,14 +199,15 @@ public class Gameplay {
                     System.out.println("You already are fully rested.");
                 }
                 }
+
             else {
                 // Player enters an invalid action
-                System.out.println("I don't understand what you want to do. Please try again.");
+                System.out.println("I don't understand what you want to do. Please try again .");
             }
         }
         
         // Game over
-        System.out.println("You have no lives left. Game over!");
+        System.out.println("You have no lives left. Game over! ");
         System.out.println("Your final score is " + playerScore);
     }
     
