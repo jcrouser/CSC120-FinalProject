@@ -70,7 +70,8 @@ public class Gameplay {
                 System.out.println("  |_ _  |.--.) )");
                 System.out.println("  ( T   )     /");
                 System.out.println(" (((^_(((/(((_/");
-                playerName = "Sunny";             
+                playerName = "Sunny";
+                Orange sunny = new Orange(playerName, 5, 10, 8, 100, null);             
                 break;
             case 2:
                 System.out.println("You have chosen Yuki.");
@@ -80,6 +81,7 @@ public class Gameplay {
                 System.out.println("( | | )");
                 System.out.println("( d b )");
                 playerName = "Yuki";
+                White yuki = new White(playerName, 8, 3, 5, 100, null);
 
                 break;
             case 3:
@@ -88,6 +90,7 @@ public class Gameplay {
                 System.out.println("   _.|o o   |_   ) )");
                 System.out.println("   -(((---(((--------");
                 playerName = "Cookie";
+                Black cookie = new Black(playerName, choice, playerLives, playerScore, choice, null);
 
                 break;
             case 4:
@@ -100,6 +103,7 @@ public class Gameplay {
                 System.out.println("                    \\ '|| ||");
                 System.out.println("                     \\)()-())");
                 playerName = "Babka";
+                Grey babka = new Grey (playerName, 2, 3, 7, 100, null);
                 break;
             default:
                 System.out.println("Invalid choice.");

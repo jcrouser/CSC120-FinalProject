@@ -9,7 +9,7 @@ public class Grey extends Cat {
     // You can add any additional methods or variables specific to the GreyCat class here
 public static void main(String[] args) {
     Grey myGreyCat = new Grey("name", 5, 10, 20, 3, gameplay);
-    myGreyCat.kick();
+    System.out.print(myGreyCat.kick());
 
 }
 }
