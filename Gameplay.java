@@ -5,13 +5,15 @@ import java.util.Random;
 //input needs to be closed
 
 public class Gameplay {
-    public static Cat cat = new Cat("Sunny", 5, 5, 5, 5);
-    public static Monster monster = new Monster("Hala", 5, 5, 5, 5);
+    public static int playerLives = 9;
+    public static int playerScore = 0;
+    public static Cat cat = new Cat("Sunny", 5, 5, 5, 1);
+    public static Monster monster = new Monster("Hala", 5, 5, 1, 5);
 
-    public Gameplay(Cat cat, Monster monster){
-        this.cat = cat;
-        this.monster = monster;
-    }
+    // public Gameplay(Cat cat, Monster monster){
+    //     this.cat = cat;
+    //     this.monster = monster;
+    // }
     public static int strengthBattle(){
         if (cat.bite() > monster.tear()){
             return 1;
@@ -46,19 +48,27 @@ public class Gameplay {
             return 3;
         }
     }
-    public void winLose(){
-        if (monster.reduceHp() <= 0){
+    // public void winLose(){
+    //     if (monster.reduceHp() <= 0){
+    //         System.out.println("Cat win!");
+    //     }else if (cat.resultingHP() <= 0){
+    //         System.out.println("Monster win!");
+    //     }
+        public static int winLose(){
+        if (dexBattle() == 1) {
             System.out.println("Cat win!");
-        }else if (cat.resultingHP() <= 0){
+            return playerLives--;
+        }else{
             System.out.println("Monster win!");
-        }
-    }
+            return playerLives+1;
+        }}
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
         String playerName = " ";
-        int playerLives = 9;
-        int playerScore = 0;
+        // int playerLives = 9;
+        // int playerScore = 0;
         
         System.out.println("Welcome to CATaclysm!");
 
@@ -160,10 +170,8 @@ public class Gameplay {
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
             if (action1.equalsIgnoreCase("kick")) {
-              dexBattle();
-               
-
-
+            //   dexBattle();
+            winLose();
                 }
 
             // playerLives -= 1;
