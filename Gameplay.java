@@ -1,17 +1,18 @@
 import java.util.Scanner;
+import java.rmi.StubNotFoundException;
 import java.util.Random;
 
 //input needs to be closed
 
 public class Gameplay {
-    private Cat cat;
-    private Monster monster;
+    public static Cat cat = new Cat("Sunny", 5, 5, 5, 5);
+    public static Monster monster = new Monster("Hala", 5, 5, 5, 5);
 
     public Gameplay(Cat cat, Monster monster){
         this.cat = cat;
         this.monster = monster;
     }
-    public int strengthBattle(){
+    public static int strengthBattle(){
         if (cat.bite() > monster.tear()){
             return 1;
         }else if (cat.bite() < monster.tear()){
@@ -20,16 +21,23 @@ public class Gameplay {
             return 3;
         }
     }
-    public int dexBattle(){
+    public static int dexBattle(){
         if (cat.kick() > monster.grabAndThrow()){
+            System.out.print("yay1");
             return 1;
+            
         }else if (cat.kick() < monster.grabAndThrow()){
+            System.out.print("yay2");
             return 2;
+           
         }else{
+            System.out.print("yay3");
             return 3;
+            
         }
+      
     }
-    public int iqBattle(){
+    public static int iqBattle(){
         if (cat.escape() > monster.blockEscape()){
             return 1;
         }else if (cat.escape() < monster.blockEscape()){
@@ -119,7 +127,8 @@ public class Gameplay {
 
         // Game loop
         while (playerLives > 0) {
-           Orange sunny = new Orange(playerName, 5, 10, 8, 100, null); 
+        //    Monster hala =new Monster("Hala", 20, 20, 5,6);
+        //    Cat sunny = new Cat(playerName, 5, 10, 8, 100); 
             System.out.println("You have " + playerLives + " lives left.");
             System.out.println("Your score is " + playerScore);
 
@@ -133,7 +142,8 @@ public class Gameplay {
                 // Player chooses to explore the ruins
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                  // Generate a random number between 1 and 100
-            int randomNumber = random.nextInt(100) + 1;
+            // int randomNumber = random.nextInt(100) + 1;
+            int randomNumber = 49;
 
             // Determine which event occurs based on the random number
             if (randomNumber <= 25) {
@@ -150,12 +160,13 @@ public class Gameplay {
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
             if (action1.equalsIgnoreCase("kick")) {
-               sunny.kick();
+              dexBattle();
+               
 
 
                 }
 
-            playerLives -= 1;
+            // playerLives -= 1;
             } else if (randomNumber <= 75) {
             // 25% chance of finding nothing
             System.out.println("You find nothing of interest.");

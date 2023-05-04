@@ -24,13 +24,12 @@ public class Cat{
     * @param hp The hit points of the cat.
     * @param gameplay The gameplay object that the cat interacts with.
     */
-    public Cat(String name,int dexterity,int strength,int iq, int hp, Gameplay gameplay){
+    public Cat(String name,int dexterity,int strength,int iq, int hp){
         this.name = name;
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
         this.hp = hp;
-        this.gameplay = gameplay;
     }
     /**
     * we don't know yet.

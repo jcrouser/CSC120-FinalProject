@@ -23,13 +23,12 @@ import java.util.Random;
     *@param dexterity the dexterity of the monster
     *@param gameplay the gameplay object that the monster is a part of
     */
-    public Monster(String name, int strength, int iq, int hp, int dexterity, Gameplay gameplay) {
+    public Monster(String name, int strength, int iq, int hp, int dexterity) {
     this.name = name;
     this.dexterity = dexterity;
     this.strength = strength;
     this.iq = iq;
     this.hp = hp;
-    this.gameplay = gameplay;
     }
     /**
     
