@@ -62,9 +62,9 @@ public class Gameplay {
 
         System.out.print("Enter the number of the cat you want to be: ");
         int choice = input.nextInt();
-        
-        
 
+        
+        
         // switch (choice) {
         //     case 1:
         //         System.out.println("You have chosen Sunny.");
