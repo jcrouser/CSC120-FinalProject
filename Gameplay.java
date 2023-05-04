@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.rmi.StubNotFoundException;
 import java.util.Random;
 
 //input needs to be closed
@@ -109,14 +108,17 @@ public class Gameplay {
 
         System.out.print("Enter the number of the cat you want to be: ");
         int choice = input.nextInt();
+        Cat sunny;
+        Cat Yuki;
+        Cat Bapka;
         if (choice==1){
-        Cat sunny = new Cat("Sunny", 5, 7, 3, 1);
+         sunny = new Cat("Sunny", 5, 7, 3, 1);
         }
         else  if (choice==2){
-            Cat Yuki = new Cat("Yuki", 7, 5, 5, 1);
+         Yuki = new Cat("Yuki", 7, 5, 5, 1);
             }
-            else  if (choice==3){
-                Cat Bapka = new Cat("Bapka", 5, 5, 7, 1);
+        else  if (choice==3){
+          Bapka = new Cat("Bapka", 5, 5, 7, 1);
                 }
         
         
@@ -165,13 +167,17 @@ public class Gameplay {
             // 25% chance of finding nothing
             System.out.println("You find nothing of interest.");
             System.out.println("do you want to meow?(Yes,No)");
-            String answer1= input.next();
+
+            
+            Scanner input2 = new Scanner(System.in);
+            String answer1= input2.next();
            
             if ( answer1.equalsIgnoreCase("Yes")){
+                
                 cat.meow();
                 System.out.println("A monster heard you and approached you quickly");
                 System.out.println("Do you want to kick, bite,or escape?");
-                String action2 = input.next();
+                String action2 = input2.next();
                 monsterencounter(action2);}
             else{
                 System.out.print("n");
