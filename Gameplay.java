@@ -94,6 +94,7 @@ public class Gameplay {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
+        Scanner input3 = new Scanner(System.in);
         
         // int playerLives = 9;
         // int playerScore = 0;
@@ -137,6 +138,7 @@ public class Gameplay {
             
             System.out.print("What do you want to do next? (explore or rest)");
             String action = input.nextLine();
+
             
             // Process player's action
             if (action.equalsIgnoreCase("explore")) {
@@ -144,7 +146,7 @@ public class Gameplay {
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                  // Generate a random number between 1 and 100
             int randomNumber = random.nextInt(100) + 1;
-            // int randomNumber =75;
+            // int randomNumber =49;
 
             // Determine which event occurs based on the random number
             if (randomNumber <= 25) {
@@ -161,6 +163,15 @@ public class Gameplay {
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
             monsterencounter(action1);
+            // System.out.println("Do you want to attack again?");
+            // String answer3 = input3.next();
+            // if ( answer3.equalsIgnoreCase("Yes")){
+            //     String action3 = input3.next();
+            //     monsterencounter(action3);}
+            //     else{
+            //         System.out.print("n");
+            //     }
+    
 
 
             } else if (randomNumber <= 75) {
