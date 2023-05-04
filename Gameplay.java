@@ -147,7 +147,6 @@ public class Gameplay {
             //also we could add a way to keep score through battle wins
             //we could do random again for type of battle/see what method above to call? 
             //we could make a battle mode class?
-            System.out.println("You encounter a monster and lose a life.");
             System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
             String action1 = input.nextLine();
             if (action1.equalsIgnoreCase("kick")) {
