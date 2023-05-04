@@ -143,8 +143,8 @@ public class Gameplay {
                 // Player chooses to explore the ruins
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                  // Generate a random number between 1 and 100
-            // int randomNumber = random.nextInt(100) + 1;
-            int randomNumber =75;
+            int randomNumber = random.nextInt(100) + 1;
+            // int randomNumber =75;
 
             // Determine which event occurs based on the random number
             if (randomNumber <= 25) {
