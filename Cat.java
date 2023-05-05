@@ -55,7 +55,7 @@ public class Cat{
     */
     public int bite(){
         Random random = new Random();
-        int randomNumber = random.nextInt(21); 
+        int randomNumber = random.nextInt(strength); 
         int ttl_dmg = randomNumber + this.strength;
         return ttl_dmg;
     }

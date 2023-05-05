@@ -113,13 +113,13 @@ public class Gameplay {
         Cat Yuki;
         Cat Bapka;
         if (choice==1){
-         sunny = new Cat("Sunny", 5, 7, 3, 1);
+         cat = new Cat("Sunny", 5, 7, 3, 1);
         }
         else  if (choice==2){
-         Yuki = new Cat("Yuki", 7, 5, 5, 1);
+         cat= new Cat("Yuki", 7, 5, 5, 1);
             }
         else  if (choice==3){
-          Bapka = new Cat("Bapka", 5, 5, 7, 1);
+          cat = new Cat("Bapka", 5, 5, 7, 1);
                 }
         
         
@@ -145,8 +145,8 @@ public class Gameplay {
                 // Player chooses to explore the ruins
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                  // Generate a random number between 1 and 100
-            int randomNumber = random.nextInt(100) + 1;
-            // int randomNumber =49;
+            // int randomNumber = random.nextInt(100) + 1;
+            int randomNumber =75;
 
             // Determine which event occurs based on the random number
             if (randomNumber <= 25) {
