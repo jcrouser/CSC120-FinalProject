@@ -1,17 +1,16 @@
 import java.util.Random;
 import java.util.ArrayList;
-import com.google.common.graph.*;
 import java.util.Arrays;
 /**
 
 The Cat class represents a cat in the game.
 */
 public class Cat{
-    public static String name;
-    public static int dexterity = 5;//dex is the number you add on to a long range attack, which is a random attack number from 0-20, specifically for kick 
-    public static int strength = 5;//strength is the number you add onto a attack, specifically for bite 
-    public static int iq = 5; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
-    public static int hp = 9; //hp means the total amount of life that you have 
+    public String name;
+    private int dexterity ;//dex is the number you add on to a long range attack, which is a random attack number from 0-20, specifically for kick 
+    private int strength ;//strength is the number you add onto a attack, specifically for bite 
+    private int iq ; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
+  
     public static Gameplay gameplay;
     public int east;
     public int north;
@@ -25,12 +24,12 @@ public class Cat{
     * @param hp The hit points of the cat.
     * @param gameplay The gameplay object that the cat interacts with.
     */
-    public Cat(String name,int dexterity,int strength,int iq, int hp){
+    public Cat(String name,int dexterity,int strength,int iq){
         this.name = name;
         this.dexterity = dexterity;
         this.strength = strength;
         this.iq = iq;
-        this.hp = hp;
+        
     }
     /**
     * we don't know yet.
@@ -45,7 +44,7 @@ public class Cat{
     */
     public int kick(){ 
         Random random = new Random();
-        int randomNumber = random.nextInt(21); 
+        int randomNumber = random.nextInt(dexterity); 
         int ttl_dmg = randomNumber + this.dexterity;
         return ttl_dmg;
     }
@@ -69,8 +68,8 @@ public class Cat{
         int ttl_IQ = randomNumber + this.iq;
         return ttl_IQ;
     }
-    public void scratch(){
-        System.out.println("The cats collectively scratches on the rug");
+    public void hide(){
+        System.out.println("The monster can't see you now");
     }
     public  void meow(){
         System.out.println("meow! meow! meow!");
@@ -83,7 +82,7 @@ public class Cat{
     * @return The name of the cat.
     */
     public String getName(){
-        return this.name;
+        return name;
     }
     /**
     * Gets the dexterity of the cat.
@@ -98,17 +97,8 @@ public class Cat{
     public int getIQ(){
         return this.iq;
     }
-    public int getHP(){
-        return this.hp;
-    }
-    public int resultingHP(){
-        if (gameplay.dexBattle() ==2 || gameplay.strengthBattle() ==2 || gameplay.iqBattle() == 2){
-            this.hp =- 1;
-            return this.hp;
-        }else{;
-            return this.hp;
-        }
-    }
+   
+
     // public boolean walk(String direction){
     //     this.north = 0;
     //     this.east = 0;

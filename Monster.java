@@ -10,7 +10,6 @@ import java.util.Random;
     private int dexterity = 5; // The dexterity of the monster
     private int strength = 5; // The strength of the monster; added onto attack damage
     private int iq = 5; // The intelligence of the monster; added onto defense
-    private int hp = 10; // The health points of the monster
     private Gameplay gameplay; // The gameplay object that the monster is a part of
     
     /**
@@ -23,12 +22,12 @@ import java.util.Random;
     *@param dexterity the dexterity of the monster
     *@param gameplay the gameplay object that the monster is a part of
     */
-    public Monster(String name, int strength, int iq, int hp, int dexterity) {
+    public Monster(String name, int strength, int iq, int dexterity) {
     this.name = name;
     this.dexterity = dexterity;
     this.strength = strength;
     this.iq = iq;
-    this.hp = hp;
+
     }
     /**
     
@@ -57,15 +56,7 @@ import java.util.Random;
         int enemy_IQ = getRandomNumber() + iq;
         return enemy_IQ;
     }
-    /**
     
-    *Calculates the monster's IQ and returns it. The IQ is used for blocking attacks.
-    * @return the monster's IQ
-    */
-    public int blockAttack() {
-    int enemy_IQ = getRandomNumber() + iq;
-    return enemy_IQ;
-    }
     /**
     
     *Returns a random number between 0 and 20.
@@ -101,12 +92,13 @@ import java.util.Random;
     }
     /**
     
-    *Returns the health points of the monster.
-    *@return the health points of the monster
-    */
-    public int getHealthPoints() {
-        return hp;
-    }
+//     *Returns the health points of the monster.
+//     *@return the health points of the monster
+//     */
+//     public int getHealthPoints() {
+//         return hp;
+//     }
+
    /**
     * Returns the dexterity level of the monster.
     *
@@ -122,29 +114,23 @@ import java.util.Random;
     * Reduces the health points of the monster by 1 if the attack is successful.
     * An attack is successful if the gameplay's dexBattle() or strengthBattle() method returns 1.
     */
-    public int reduceHp() {
-        if (gameplay.dexBattle() == 1 || gameplay.strengthBattle() == 1) {
-            return hp--;
-        }else{
-            return hp;
-        }
-    }
+ 
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
+    // public void setStrength(int strength) {
+    //     this.strength = strength;
+    // }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    // public void setName(String name) {
+    //     this.name = name;
+    // }
 
-    public void setIntelligence(int iq) {
-        this.iq = iq;
-    }
+    // public void setIntelligence(int iq) {
+    //     this.iq = iq;
+    // }
 
-    public void setHealthPoints(int hp) {
-        this.hp = hp;
-    }
+    // public void setHealthPoints(int hp) {
+    //     this.hp = hp;
+    // }
     
 
 
