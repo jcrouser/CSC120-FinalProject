@@ -12,8 +12,8 @@ public class Cat{
     private int iq ; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
   
     public static Gameplay gameplay;
-    public int east;
-    public int north;
+    public int east = 0;
+    public int north = 0;
     public ArrayList<String> directionalcmd =new ArrayList<String>(Arrays.asList("North", "East", "South", "West"));
     /**
     * Constructor for the Cat class.
@@ -99,24 +99,7 @@ public class Cat{
     }
    
 
-    // public boolean walk(String direction){
-    //     this.north = 0;
-    //     this.east = 0;
-    //     this.south = 0;
-    //     this.west = 0;
-    //     if (direction ==directionalcmd.get(0)){
-    //         this.north += 1;    
-    //     }else if (direction ==directionalcmd.get(1)){
-    //         this.east += 1;
-    //     }else if (direction ==directionalcmd.get(2)){
-    //         this.north -= 1;
-    //     }else if (direction ==directionalcmd.get(3)){
-    //         this.east -= 1;
-    //     }else{
-    //     throw new RuntimeException("I don't understand where to go...");
-    //     }
-    //     return true;
-    //     }
+    
     
     
 
