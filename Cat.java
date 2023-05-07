@@ -68,12 +68,21 @@ public class Cat{
         int ttl_IQ = randomNumber + this.iq;
         return ttl_IQ;
     }
+    /**
+     * Hides the player from the monster's view.
+     */
     public void hide(){
         System.out.println("The monster can't see you now");
     }
+    /**
+     * the cat meows 
+     */
     public  void meow(){
         System.out.println("meow! meow! meow!");
     }
+    /**
+     * the cat purr 
+     */
     public  void purr(){
         System.out.println("The cats collectively purrs");
     }
