@@ -4,21 +4,46 @@ import java.util.Stack;
 
 //input needs to be closed
 
+/**
+ * The Gameplay class represents the game mechanics and logic for playing the game.It includes methods for battling the monster, 
+ * keeping track of the player's lives and score, and managing the game flow.
+ */
+
 public class Gameplay {
 
 private static Stack<String> previousActions = new Stack<>();
-
+  
   private static int playerLives = 9;
   private static int playerScore = 0;
   public static Monster monster = new Monster("monster", 5, 5, 5);
   public static Cat cat;
+ 
+  /**
+   * Returns the number of lives the player has remaining.
+   * @return an interger representing the number of lives the player has remaining
+   */
 
   public int getPlayerlives() {
     return playerLives;
   }
+
+  /**
+   * Returns the player's current score
+   * @return an interger representing the player's current score
+   */
+
   public int getPlayerScore() {
     return playerScore;
   }
+
+  /**
+   * Simulates a battle between a cat and a monster based on their respective strength attributes.
+   * @return an integer value of the outcome based on the winner of the battle:
+   * <ul>
+   *     <li>1 if the cat's bite strength is greater than the monster's tear strength</li>
+   *     <li>2 if the monster's tear strength is greater than the cat's bite strength</li>
+   * </ul>
+   */
 
   public static int strengthBattle() {
     if (cat.bite() > monster.tear()) {
@@ -28,17 +53,30 @@ private static Stack<String> previousActions = new Stack<>();
     }
   }
 
+  /**
+   * Simulates a battle between a cat and a monster based on their respective dexterity attributes.
+   * @return an integer value of the outcome based on the winner of the battle:
+   * <ul>
+   *     <li>1 if the cat's kick dexterity is greater than the monster's grab and throw dexterity</li>
+   *     <li>2 if the monster's grab and throw dexterity is greater than the cat's kick dexterity/li>
+   * </ul>
+   */
+
   public static int dexBattle() {
     if (cat.kick() > monster.grabAndThrow()) {
-
       return 1;
-
     } else {
       return 2;
-
     }
-
   }
+  /**
+   * Simulates a battle between a cat and a monster based on their respective IQ attributes.
+   * @return an integer value of the outcome based on the winner of the battle:
+   * <ul>
+   *     <li>1 if the cat's escape IQ is greater than the monster's block IQ</li>
+   *     <li>2 if the monster's block IQ and throw dexterity is greater than the cat's kick dexterity/li>
+   * </ul>
+   */
 
   public static int iqBattle() {
     if (cat.escape() > monster.blockEscape()) {
@@ -47,6 +85,14 @@ private static Stack<String> previousActions = new Stack<>();
       return 2;
     }
   }
+
+  /**
+   * Determines the winner of a battle between a cat and a monster based on their respective dexterity attributes,
+   * and outputs the result to the console.
+   * 
+   * If the cat wins, the method prints "Your attack was stronger than the monster. Cat wins!"
+   * If the monster wins, the method prints "The monster was stronger than you. Monster wins!" and decrements the player's life count.
+   */
 
   public static void winLoseDex() {
     if (dexBattle() == 1) {
@@ -59,6 +105,14 @@ private static Stack<String> previousActions = new Stack<>();
     }
   }
 
+  /**
+   * Determines the winner of a battle between a cat and a monster based on their respective strength attributes,
+   * and outputs the result to the console.
+   * 
+   * If the cat wins, the method prints "You are strong enough to win. Cat wins!"
+   * If the monster wins, the method prints "You are not strong enough to win. Monster wins!" and decrements the player's life count.
+   */
+
   public static void winLoseStrength() {
     if (strengthBattle() == 1) {
       System.out.println("You are strong enough to win.");
@@ -70,6 +124,17 @@ private static Stack<String> previousActions = new Stack<>();
       
     }
   }
+
+  /**
+   * Determines the winner of a battle between a cat and a monster based on their respective IQ attributes,
+   * and outputs the result to the console.
+   * 
+   * If the cat wins, the method prints "You are smart enough to escape. Cat wins!"
+   * If the monster wins, the method prints "You are not smart enough to escape. Monster wins!" and decrements the player's life count.
+   * 
+   * @return  The current count of the player's remaining lives after the battle.
+   */
+
   public static int winLoseIq() {
     if (iqBattle() == 1) {
       System.out.println("you are smart enough to escape");
@@ -82,6 +147,15 @@ private static Stack<String> previousActions = new Stack<>();
     }
     return playerLives;
   }
+
+  /**
+   * Simulates a battle encounter between a player's cat and a monster, where the player chooses an action to perform against the monster.
+   * The method checks the validity of the player's chosen action and calls the appropriate winLose method based on the action chosen.
+   * If the player enters an invalid action, the method prints an error message and does not perform any action.
+   *
+   * @param action1 The player's chosen action to perform against the monster.
+   */
+
   public static void monsterencounter(String action1) {
     if (action1.equalsIgnoreCase("kick")) {
       winLoseDex();
@@ -94,6 +168,13 @@ private static Stack<String> previousActions = new Stack<>();
       System.out.println("I don't understand what you want to do. Please try again.");
 
     }
+
+  /**
+   * Simulates a battle encounter between a player's cat and a monster. The method prompts the player to choose an action to perform against the monster, 
+   * checks the validity of the player's chosen action, and calls the appropriate winLose method based on the action chosen.
+   * The method also allows the player to undo their previous action by entering "undo", and keeps track of the player's previous actions using a Stack.
+   * 
+   */
     
   }
   public static void battle() {
@@ -106,21 +187,17 @@ private static Stack<String> previousActions = new Stack<>();
     String action5 = input4.next();
     monsterencounter(action5);
     previousActions.push(action5);
-    
     System.out.println("do you want to undo");
     String action6 = input4.next();
     if (action6.equalsIgnoreCase("undo")) {
         if (!previousActions.isEmpty()) {
             String lastAction = previousActions.pop();
-        
-
-            // Revert the game state to what it was before the last action was taken
+             // Revert the game state to what it was before the last action was taken
             
         }
        
     // if(lastAction){
 
-    // }
     }
     
    
@@ -180,7 +257,9 @@ private static Stack<String> previousActions = new Stack<>();
           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
         }
-        // Determine which event occurs based on the random number
+         /**
+          * Determines which event occurs based on the random number
+          */
         if (randomNumber <= 25) {
           // 25% chance of finding a treasure
           System.out.println("You stumble upon a hidden treasure and gain 10 points.");
