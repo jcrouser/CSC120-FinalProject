@@ -106,6 +106,9 @@ public class Cat{
     public int getIQ(){
         return this.iq;
     }
+
+    public String toString() {
+        return this.name;
    
 
     
@@ -113,4 +116,5 @@ public class Cat{
     
 
         
+}
 }

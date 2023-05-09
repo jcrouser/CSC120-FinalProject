@@ -4,8 +4,6 @@ import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//input needs to be closed
-
 /**
  * The Gameplay class represents the game mechanics and logic for playing the game.It includes methods for battling the monster, 
  * keeping track of the player's lives and score, and managing the game flow.
@@ -247,23 +245,39 @@ private static Stack<String> previousActions = new Stack<>();
     System.out.println("2. Yuki - Nimble but tiny");
     System.out.println("3. Babka - Wise but wrinkly");
 
-    System.out.print("Enter the number of the cat you want to be: ");
+    System.out.print("Enter the NUMBER of the cat you want to be: ");
     int choice = input.nextInt();
+    input.nextLine();
 
     if (choice == 1) {
       cat = new Cat("Sunny", 5, 7, 3);
+      System.out.println("  |\\---/|");
+      System.out.println("  | o_o |");
+      System.out.println("   \\_^_/");
+
     } else if (choice == 2) {
       cat = new Cat("Yuki", 7, 5, 5);
-    } else if (choice == 3) {
-      cat = new Cat("Bapka", 5, 5, 7);
-    }
+      System.out.println(" /\\_/\\");
+      System.out.println("( o.o )");
+      System.out.println(" > ^ <");
 
-    System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
+    } else if (choice == 3) {
+      cat = new Cat("Babka", 5, 5, 7);
+      System.out.println(" /\\_/\\");
+      System.out.println("( o o )");
+      System.out.println("==_Y_==");
+      System.out.println("  `-'");
+
+    } else {
+        System.out.println("Unknown input. Please enter a valid number (1, 2, or 3).");
+    }
+ 
+
+    System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.");
     input.nextLine();
     // System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
-    System.out.println("You are part of a colony of cats living in perpetual darkness, one day you are chosen to find the World Beyond.");
+    System.out.println("Ever since you were a kitten, you and your litter mates would roam in perpetual darkness. \nThe elder cats would tell tales about how the human nuclear apocalypse forced the colony deep underground. \nThe colony once thrived in a green forest with rushing water, tall trees, and plenty wildlife. \nFor the last few generations, your colony was able to prosper because everyone has their own magical abilities. \nSome cats are super strong, others are very wise. One day you are chosen to find the World Beyond.");
 
-    // Game loop
     while (playerLives > 0) {
 
         if (playerLives == 0){
@@ -274,21 +288,18 @@ private static Stack<String> previousActions = new Stack<>();
       System.out.println("You have " + playerLives + " lives left.");
       System.out.println("Your score is " + playerScore);
 
-      // Prompt for player's next action
-
-      
-      System.out.println("What do you want to do next? (explore or rest)");
+      System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
+      System.out.println("What do you want to do next? (explore, hunt, or rest?)");
       String action = input.nextLine();
       // Process player's action
       if (action.equalsIgnoreCase("explore")) {
         // Player chooses to explore the ruins
-        // System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
-        // Generate a random number between 1 and 100
-        // int randomNumber = random.nextInt(100) + 1;
+
+        
         Scanner input2 = new Scanner(System.in);
         //code for the beginning of the game, the first location
         if (north == 0 && east == 0){
-            System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. To your south is a path, do you want go south? (Yes/No)");
+            System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. \nTo your south is a path, do you want go south? (Yes/No)");
             String answer1 = input2.next();
             if (answer1.equalsIgnoreCase("Yes")){
                 walk("South");
@@ -418,8 +429,7 @@ private static Stack<String> previousActions = new Stack<>();
                   System.out.println("I don't understand where you want to go... Where do you want to go? (East/West/North)");
                   pass = false;
               }
-            }
-          }
+            
         }
         //code if the player goes west after going south from the main position
         if (north == -1 && east == -1){
@@ -432,8 +442,8 @@ private static Stack<String> previousActions = new Stack<>();
           }else if(answer4.equalsIgnoreCase("East")){
             walk("East");
           }else{
-            boolean pass  = false;
-            while (pass == false){
+            boolean pass1  = false;
+            while (pass1 == false){
               System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
               String answer4_5 = input2.next();
               if (answer4_5.equalsIgnoreCase("Southwest")){
@@ -463,8 +473,8 @@ private static Stack<String> previousActions = new Stack<>();
           }else if (answer5.equalsIgnoreCase("West")){
             walk("West");
           }else{
-            boolean pass  = false;
-            while (pass == false){
+            boolean pass2  = false;
+            while (pass2 == false){
               System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
               String answer5_5 = input2.next();
               if (answer5_5.equalsIgnoreCase("Southeast")){
@@ -543,13 +553,26 @@ private static Stack<String> previousActions = new Stack<>();
           }
         }
         }
+        if (action.equalsIgnoreCase("hunt")){
+            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. \nYou decide to set out on a mission to collect goods. \nYou see a smouldering forest to the LEFT and a burnt meadow to the RIGHT.");
+            // Generate a random number between 1 and 100
+        int randomNumber = random.nextInt(100) + 1;
+        if (randomNumber <= 10) {
+          System.out.println("You stumble upon a bag of silver coins. \nYou gain 10 points.");
+          playerScore += 10;
+        }
+        if (randomNumber <= 20) {
+          System.out.println("You are lost in the woods. n/You hear a howling in the distance. n/The leaves are rustling as wind picks up.");
+          int randomNumber2 = random.nextInt(3) + 1; 
+          if (randomNumber2 == 1)  {
+            System.out.println("You get spooked and you wander even further into the darkness.");
+          }             
+          }
 
-//         int randomNumber = 75;
-//         if (randomNumber <= 10) {
-//           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
+//        
+//         
 
-//         }
-//         // Determine which event occurs based on the random number
+//     
 //         if (randomNumber <= 25) {
 //           // 25% chance of finding a treasure
 //           System.out.println("You stumble upon a hidden treasure and gain 10 points.");
@@ -628,5 +651,11 @@ private static Stack<String> previousActions = new Stack<>();
 
 //   }
   
-  }}}
+  }
+}
+  }
+}
+}
+}
+
 
