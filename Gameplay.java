@@ -255,10 +255,10 @@ private static Stack<String> previousActions = new Stack<>();
     } else if (choice == 2) {
       cat = new Cat("Yuki", 7, 5, 5);
     } else if (choice == 3) {
-      cat = new Cat("Bapka", 5, 5, 7);
+      cat = new Cat("Babka", 5, 5, 7);
     }
 
-    System.out.println("Hi " + playerName + ", you are a member of the colony of magical cats who live underground.");
+    System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.");
     input.nextLine();
     // System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
     System.out.println("You are part of a colony of cats living in perpetual darkness, one day you are chosen to find the World Beyond.");
@@ -288,7 +288,7 @@ private static Stack<String> previousActions = new Stack<>();
         Scanner input2 = new Scanner(System.in);
         //code for the beginning of the game, the first location
         if (north == 0 && east == 0){
-            System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. To your south is a path, do you want go south? (Yes/No)");
+            System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. \nTo your south is a path, do you want go south? (Yes/No)");
             String answer1 = input2.next();
             if (answer1.equalsIgnoreCase("Yes")){
                 walk("South");
