@@ -13,29 +13,22 @@ import java.util.Arrays;
 
 public class Gameplay {
 
-<<<<<<< HEAD
-  private static Stack<String> previousActions = new Stack<>();
-=======
 private static Stack<String> previousActions = new Stack<>();
   
->>>>>>> f5949288f89c0f7940b378a536ff517ec8547908
   private static int playerLives = 9;
   private static int playerScore = 0;
   public static Monster monster = new Monster("monster", 5, 5, 5);
   public static Cat cat;
-<<<<<<< HEAD
   public static int east;
   public static int north;
   public static ArrayList<String> directionalcmd= new ArrayList<String>(Arrays.asList("North", "East", "South", "West", "Northeast", "Northwest", "Southeast", "Southwest"));
   
 
-=======
  
   /**
    * Returns the number of lives the player has remaining.
    * @return an interger representing the number of lives the player has remaining
    */
->>>>>>> f5949288f89c0f7940b378a536ff517ec8547908
 
   public int getPlayerlives() {
     return playerLives;
@@ -293,6 +286,7 @@ private static Stack<String> previousActions = new Stack<>();
         // Generate a random number between 1 and 100
         // int randomNumber = random.nextInt(100) + 1;
         Scanner input2 = new Scanner(System.in);
+        //code for the beginning of the game, the first location
         if (north == 0 && east == 0){
             System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. To your south is a path, do you want go south? (Yes/No)");
             String answer1 = input2.next();
@@ -314,28 +308,29 @@ private static Stack<String> previousActions = new Stack<>();
                 }
             }else{
                 System.out.println("I don't understand what you are saying...");
-        int randomNumber = 75;
-        if (randomNumber <= 10) {
-          System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
+        // int randomNumber = 75;
+        // if (randomNumber <= 10) {
+        //   System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
         }
+      }
          /**
           * Determines which event occurs based on the random number
           */
-        if (randomNumber <= 25) {
+        // if (randomNumber <= 25) {
           // 25% chance of finding a treasure
-          System.out.println("You stumble upon a hidden treasure and gain 10 points.");
-          playerScore += 10;
-        } else if (randomNumber <= 50) {
+          // System.out.println("You stumble upon a hidden treasure and gain 10 points.");
+          // playerScore += 10;
+        // } else if (randomNumber <= 50) {
           // 25% chance of encountering a monster
           //here we can throw in the batter mode and call methods from cat and monster class?
           //we are going to have to build cat and monster objects 
           //also we could add a way to keep score through battle wins
           //we could do random again for type of battle/see what method above to call? 
           //we could make a battle mode class?
-          System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-          String action1 = input.nextLine();
-          monsterencounter(action1);
+          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
+          // String action1 = input.nextLine();
+          // monsterencounter(action1);
           // System.out.println("Do you want to attack again?");
           // String answer3 = input3.next();
           // if ( answer3.equalsIgnoreCase("Yes")){
@@ -345,25 +340,26 @@ private static Stack<String> previousActions = new Stack<>();
           //         System.out.print("n");
           //     }
 
-        } else if (randomNumber <= 75) {
-          // 25% chance of finding nothing
-          System.out.println("You find nothing of interest.");
-          System.out.println("do you want to meow?(Yes,No)");
+        // } else if (randomNumber <= 75) {
+        //   // 25% chance of finding nothing
+        //   System.out.println("You find nothing of interest.");
+        //   System.out.println("do you want to meow?(Yes,No)");
 
-          Scanner input2 = new Scanner(System.in);
-          String answer1 = input2.next();
+        //   Scanner input2 = new Scanner(System.in);
+        //   String answer1 = input2.next();
 
-          if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
-            cat.meow();
-            System.out.println("A monster heard you and approached you quickly");
-            System.out.println("Do you want to hide or attack?");
-            String answer4= input3.next();
+        //   if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
+        //     cat.meow();
+        //     System.out.println("A monster heard you and approached you quickly");
+        //     System.out.println("Do you want to hide or attack?");
+        //     String answer4= input3.next();
 
-            if (answer4.equalsIgnoreCase("hide")){
-                cat.hide();
-            }
+        //     if (answer4.equalsIgnoreCase("hide")){
+        //         cat.hide();
+        //     }
             
-        }
+        // }
+         //code if the player goes south 
         if (north == -1 && east == 0){
             System.out.println("you are met with a cross section. Do you want to turn East, West, or go back North?(East/West/North)");
             String answer3 = input2.next();
@@ -374,11 +370,105 @@ private static Stack<String> previousActions = new Stack<>();
             }else if (answer3.equalsIgnoreCase("North")){
                 walk("North");
             }else{
-                System.out.println("I don't understand what you are saying...");
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/West/North)");
+                String answer3_5 = input2.next();
+                if (answer3_5.equalsIgnoreCase("East")){
+                  walk("East");
+                  pass = true;
+                }else if (answer3_5.equalsIgnoreCase("West")){
+                  walk("West");
+                  pass = true;
+                }else if (answer3_5.equalsIgnoreCase("North")){
+                  walk("North");
+                  pass = true;
+                }else{
+                  System.out.println("I don't understand where you want to go... Where do you want to go? (East/West/North)");
+                  pass = false;
+              }
             }
-
-            
+          }
         }
+        //code if the player goes west after going south from the main position
+        if (north == -1 && east == -1){
+          System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker that is rumored to be haunted. Meanwhile on the Southwest you see a lone cat that seems to have a lot of stories to tell... Where do you choose to go?(Southeast/Southwest/East)");
+          String answer4 = input2.next();
+          if (answer4.equalsIgnoreCase("Southwest")){
+            walk("Southwest");
+          }else if (answer4.equalsIgnoreCase("Southeast")){
+            walk("Southeast");
+          }else if(answer4.equalsIgnoreCase("East")){
+            walk("East");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
+              String answer4_5 = input2.next();
+              if (answer4_5.equalsIgnoreCase("Southwest")){
+                walk("Southwest");
+                pass = true;
+              }else if (answer4_5.equalsIgnoreCase("Southeast")){
+                walk("Southeast");
+                pass = true;
+              }else if(answer4_5.equalsIgnoreCase("East")){
+                walk("East");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
+                pass = false;
+            }
+          }
+        }
+        }
+        //choice if the player goes east after going south from the original position
+        if (north == -1 && east == 1){
+          System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker. Meanwhile on the South you see along passage way. Where do you choose to go?(Southeast/Southwest/West)");
+          String answer5 = input2.next();
+          if (answer5.equalsIgnoreCase("South")){
+            walk("South");
+          }
+          if (answer5.equalsIgnoreCase("Southeast")){
+            walk("Southeast");
+          }
+          if (answer5.equalsIgnoreCase("West")){
+            walk("West");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
+              String answer5_5 = input2.next();
+              if (answer5_5.equalsIgnoreCase("Southeast")){
+                walk("Southeast");
+                pass = true;
+              }else if (answer5_5.equalsIgnoreCase("Southwest")){
+                walk("Southwest");
+                pass = true;
+              }else if(answer5_5.equalsIgnoreCase("West")){
+                walk("West");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
+                pass = false;
+            }
+          }
+        }
+        }
+        if (north == -2 && east == 0){
+          System.out.println("You met up with the lone cat, he seems to be lost in thought mumbling some thoughts. You approached th elderly cat, he began to talk about something regarding ... the light of the South? You are not quite sure what it is supposed to mean... To your East, there is a dimly lit bunker. Do you want to go East?(Southeast/Southwest/West)");
+          String answer6 = input2.next();
+          if (answer6.equalsIgnoreCase("Southeast")){
+            walk("Southeast");
+          }
+          if (answer6.equalsIgnoreCase("Southwest")){
+            walk("Southeast");
+          }
+          if (answer6.equalsIgnoreCase("West")){
+            walk("West");
+          }
+        }
+        }
+
 //         int randomNumber = 75;
 //         if (randomNumber <= 10) {
 //           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
@@ -463,5 +553,5 @@ private static Stack<String> previousActions = new Stack<>();
 
 //   }
   
-  }}}}
+  }}}
 
