@@ -238,8 +238,8 @@ private static Stack<String> previousActions = new Stack<>();
     Scanner input3 = new Scanner(System.in);
 
     System.out.println("Welcome to CATaclysm!");
-    System.out.println("What is your name");
-    String playerName = input.next();
+    // System.out.println("What is your name");
+    // String playerName = input.next();
     System.out.println("What cat do you want to be?");
     System.out.println("1. Sunny - Slightly slow but strong");
     System.out.println("2. Yuki - Nimble but tiny");
@@ -291,12 +291,13 @@ private static Stack<String> previousActions = new Stack<>();
       System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
       System.out.println("What do you want to do next? (explore, hunt, or rest?)");
       String action = input.nextLine();
+      Scanner input2 = new Scanner(System.in);
       // Process player's action
       if (action.equalsIgnoreCase("explore")) {
         // Player chooses to explore the ruins
 
         
-        Scanner input2 = new Scanner(System.in);
+        
         //code for the beginning of the game, the first location
         if (north == 0 && east == 0){
             System.out.println("you are surrounded by other cats, they look at you with eager eyes to learn about your journey. \nTo your south is a path, do you want go south? (Yes/No)");
@@ -325,52 +326,7 @@ private static Stack<String> previousActions = new Stack<>();
 
         }
       }
-         /**
-          * Determines which event occurs based on the random number
-          */
-        // if (randomNumber <= 25) {
-          // 25% chance of finding a treasure
-          // System.out.println("You stumble upon a hidden treasure and gain 10 points.");
-          // playerScore += 10;
-        // } else if (randomNumber <= 50) {
-          // 25% chance of encountering a monster
-          //here we can throw in the batter mode and call methods from cat and monster class?
-          //we are going to have to build cat and monster objects 
-          //also we could add a way to keep score through battle wins
-          //we could do random again for type of battle/see what method above to call? 
-          //we could make a battle mode class?
-          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-          // String action1 = input.nextLine();
-          // monsterencounter(action1);
-          // System.out.println("Do you want to attack again?");
-          // String answer3 = input3.next();
-          // if ( answer3.equalsIgnoreCase("Yes")){
-          //     String action3 = input3.next();
-          //     monsterencounter(action3);}
-          //     else{
-          //         System.out.print("n");
-          //     }
-
-        // } else if (randomNumber <= 75) {
-        //   // 25% chance of finding nothing
-        //   System.out.println("You find nothing of interest.");
-        //   System.out.println("do you want to meow?(Yes,No)");
-
-        //   Scanner input2 = new Scanner(System.in);
-        //   String answer1 = input2.next();
-
-        //   if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
-        //     cat.meow();
-        //     System.out.println("A monster heard you and approached you quickly");
-        //     System.out.println("Do you want to hide or attack?");
-        //     String answer4= input3.next();
-
-        //     if (answer4.equalsIgnoreCase("hide")){
-        //         cat.hide();
-        //     }
-            
-        // }
-         //code if the player goes south 
+        
         if (north == -1 && east == 0){
             System.out.println("you are met with a cross section. Do you want to turn East, West, or go back North?(East/West/North)");
             String answer3 = input2.next();
@@ -477,9 +433,11 @@ private static Stack<String> previousActions = new Stack<>();
             walk("West");
           }
         }
-        }
-        if (action.equalsIgnoreCase("hunt")){
-            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. \nYou decide to set out on a mission to collect goods. \nYou see a smouldering forest to the LEFT and a burnt meadow to the RIGHT.");
+        
+        
+        
+        else if (action.equalsIgnoreCase("hunt")){
+            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. /nYou hear rumors of burnt meadows with slim pickings. \nYou decide to set out on a mission to collect goods. \nYou see a path towards a smouldering forest.");
             // Generate a random number between 1 and 100
         int randomNumber = random.nextInt(100) + 1;
         if (randomNumber <= 10) {
@@ -488,93 +446,25 @@ private static Stack<String> previousActions = new Stack<>();
         }
         if (randomNumber <= 20) {
           System.out.println("You are lost in the woods. n/You hear a howling in the distance. n/The leaves are rustling as wind picks up.");
-          int randomNumber2 = random.nextInt(3) + 1; 
-          if (randomNumber2 == 1)  {
-            System.out.println("You get spooked and you wander even further into the darkness.");
-          }             
+          int randomNumber2 = random.nextInt(3); 
+          if (randomNumber2 == 1 )  {
+            System.out.println("You get spooked and you wander even further into the darkness. /nA winged monster flies down from the sky and attacks you.");
+            playerLives -= 1;
+          } else {
+            System.out.println("You run in panicked circles but you see a glimmer of light in the distance. /nThe howling subsides as you near closer. /nYou make it through the light and make it back to a clearing.");
           }
+        if (randomNumber <=30) {
+            System.out.println("The clouds in the sky are heavy with rain. You run underneath a tree to seek shelter. Thunder is rumbling in the distance.");
+            int randomNumber3 = random.nextInt(3);
+            if (randomNumber3 == 1) {
+                System.out.println("Lightning breaks out of the air and slashes the ground. /nThe recoil sends you tumbling. /nYou lose a life.");
+            } else {
+                System.out.println("You watch the rain fall like curtains in the sky. /nYou sit there for a little while and grow drowsy as you wait for the storm to pass.");
+            }         
+          }}
 
 //        
 //         
-
-//     
-//         if (randomNumber <= 25) {
-//           // 25% chance of finding a treasure
-//           System.out.println("You stumble upon a hidden treasure and gain 10 points.");
-//           playerScore += 10;
-//         } else if (randomNumber <= 50) {
-//           // 25% chance of encountering a monster
-//           //here we can throw in the batter mode and call methods from cat and monster class?
-//           //we are going to have to build cat and monster objects 
-//           //also we could add a way to keep score through battle wins
-//           //we could do random again for type of battle/see what method above to call? 
-//           //we could make a battle mode class?
-//           System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-//           String action1 = input.nextLine();
-//           monsterencounter(action1);
-//           // System.out.println("Do you want to attack again?");
-//           // String answer3 = input3.next();
-//           // if ( answer3.equalsIgnoreCase("Yes")){
-//           //     String action3 = input3.next();
-//           //     monsterencounter(action3);}
-//           //     else{
-//           //         System.out.print("n");
-//           //     }
-
-//         } else if (randomNumber <= 75) {
-//           // 25% chance of finding nothing
-//           System.out.println("You find nothing of interest.");
-//           System.out.println("do you want to meow?(Yes,No)");
-
-//           Scanner input2 = new Scanner(System.in);
-//           String answer1 = input2.next();
-
-//           if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
-//             cat.meow();
-//             System.out.println("A monster heard you and approached you quickly");
-//             System.out.println("Do you want to hide or attack?");
-//             String answer4= input3.next();
-
-//             if (answer4.equalsIgnoreCase("hide")){
-//                 cat.hide();
-//             }
-//             else if(answer4.equalsIgnoreCase("attack")){
-//                 battle();
-//             // System.out.println("Do you want to kick, bite,or escape?");
-//             // String action2 = input2.next();
-//             // monsterencounter(action2);}
-
-//           } else {
-//             System.out.print("I don't understand you!");
-//           }
-
-//         } else {
-//           // 25% chance of finding a first aid kit
-//           System.out.println("You find a first aid kit and gain a life.");
-//           if (playerLives < 9) {
-//             playerLives += 1;
-
-//           } else {
-//             System.out.println("You're fully healthy!");
-//           }
-
-//         }
-//         // TODO: add more code here to advance the game
-//       } else if (action.equalsIgnoreCase("rest")) {
-//         if (playerLives < 9) {
-//           playerLives += 1;
-//           System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
-//         } else {
-//           System.out.println("You already are fully rested.");
-//         }
-//       } else {
-//         // Player enters an invalid action
-//         System.out.println("I don't understand what you want to do. Please try again .");
-//       }
-//     }
-
-
-//   }
   
   }
 }
@@ -582,5 +472,52 @@ private static Stack<String> previousActions = new Stack<>();
 }
 }
 }
+}
 
 
+ /**
+          * Determines which event occurs based on the random number
+          */
+        // if (randomNumber <= 25) {
+          // 25% chance of finding a treasure
+          // System.out.println("You stumble upon a hidden treasure and gain 10 points.");
+          // playerScore += 10;
+        // } else if (randomNumber <= 50) {
+          // 25% chance of encountering a monster
+          //here we can throw in the batter mode and call methods from cat and monster class?
+          //we are going to have to build cat and monster objects 
+          //also we could add a way to keep score through battle wins
+          //we could do random again for type of battle/see what method above to call? 
+          //we could make a battle mode class?
+          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
+          // String action1 = input.nextLine();
+          // monsterencounter(action1);
+          // System.out.println("Do you want to attack again?");
+          // String answer3 = input3.next();
+          // if ( answer3.equalsIgnoreCase("Yes")){
+          //     String action3 = input3.next();
+          //     monsterencounter(action3);}
+          //     else{
+          //         System.out.print("n");
+          //     }
+
+        // } else if (randomNumber <= 75) {
+        //   // 25% chance of finding nothing
+        //   System.out.println("You find nothing of interest.");
+        //   System.out.println("do you want to meow?(Yes,No)");
+
+        //   Scanner input2 = new Scanner(System.in);
+        //   String answer1 = input2.next();
+
+        //   if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
+        //     cat.meow();
+        //     System.out.println("A monster heard you and approached you quickly");
+        //     System.out.println("Do you want to hide or attack?");
+        //     String answer4= input3.next();
+
+        //     if (answer4.equalsIgnoreCase("hide")){
+        //         cat.hide();
+        //     }
+            
+        // }
+         //code if the player goes south 
