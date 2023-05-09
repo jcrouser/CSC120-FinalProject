@@ -287,17 +287,14 @@ private static Stack<String> previousActions = new Stack<>();
       System.out.println("You have " + playerLives + " lives left.");
       System.out.println("Your score is " + playerScore);
 
-      // Prompt for player's next action
-
-      
-      System.out.println("What do you want to do next? (explore or rest)");
+      System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
+      System.out.println("What do you want to do next? (explore, hunt, or rest?)");
       String action = input.nextLine();
       // Process player's action
       if (action.equalsIgnoreCase("explore")) {
         // Player chooses to explore the ruins
-        // System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
-        // Generate a random number between 1 and 100
-        // int randomNumber = random.nextInt(100) + 1;
+
+        
         Scanner input2 = new Scanner(System.in);
         //code for the beginning of the game, the first location
         if (north == 0 && east == 0){
@@ -321,7 +318,7 @@ private static Stack<String> previousActions = new Stack<>();
                 }
             }else{
                 System.out.println("I don't understand what you are saying...");
-        // int randomNumber = 75;
+    
         // if (randomNumber <= 10) {
         //   System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
@@ -400,8 +397,7 @@ private static Stack<String> previousActions = new Stack<>();
                   System.out.println("I don't understand where you want to go... Where do you want to go? (East/West/North)");
                   pass = false;
               }
-            }
-          }
+            
         }
         //code if the player goes west after going south from the main position
         if (north == -1 && east == -1){
@@ -414,8 +410,8 @@ private static Stack<String> previousActions = new Stack<>();
           }else if(answer4.equalsIgnoreCase("East")){
             walk("East");
           }else{
-            boolean pass  = false;
-            while (pass == false){
+            boolean pass1  = false;
+            while (pass1 == false){
               System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
               String answer4_5 = input2.next();
               if (answer4_5.equalsIgnoreCase("Southwest")){
@@ -447,8 +443,8 @@ private static Stack<String> previousActions = new Stack<>();
           if (answer5.equalsIgnoreCase("West")){
             walk("West");
           }else{
-            boolean pass  = false;
-            while (pass == false){
+            boolean pass2  = false;
+            while (pass2 == false){
               System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
               String answer5_5 = input2.next();
               if (answer5_5.equalsIgnoreCase("Southeast")){
@@ -481,13 +477,26 @@ private static Stack<String> previousActions = new Stack<>();
           }
         }
         }
+        if (action.equalsIgnoreCase("hunt")){
+            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. \nYou decide to set out on a mission to collect goods. \nYou see a smouldering forest to the LEFT and a burnt meadow to the RIGHT.");
+            // Generate a random number between 1 and 100
+        int randomNumber = random.nextInt(100) + 1;
+        if (randomNumber <= 10) {
+          System.out.println("You stumble upon a bag of silver coins. \nYou gain 10 points.");
+          playerScore += 10;
+        }
+        if (randomNumber <= 20) {
+          System.out.println("You are lost in the woods. n/You hear a howling in the distance. n/The leaves are rustling as wind picks up.");
+          int randomNumber2 = random.nextInt(3) + 1; 
+          if (randomNumber2 == 1)  {
+            System.out.println("You get spooked and you wander even further into the darkness.");
+          }             
+          }
 
-//         int randomNumber = 75;
-//         if (randomNumber <= 10) {
-//           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
+//        
+//         
 
-//         }
-//         // Determine which event occurs based on the random number
+//     
 //         if (randomNumber <= 25) {
 //           // 25% chance of finding a treasure
 //           System.out.println("You stumble upon a hidden treasure and gain 10 points.");
@@ -566,6 +575,8 @@ private static Stack<String> previousActions = new Stack<>();
 
 //   }
   
+  }
+}
   }
 }
 }
