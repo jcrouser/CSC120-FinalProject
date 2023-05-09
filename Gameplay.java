@@ -247,6 +247,7 @@ private static Stack<String> previousActions = new Stack<>();
 
     System.out.print("Enter the NUMBER of the cat you want to be: ");
     int choice = input.nextInt();
+    input.nextLine();
 
     if (choice == 1) {
       cat = new Cat("Sunny", 5, 7, 3);
@@ -578,6 +579,7 @@ private static Stack<String> previousActions = new Stack<>();
   }
 }
   }
+}
 }
 }
 
