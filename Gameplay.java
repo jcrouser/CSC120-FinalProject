@@ -4,8 +4,6 @@ import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//input needs to be closed
-
 /**
  * The Gameplay class represents the game mechanics and logic for playing the game.It includes methods for battling the monster, 
  * keeping track of the player's lives and score, and managing the game flow.
@@ -247,23 +245,38 @@ private static Stack<String> previousActions = new Stack<>();
     System.out.println("2. Yuki - Nimble but tiny");
     System.out.println("3. Babka - Wise but wrinkly");
 
-    System.out.print("Enter the number of the cat you want to be: ");
+    System.out.print("Enter the NUMBER of the cat you want to be: ");
     int choice = input.nextInt();
 
     if (choice == 1) {
       cat = new Cat("Sunny", 5, 7, 3);
+      System.out.println("  |\\---/|");
+      System.out.println("  | o_o |");
+      System.out.println("   \\_^_/");
+
     } else if (choice == 2) {
       cat = new Cat("Yuki", 7, 5, 5);
+      System.out.println(" /\\_/\\");
+      System.out.println("( o.o )");
+      System.out.println(" > ^ <");
+
     } else if (choice == 3) {
       cat = new Cat("Babka", 5, 5, 7);
+      System.out.println(" /\\_/\\");
+      System.out.println("( o o )");
+      System.out.println("==_Y_==");
+      System.out.println("  `-'");
+
+    } else {
+        System.out.println("Unknown input. Please enter a valid number (1, 2, or 3).");
     }
+ 
 
     System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.");
     input.nextLine();
     // System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
-    System.out.println("You are part of a colony of cats living in perpetual darkness, one day you are chosen to find the World Beyond.");
+    System.out.println("Ever since you were a kitten, you and your litter mates would roam in perpetual darkness. \nThe elder cats would tell tales about how the human nuclear apocalypse forced the colony deep underground. \nThe colony once thrived in a green forest with rushing water, tall trees, and plenty wildlife. \nFor the last few generations, your colony was able to prosper because everyone has their own magical abilities. \nSome cats are super strong, others are very wise. One day you are chosen to find the World Beyond.");
 
-    // Game loop
     while (playerLives > 0) {
 
         if (playerLives == 0){
@@ -553,5 +566,8 @@ private static Stack<String> previousActions = new Stack<>();
 
 //   }
   
-  }}}
+  }
+}
+}
+
 
