@@ -471,7 +471,7 @@ private static Stack<String> previousActions = new Stack<>();
         }
         //choice if the player goes east after going south from the original position
         if (north == -1 && east == 1){
-          System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker. Meanwhile on the South you see along passage way. Where do you choose to go?(Southeast/Southwest/West)");
+          System.out.println("You are encountered with an intersection. To the Southeast there is a passage going forward towards a wall. Meanwhile on the South you see along passage way. Where do you choose to go?(East/Southeast/West)");
           String answer5 = input2.next();
           if (answer5.equalsIgnoreCase("South")){
             walk("South");
@@ -482,7 +482,7 @@ private static Stack<String> previousActions = new Stack<>();
           }else{
             boolean pass2  = false;
             while (pass2 == false){
-              System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
+              System.out.println("I don't understand where you want to go... Where do you want to go? (East/Southeast/West)");
               String answer5_5 = input2.next();
               if (answer5_5.equalsIgnoreCase("Southeast")){
                 walk("Southeast");
@@ -629,6 +629,8 @@ private static Stack<String> previousActions = new Stack<>();
               }
             }
           }else{
+            boolean pass2 = false;
+            while (pass2 == false){
             System.out.println("I don't understand, do you want to kick, bite, or, escape?");
             action1 = input.nextLine();
             while(monsterencounter(action1) == false){
@@ -656,13 +658,13 @@ private static Stack<String> previousActions = new Stack<>();
                     }
                   }
                 }
+              }
           } 
-        }
           System.out.println("You see a passage leading forward, it is another of those bunkers... abandoned and left behind. Do you want to move forward? (Yes/No)");
           String answer9 = input2.next();
-          if (answer9 == "Yes"){
+          if (answer9.equalsIgnoreCase("Yes")){
             walk("South");
-          }else if (answer9 == "No"){
+          }else if (answer9.equalsIgnoreCase("No")){
             walk("Northwest");
           }else{
             boolean pass  = false;
@@ -681,7 +683,59 @@ private static Stack<String> previousActions = new Stack<>();
               }
             }
           }
+        }if(north == -3 && east == 2){
+          System.out.println("You entered the bunker, jumped on top of the shelves in the bunker using your nimble cat feet. On top of the shelves you saw a diary page stating: Oh the Light of the South. How brightly you shine! How warmly you embrace the this crumbling land! you are- /n the page was torn. you swatted the edge of the paper and wondered what the Light of the South means. /n In front of you the bunker door leads you to a passage going straight ahead. Do you want to go forward? (Yes/No)");
+          String answer9 = input2.next();
+          if (answer9.equalsIgnoreCase("Yes")){
+            walk("South");
+          }else if (answer9.equalsIgnoreCase("No")){
+            walk("Northwest");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go forward? (Yes/No)");
+              String answer9_5 = input2.next();
+              if (answer9_5.equalsIgnoreCase("Yes")){
+                walk("South");
+                pass = true;
+              }else if (answer9_5.equalsIgnoreCase("No")){
+                walk("Northwest");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                pass = false;
+              }
+            }
+          }
         }
+        if(north == -3 && east == 1){
+          System.out.println("To your East is a passage leading to a bunker. Do you want to go East? (East/North)");
+          String answer10 = input2.next();
+          if (answer10.equalsIgnoreCase("East")){
+            walk("East");
+          }else if (answer10.equalsIgnoreCase("North")){
+            walk("North");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go East? (East/North)");
+              String answer6_5 = input2.next();
+              if (answer6_5.equalsIgnoreCase("East")){
+                walk("East");
+                pass = true;
+              }else if (answer6_5.equalsIgnoreCase("North")){
+                walk("North");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                pass = false;
+              }
+            }
+          }
+        }
+        }
+
+    
         
         if (action.equalsIgnoreCase("hunt")){
             System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. \nYou decide to set out on a mission to collect goods. \nYou see a smouldering forest to the LEFT and a burnt meadow to the RIGHT.");
