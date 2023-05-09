@@ -431,6 +431,8 @@ private static Stack<String> previousActions = new Stack<>();
               }
             
         }
+      }
+    }
         //code if the player goes west after going south from the main position
         if (north == -1 && east == -1){
           System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker that is rumored to be haunted. Meanwhile on the Southwest you see a lone cat that seems to have a lot of stories to tell... Where do you choose to go?(Southeast/Southwest/East)");
@@ -448,16 +450,16 @@ private static Stack<String> previousActions = new Stack<>();
               String answer4_5 = input2.next();
               if (answer4_5.equalsIgnoreCase("Southwest")){
                 walk("Southwest");
-                pass = true;
+                pass1 = true;
               }else if (answer4_5.equalsIgnoreCase("Southeast")){
                 walk("Southeast");
-                pass = true;
+                pass1 = true;
               }else if(answer4_5.equalsIgnoreCase("East")){
                 walk("East");
-                pass = true;
+                pass1 = true;
               }else{
                 System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
-                pass = false;
+                pass1 = false;
               }
             }
           }
@@ -479,19 +481,22 @@ private static Stack<String> previousActions = new Stack<>();
               String answer5_5 = input2.next();
               if (answer5_5.equalsIgnoreCase("Southeast")){
                 walk("Southeast");
-                pass = true;
+                pass2 = true;
               }else if (answer5_5.equalsIgnoreCase("Southwest")){
                 walk("Southwest");
-                pass = true;
+                pass2 = true;
               }else if(answer5_5.equalsIgnoreCase("West")){
                 walk("West");
-                pass = true;
+                pass2 = true;
               }else{
                 System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
-                pass = false;
+                pass2 = false;
               }
             }
           }
+        }
+        if (north == -2 && east ==1){
+          
         }
         if (north == -2 && east == 2){
           System.out.println("In the dimly lit bunker you found a note, it wrote: It has not always been like this... The world has changed beyond recognition. you pondered for a bit, but alas you returned to your senses. To the east there is a passage way leading to a greater passage way. To your Northwest and West there are passages leading to a previous passage ways. Where would you want to go? (East, Northwest, West)");
@@ -655,7 +660,6 @@ private static Stack<String> previousActions = new Stack<>();
 }
   }
 }
-}
-}
+
 
 
