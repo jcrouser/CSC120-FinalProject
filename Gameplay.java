@@ -176,26 +176,42 @@ private static Stack<String> previousActions = new Stack<>();
   }
   public static void battle() {
     System.out.println("A monster has appeared! It's time to battle!");
+    boolean pass1 = true;
+    while (pass1 == true){
     System.out.println("What do you want to do?");
     System.out.println("1. Kick");
     System.out.println("2. Escape");
     System.out.println("3. Bite");
     Scanner input4 = new Scanner(System.in);
     String action5 = input4.next();
-    monsterencounter(action5);
+    // monsterencounter(action5);
     previousActions.push(action5);
+    if (monsterencounter(action5) ==false){
+      boolean pass = true;
+      while (pass == true){
     System.out.println("do you want to undo");
     String action6 = input4.next();
     if (action6.equalsIgnoreCase("undo")) {
         if (!previousActions.isEmpty()) {
             String lastAction = previousActions.pop();
+            playerLives++;
+            pass = false;
              // Revert the game state to what it was before the last action was taken
              System.out.println("Undoing action: " + lastAction);
              // Implement the necessary logic to revert the game state
          } else {
              System.out.println("No actions to undo.");
+             pass = true;
          }
+        pass1 = true;
+        }else if (action6.equalsIgnoreCase("No")){
+          pass1 = false;
         }
+    }
+        }else{
+          pass1 = false;
+        }
+  }
        
     // if(lastAction){
 
@@ -269,7 +285,7 @@ private static Stack<String> previousActions = new Stack<>();
         System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
         // Generate a random number between 1 and 100
         // int randomNumber = random.nextInt(100) + 1;
-        int randomNumber = 75;
+        int randomNumber = 50;
         if (randomNumber <= 10) {
           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
@@ -286,9 +302,10 @@ private static Stack<String> previousActions = new Stack<>();
           //also we could add a way to keep score through battle wins
           //we could do random again for type of battle/see what method above to call? 
           //we could make a battle mode class?
-          System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-          String action1 = input.nextLine();
-          monsterencounter(action1);
+          battle();
+          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
+          // String action1 = input.nextLine();
+          // monsterencounter(action1);
           // System.out.println("Do you want to attack again?");
           // String answer3 = input3.next();
           // if ( answer3.equalsIgnoreCase("Yes")){
