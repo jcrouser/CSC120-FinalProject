@@ -186,18 +186,18 @@ private static Stack<String> previousActions = new Stack<>();
     previousActions.push(action5);
     System.out.println("do you want to undo");
     String action6 = input4.next();
-    if (action6.equalsIgnoreCase("undo")) {
+    if (action6.equalsIgnoreCase("undo")||  (action6.equalsIgnoreCase("yes"))) {
         if (!previousActions.isEmpty()) {
             String lastAction = previousActions.pop();
              // Revert the game state to what it was before the last action was taken
-             System.out.println("Undoing action: " + lastAction);
-             // Implement the necessary logic to revert the game state
-         } else {
-             System.out.println("No actions to undo.");
-         }
+              System.out.println("Undoing action: " + lastAction);
+            // Implement the necessary logic to revert the game state
+        } else {
+            System.out.println("No actions to undo.");
         }
-       
-    // if(lastAction){
+        }
+    
+   
 
     }
     
