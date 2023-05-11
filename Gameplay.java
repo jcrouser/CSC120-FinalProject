@@ -236,7 +236,7 @@ private static Stack<String> previousActions = new Stack<>();
     //  prompts user enter the number of the cat that they wanr to be
     System.out.print("Enter the NUMBER of the cat you want to be: ");
 
-    //reads user's choice
+    // reads user's choice
     int choice = input.nextInt();
     input.nextLine();
 
@@ -278,18 +278,20 @@ private static Stack<String> previousActions = new Stack<>();
     // Asks the user if they are ready to start the game.
     System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
+    // The game loop continues as long as the player has lives left.
     while (playerLives > 0) {
 
+      //  Check if the player has run out of lives.
         if (playerLives == 0){
         System.out.println("You have no lives left. Game over!");
         System.out.println("Your final score is {score}");
         break;}
 
+      // Display the player's current lives and score.
       System.out.println("You have " + playerLives + " lives left.");
       System.out.println("Your score is " + playerScore);
 
       // Prompt for player's next action
-
       System.out.print("What do you want to do next? (explore or rest)");
       String action = input.nextLine();
 
@@ -332,20 +334,26 @@ private static Stack<String> previousActions = new Stack<>();
         } else if (randomNumber <= 75) {
           // 25% chance of finding nothing
           System.out.println("You find nothing of interest.");
+          // Asks the user if they want to meow and read their response
           System.out.println("do you want to meow?(Yes,No)");
-
           Scanner input2 = new Scanner(System.in);
           String answer1 = input2.next();
 
+          // If the user wants to meow, perform some actions
           if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
+            // Invoke the "meow" method of the Cat object
             cat.meow();
+            // Inform the user that a monster is approaching
             System.out.println("A monster heard you and approached you quickly");
+            //Asks the user if they want to hide or attack, and read their response
             System.out.println("Do you want to hide or attack?");
             String answer4= input3.next();
 
+            // If the user wants to hide, the cat hides
             if (answer4.equalsIgnoreCase("hide")){
                 cat.hide();
             }
+            // If the user wants to attack, initiate a battle and prompt for further action
             else if(answer4.equalsIgnoreCase("attack")){
                 battle();
             System.out.println("Do you want to kick, bite,or escape?");
@@ -353,21 +361,24 @@ private static Stack<String> previousActions = new Stack<>();
             monsterencounter(action2);}
 
           } else {
+            // Player enters an invalid action
             System.out.print("I don't understand you!");
           }
 
         } else {
           // 25% chance of finding a first aid kit
           System.out.println("You find a first aid kit and gain a life.");
+          //If the player's life count is less than 9, they gain an additional life.
           if (playerLives < 9) {
             playerLives += 1;
 
           } else {
+            //If their llfe count is at the max of 9, their health is full.
             System.out.println("You're fully healthy!");
           }
 
         }
-        
+        // Process player's action
       } else if (action.equalsIgnoreCase("rest")) {
         if (playerLives < 9) {
           playerLives += 1;
