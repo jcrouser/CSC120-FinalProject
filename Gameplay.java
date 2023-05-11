@@ -176,12 +176,13 @@ private static Stack<String> previousActions = new Stack<>();
   }
   public static void battle() {
     System.out.println("A monster has appeared! It's time to battle!");
+    if (playerLives >= 5){
     boolean pass1 = true;
     while (pass1 == true){
     System.out.println("What do you want to do?");
-    System.out.println("1. Kick");
-    System.out.println("2. Escape");
-    System.out.println("3. Bite");
+    System.out.println("Kick");
+    System.out.println("Escape");
+    System.out.println("Bite");
     Scanner input4 = new Scanner(System.in);
     String action5 = input4.next();
     // monsterencounter(action5);
@@ -213,8 +214,11 @@ private static Stack<String> previousActions = new Stack<>();
           pass1 = false;
         }
   }
-       
-    // if(lastAction){
+}else{
+  System.out.println("You have less than 5 lives, you can't attack right now");
+  System.out.println("Monster wins!");
+  playerLives--;
+}
 
     }
     
@@ -303,18 +307,9 @@ private static Stack<String> previousActions = new Stack<>();
           //also we could add a way to keep score through battle wins
           //we could do random again for type of battle/see what method above to call? 
           //we could make a battle mode class?
+          
           battle();
-          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-          // String action1 = input.nextLine();
-          // monsterencounter(action1);
-          // System.out.println("Do you want to attack again?");
-          // String answer3 = input3.next();
-          // if ( answer3.equalsIgnoreCase("Yes")){
-          //     String action3 = input3.next();
-          //     monsterencounter(action3);}
-          //     else{
-          //         System.out.print("n");
-          //     }
+          
 
         } else if (randomNumber <= 75) {
           // 25% chance of finding nothing
@@ -335,9 +330,9 @@ private static Stack<String> previousActions = new Stack<>();
             }
             else if(answer4.equalsIgnoreCase("attack")){
                 battle();
-            System.out.println("Do you want to kick, bite,or escape?");
-            String action2 = input2.next();
-            monsterencounter(action2);}
+            // System.out.println("Do you want to kick, bite,or escape?");
+            // String action2 = input2.next();
+            // monsterencounter(action2);}
 
           } else {
             System.out.print("I don't understand you!");
@@ -371,5 +366,5 @@ private static Stack<String> previousActions = new Stack<>();
 
   }
   
-  }
+  }}
 
