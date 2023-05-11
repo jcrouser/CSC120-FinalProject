@@ -233,36 +233,49 @@ private static Stack<String> previousActions = new Stack<>();
     System.out.println("2. Yuki - Nimble but tiny");
     System.out.println("3. Babka - Wise but wrinkly");
 
+    //  prompts user enter the number of the cat that they wanr to be
     System.out.print("Enter the NUMBER of the cat you want to be: ");
+
+    //reads user's choice
     int choice = input.nextInt();
     input.nextLine();
 
+    //  Assign a new Cat object to 'cat' based on the user's choice
     if (choice == 1) {
+      // Create a new Cat object with the name "Sunny" and the attributes (5, 7, 3)
       cat = new Cat("Sunny", 5, 7, 3);
+      //  Print out a cat ascii art
       System.out.println("  |\\---/|");
       System.out.println("  | o_o |");
       System.out.println("   \\_^_/");
 
     } else if (choice == 2) {
+      //  Create a new Cat object with the name "Yuki" and the attributes (7, 5, 5)
       cat = new Cat("Yuki", 7, 5, 5);
+      //  Print out a cat ascii art
       System.out.println(" /\\_/\\");
       System.out.println("( o.o )");
       System.out.println(" > ^ <");
-
+      
     } else if (choice == 3) {
+      //  Create a new Cat object with the name "Babka" and the attributes (5, 5, 7)
       cat = new Cat("Babka", 5, 5, 7);
+      //  Print out a cat ascii art
       System.out.println(" /\\_/\\");
       System.out.println("( o o )");
       System.out.println("==_Y_==");
       System.out.println("  `-'");
 
     } else {
+      // Print an error message if the user enters anything else
         System.out.println("Unknown input. Please enter a valid number (1, 2, or 3).");
     }
  
-
+    // Prints a welcome message to the user, addressing the chosen cat by its name.
     System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.");
+    // Reads the user's input without using it, effectively waiting for the user to press Enter.
     input.nextLine();
+    // Asks the user if they are ready to start the game.
     System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
     while (playerLives > 0) {
