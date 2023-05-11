@@ -190,7 +190,11 @@ private static Stack<String> previousActions = new Stack<>();
         if (!previousActions.isEmpty()) {
             String lastAction = previousActions.pop();
              // Revert the game state to what it was before the last action was taken
-            
+             System.out.println("Undoing action: " + lastAction);
+             // Implement the necessary logic to revert the game state
+         } else {
+             System.out.println("No actions to undo.");
+         }
         }
        
     // if(lastAction){
@@ -198,7 +202,7 @@ private static Stack<String> previousActions = new Stack<>();
     }
     
    
-  }
+  
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
     Random random = new Random();
@@ -313,9 +317,9 @@ private static Stack<String> previousActions = new Stack<>();
             }
             else if(answer4.equalsIgnoreCase("attack")){
                 battle();
-            // System.out.println("Do you want to kick, bite,or escape?");
-            // String action2 = input2.next();
-            // monsterencounter(action2);}
+            System.out.println("Do you want to kick, bite,or escape?");
+            String action2 = input2.next();
+            monsterencounter(action2);}
 
           } else {
             System.out.print("I don't understand you!");
@@ -332,7 +336,7 @@ private static Stack<String> previousActions = new Stack<>();
           }
 
         }
-        // TODO: add more code here to advance the game
+        
       } else if (action.equalsIgnoreCase("rest")) {
         if (playerLives < 9) {
           playerLives += 1;
@@ -349,5 +353,5 @@ private static Stack<String> previousActions = new Stack<>();
 
   }
   
-  }}
+  }
 
