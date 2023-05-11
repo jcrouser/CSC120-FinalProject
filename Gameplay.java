@@ -191,7 +191,7 @@ private static Stack<String> previousActions = new Stack<>();
       while (pass == true){
     System.out.println("do you want to undo");
     String action6 = input4.next();
-    if (action6.equalsIgnoreCase("undo")) {
+    if (action6.equalsIgnoreCase("undo")||  (action6.equalsIgnoreCase("yes"))) {
         if (!previousActions.isEmpty()) {
             String lastAction = previousActions.pop();
             playerLives++;
