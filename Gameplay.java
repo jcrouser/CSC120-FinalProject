@@ -13,7 +13,7 @@ private static Stack<String> previousActions = new Stack<>();
   private static int playerLives = 9;
   private static int playerScore = 0;
   public static Monster monster = new Monster("monster", 5, 5, 5);
-  public static Cat cat;
+  private static Cat cat;
 
   public int getPlayerlives() {
     return playerLives;
