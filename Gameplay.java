@@ -205,6 +205,7 @@ private static Stack<String> previousActions = new Stack<>();
          }
         pass1 = true;
         }else if (action6.equalsIgnoreCase("No")){
+          pass = false;
           pass1 = false;
         }
     }
