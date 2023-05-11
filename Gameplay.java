@@ -99,14 +99,16 @@ private static Stack<String> previousActions = new Stack<>();
    * If the monster wins, the method prints "The monster was stronger than you. Monster wins!" and decrements the player's life count.
    */
 
-  public static void winLoseDex() {
+  public static boolean winLoseDex() {
     if (dexBattle() == 1) {
       System.out.println("Your attack was stronger than the monster.");
       System.out.println("Cat wins!");
+      return true;
     } else {
       System.out.println("The monster was stronger than you.");
       System.out.println("Monster wins!");
       playerLives--;
+      return false;
     }
   }
 
@@ -118,14 +120,16 @@ private static Stack<String> previousActions = new Stack<>();
    * If the monster wins, the method prints "You are not strong enough to win. Monster wins!" and decrements the player's life count.
    */
 
-  public static void winLoseStrength() {
+  public static boolean winLoseStrength() {
     if (strengthBattle() == 1) {
       System.out.println("You are strong enough to win.");
       System.out.println("Cat wins!");
+      return true;
     } else {
       System.out.println("You are not strong enough to win.");
       System.out.println("Monster wins!");
       playerLives--;
+      return false;
       
     }
   }
@@ -140,17 +144,17 @@ private static Stack<String> previousActions = new Stack<>();
    * @return  The current count of the player's remaining lives after the battle.
    */
 
-  public static int winLoseIq() {
+  public static boolean winLoseIq() {
     if (iqBattle() == 1) {
       System.out.println("you are smart enough to escape");
       System.out.println("Cat wins!");
-      return playerLives;
-    } else if (iqBattle() == 2) {
+      return true;
+    } else{
       System.out.println("you are not smart enough to escape");
       System.out.println("Monster wins!");
       playerLives--;
+      return false;
     }
-    return playerLives;
   }
 
   /**
@@ -161,16 +165,17 @@ private static Stack<String> previousActions = new Stack<>();
    * @param action1 The player's chosen action to perform against the monster.
    */
 
-  public static void monsterencounter(String action1) {
+  public static boolean monsterencounter(String action1) {
     if (action1.equalsIgnoreCase("kick")) {
-      winLoseDex();
+      return winLoseDex();
     } else if (action1.equalsIgnoreCase("escape")) {
-      winLoseIq();
+      return winLoseIq();
     } else if (action1.equalsIgnoreCase("bite")) {
-      winLoseStrength();
+      return winLoseStrength();
     } else {
       // Player enters an invalid action
       System.out.println("I don't understand what you want to do. Please try again.");
+      return false;
 
     }
 
@@ -432,6 +437,8 @@ private static Stack<String> previousActions = new Stack<>();
               }
             
         }
+      }
+    }
         //code if the player goes west after going south from the main position
         if (north == -1 && east == -1){
           System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker that is rumored to be haunted. Meanwhile on the Southwest you see a lone cat that seems to have a lot of stories to tell... Where do you choose to go?(Southeast/Southwest/East)");
@@ -449,23 +456,23 @@ private static Stack<String> previousActions = new Stack<>();
               String answer4_5 = input2.next();
               if (answer4_5.equalsIgnoreCase("Southwest")){
                 walk("Southwest");
-                pass = true;
+                pass1 = true;
               }else if (answer4_5.equalsIgnoreCase("Southeast")){
                 walk("Southeast");
-                pass = true;
+                pass1 = true;
               }else if(answer4_5.equalsIgnoreCase("East")){
                 walk("East");
-                pass = true;
+                pass1 = true;
               }else{
                 System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/East)");
-                pass = false;
+                pass1 = false;
               }
             }
           }
         }
         //choice if the player goes east after going south from the original position
         if (north == -1 && east == 1){
-          System.out.println("You are encountered with an intersection. To the Southeast there is a dimly lit bunker. Meanwhile on the South you see along passage way. Where do you choose to go?(Southeast/Southwest/West)");
+          System.out.println("You are encountered with an intersection. To the Southeast there is a passage going forward towards a wall. Meanwhile on the South you see along passage way. Where do you choose to go?(East/Southeast/West)");
           String answer5 = input2.next();
           if (answer5.equalsIgnoreCase("South")){
             walk("South");
@@ -476,27 +483,66 @@ private static Stack<String> previousActions = new Stack<>();
           }else{
             boolean pass2  = false;
             while (pass2 == false){
-              System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
+              System.out.println("I don't understand where you want to go... Where do you want to go? (East/Southeast/West)");
               String answer5_5 = input2.next();
               if (answer5_5.equalsIgnoreCase("Southeast")){
                 walk("Southeast");
-                pass = true;
+                pass2 = true;
               }else if (answer5_5.equalsIgnoreCase("Southwest")){
                 walk("Southwest");
-                pass = true;
+                pass2 = true;
               }else if(answer5_5.equalsIgnoreCase("West")){
                 walk("West");
-                pass = true;
+                pass2 = true;
               }else{
                 System.out.println("I don't understand where you want to go... Where do you want to go? (Southeast/Southwest/West)");
-                pass = false;
+                pass2 = false;
               }
             }
           }
         }
-        if (north == -2 && east == 2){
+        if (north == -2 && east ==1){
+          System.out.println("half way through the passage you saw a door, leading to the dimly lit bunker. Do you want to enter?(Yes/No)");
+          String answer8 = input2.next();
+          if (answer8.equalsIgnoreCase("Yes")){
+            walk("West");
+        }else if (answer8.equalsIgnoreCase("No")){
+            walk("South");
+        }else{
+            System.out.println("I don't understand what you are saying...");
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go... Do you want to move forward? (Yes/No)");
+                String answer2_5 = input2.next();
+                if (answer2_5.equalsIgnoreCase("Yes")){
+                  walk("West");
+                  pass = true;
+                }else if (answer2_5.equalsIgnoreCase("No")){
+                    pass = false; 
+                    while (pass == false){
+                    System.out.println("There are nothing more to see here do you want to move forward? (Yes/No)");
+                    String answer2_5_1 = input2.next();
+                        if (answer2_5_1.equalsIgnoreCase("Yes")){
+                            pass = true;
+                            walk("South");
+                        } else if (answer2_5_1.equalsIgnoreCase("No")){
+                            walk("South");
+                        } else{
+                            System.out.println("I don't understand what you are saying...");
+                            pass = false;
+    
+                        }
+                    }
+                }else{
+                  System.out.println("I don't understand where you want to go... Where do you want to go? (East/West/North)");
+                  pass = false;
+              }
+            }
+          }
+        }
+        if (north == -2 && east == 0){
           System.out.println("In the dimly lit bunker you found a note, it wrote: It has not always been like this... The world has changed beyond recognition. you pondered for a bit, but alas you returned to your senses. To the east there is a passage way leading to a greater passage way. To your Northwest and West there are passages leading to a previous passage ways. Where would you want to go? (East, Northwest, West)");
-          String answer7 = input.next();
+          String answer7 = input2.next();
           if (answer7.equalsIgnoreCase("East")){
             walk("East");
           }else if (answer7.equalsIgnoreCase("Northwest")){
@@ -527,7 +573,7 @@ private static Stack<String> previousActions = new Stack<>();
           }
         }
         //choice if the player goes southeast after going east after going south from the original position
-        if (north == -2 && east == 0){
+        if (north == -2 && east == -2){
           System.out.println("You met up with the lone cat, he seems to be lost in thought mumbling some thoughts. You approached th elderly cat, he began to talk about something regarding ... the light of the South? You are not quite sure what it is supposed to mean... To your East, there is a dimly lit bunker. Where do you want to go?(East/Northeast)");
           String answer6 = input2.next();
           if (answer6.equalsIgnoreCase("East")){
@@ -553,11 +599,440 @@ private static Stack<String> previousActions = new Stack<>();
             }
           }
         }
+        if(north == -2 && east == 2){
+          System.out.println("You met a monster!");
+          System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
+          String action1 = input.nextLine();
+          if (action1.equalsIgnoreCase("kick") || action1.equalsIgnoreCase("bite") || action1.equalsIgnoreCase("escape")){ 
+          while(monsterencounter(action1) == false){
+          Scanner input5 = new Scanner(System.in);
+          System.out.println("Do you want to attack again?");
+          String answer_battle1 = input5.next();
+          if ( answer_battle1.equalsIgnoreCase("Yes")){
+              // String action3 = input5.next();
+              monsterencounter(action1);
+            } else {
+                boolean pass  = false;
+                while (pass == false){
+                  System.out.println("Do you want to attack again? (Yes/No)");
+                  String answer_battle1_5 = input2.next();
+                  if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                    monsterencounter(action1);
+                    pass = true;
+                  }else{
+                    System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                    pass = false;
+                  }
+                }
+              }
+            }
+          }else{
+            boolean pass2 = false;
+            while (pass2 == false){
+            System.out.println("I don't understand, do you want to kick, bite, or, escape?");
+            action1 = input.nextLine();
+            while(monsterencounter(action1) == false){
+              Scanner input5 = new Scanner(System.in);
+              System.out.println("Do you want to attack again?");
+              String answer_battle1 = input5.next();
+              if ( answer_battle1.equalsIgnoreCase("Yes")){
+                  // String action3 = input5.next();
+                  monsterencounter(action1);
+                } else {
+                    boolean pass  = false;
+                    while (pass == false){
+                      System.out.println("Do you want to attack again? (Yes/No)");
+                      String answer_battle1_5 = input2.next();
+                      if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                        monsterencounter(action1);
+                        pass = true;
+                      }else{
+                        System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                        pass = false;
+                      }
+                    }
+                  }
+                }
+              }
+          } 
+          System.out.println("You see a passage leading forward, it is another of those bunkers... abandoned and left behind. Do you want to move forward? (Yes/No)");
+          String answer9 = input2.next();
+          if (answer9.equalsIgnoreCase("Yes")){
+            walk("South");
+          }else if (answer9.equalsIgnoreCase("No")){
+            walk("Northwest");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go...do you want to go forward? (Yes/No)");
+              String answer6_5 = input2.next();
+              if (answer6_5.equalsIgnoreCase("Yes")){
+                walk("South");
+                pass = true;
+              }else if (answer6_5.equalsIgnoreCase("No")){
+                walk("Northwest");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (Yes/No)");
+                pass = false;
+              }
+            }
+          }
+        }if(north == -3 && east == 2){
+          System.out.println("You entered the bunker, jumped on top of the shelves in the bunker using your nimble cat feet. On top of the shelves you saw a diary page stating: Oh the Light of the South. How brightly you shine! How warmly you embrace the this crumbling land! you are- /n the page was torn. you swatted the edge of the paper and wondered what the Light of the South means. /n In front of you the bunker door leads you to a passage going straight ahead towards a light. Do you want to go forward? (Yes/No)");
+          String answer9 = input2.next();
+          if (answer9.equalsIgnoreCase("Yes")){
+            walk("South");
+          }else if (answer9.equalsIgnoreCase("No")){
+            walk("Northwest");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go forward? (Yes/No)");
+              String answer9_5 = input2.next();
+              if (answer9_5.equalsIgnoreCase("Yes")){
+                walk("South");
+                pass = true;
+              }else if (answer9_5.equalsIgnoreCase("No")){
+                walk("Northwest");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                pass = false;
+              }
+            }
+          }
+        }
+        if(north == -3 && east == 1){
+          System.out.println("To your East is a passage leading to a bunker. Do you want to go East? (East/North)");
+          String answer10 = input2.next();
+          if (answer10.equalsIgnoreCase("East")){
+            walk("East");
+          }else if (answer10.equalsIgnoreCase("North")){
+            walk("North");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go East? (East/North)");
+              String answer10_5 = input2.next();
+              if (answer10_5.equalsIgnoreCase("East")){
+                walk("East");
+                pass = true;
+              }else if (answer10_5.equalsIgnoreCase("North")){
+                walk("North");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/North)");
+                pass = false;
+              }
+            }
+          }
+        }
+        if (north == -4 && east == 2){
+        System.out.println("Even though, you saw a light at the end of the passage, in the middle, you saw a door to bunker in the west or do you want to go South to continue down the passage? (North/South/West)");
+        String answer11 = input2.next();
+          if (answer11.equalsIgnoreCase("West")){
+            walk("West");
+          }else if (answer11.equalsIgnoreCase("North")){
+            walk("North");
+          }else if (answer11.equalsIgnoreCase("South")){
+            walk("South");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... where do you want to go? (West/North/South)");
+              String answer11_5 = input2.next();
+              if (answer11_5.equalsIgnoreCase("East")){
+                walk("East");
+                pass = true;
+              }else if (answer11_5.equalsIgnoreCase("North")){
+                walk("North");
+                pass = true;
+              }else if (answer11_5.equalsIgnoreCase("South")){
+                walk("South");
+              }else{
+                System.out.println("I don't understand where you want to go... where do you want to go? (West/North/South)");
+                pass = false;
+              }
+            }
+          }
+        }
+        if (north == -4 && east == 1){
+          System.out.println("In the bunker, you found a message scribbled on the wall: THOSE HERETICS IMITATING OUR LIGHT! MONSTER! MONSTER! MONSTER! THEY ONLY APPEAR ON THE ROAD TO DOOM!/n you tilted your and wondered what made the human who wrote this so angry... Do you want to continue to go West? (West/East)");
+          String answer11 = input2.next();
+            if (answer11.equalsIgnoreCase("West")){
+              walk("West");
+            }else if (answer11.equalsIgnoreCase("East")){
+              walk("East");
+            }else{
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go... where do you want to go? (West/East)");
+                String answer11_5 = input2.next();
+                if (answer11_5.equalsIgnoreCase("East")){
+                  walk("East");
+                  pass = true;
+                }else if (answer11_5.equalsIgnoreCase("West")){
+                  walk("West");
+                  pass = true;
+                }else{
+                  System.out.println("I don't understand where you want to go... where do you want to go? (West/East)");
+                  pass = false;
+                }
+              }
+            }
+          }
+          if (north == -4 && east == 0){
+            System.out.println("You met a monster that is attacking another cat!");
+            System.out.println("Do you want to kick, bite,or escape?");
+            String action1 = input.nextLine();
+            if (action1.equalsIgnoreCase("kick") || action1.equalsIgnoreCase("bite") || action1.equalsIgnoreCase("escape")){ 
+            while(monsterencounter(action1) == false){
+            Scanner input5 = new Scanner(System.in);
+            System.out.println("Do you want to attack again?");
+            String answer_battle1 = input5.next();
+            if ( answer_battle1.equalsIgnoreCase("Yes")){
+                // String action3 = input5.next();
+                monsterencounter(action1);
+              } else {
+                  boolean pass  = false;
+                  while (pass == false){
+                    System.out.println("Do you want to attack again? (Yes/No)");
+                    String answer_battle1_5 = input2.next();
+                    if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                      monsterencounter(action1);
+                      pass = true;
+                    }else{
+                      System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                      pass = false;
+                    }
+                  }
+                }
+              }
+            }else{
+              boolean pass2 = false;
+              while (pass2 == false){
+              System.out.println("I don't understand, do you want to kick, bite, or, escape?");
+              action1 = input.nextLine();
+              while(monsterencounter(action1) == false){
+                Scanner input5 = new Scanner(System.in);
+                System.out.println("Do you want to attack again?");
+                String answer_battle1 = input5.next();
+                if ( answer_battle1.equalsIgnoreCase("Yes")){
+                    // String action3 = input5.next();
+                    monsterencounter(action1);
+                  } else {
+                      boolean pass  = false;
+                      while (pass == false){
+                        System.out.println("Do you want to attack again? (Yes/No)");
+                        String answer_battle1_5 = input2.next();
+                        if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                          monsterencounter(action1);
+                          pass = true;
+                        }else{
+                          System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                          pass = false;
+                        }
+                      }
+                    }
+                  }
+                }
+            } 
+            System.out.println("The nameless cat lies breathless on the floor, you sprinted towards their side, with it's last breath they whispered: you are close... To your South there is a long passage way, do you follow it? (South, East)");
+            String answer9 = input2.next();
+            if (answer9.equalsIgnoreCase("South")){
+              walk("South");
+            }else if (answer9.equalsIgnoreCase("East")){
+              walk("East");
+            }else{
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go...do you want to go forward? (South/East)");
+                String answer6_5 = input2.next();
+                if (answer6_5.equalsIgnoreCase("South")){
+                  walk("South");
+                  pass = true;
+                }else if (answer6_5.equalsIgnoreCase("East")){
+                  walk("East");
+                  pass = true;
+                }else{
+                  System.out.println("I don't understand where you want to go... Where do you want to go? (South/East)");
+                  pass = false;
+                }
+              }
+            }
+          }
+          if(north == -5 && east == 0){
+            System.out.println("To your East, you see a light shining. Do you want to go East? (East/North)");
+            String answer12 = input2.next();
+            if (answer12.equalsIgnoreCase("East")){
+              walk("East");
+            }else if (answer12.equalsIgnoreCase("North")){
+              walk("North");
+            }else{
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go... do you want to go East? (East/North)");
+                String answer12_5 = input2.next();
+                if (answer12_5.equalsIgnoreCase("East")){
+                  walk("East");
+                  pass = true;
+                }else if (answer12_5.equalsIgnoreCase("North")){
+                  walk("North");
+                  pass = true;
+                }else{
+                  System.out.println("I don't understand where you want to go... Where do you want to go? (East/North)");
+                  pass = false;
+                }
+              }
+            }
+        }
+        if(north == -5 && east == 1){
+          System.out.println("YOU HAVE FOUND THE LIGHT LEADING TO THE WORLD BEYOND. FROM THIS DAY ONWARD YOU AND YOU COLONY ARE ABLE TO BEGIN A NEW ADVENTURE AND EXPLORE THE THE WORLD BEYOND.");
+          break;
+        }
+        if(north == -5 && east == 2){
+          System.out.println("You met a monster burning brightly in the dark... Is this the supposed light?");
+            System.out.println("Do you want to kick, bite,or escape?");
+            String action1 = input.nextLine();
+            if (action1.equalsIgnoreCase("kick") || action1.equalsIgnoreCase("bite") || action1.equalsIgnoreCase("escape")){ 
+            while(monsterencounter(action1) == false){
+            Scanner input5 = new Scanner(System.in);
+            System.out.println("Do you want to attack again?");
+            String answer_battle1 = input5.next();
+            if ( answer_battle1.equalsIgnoreCase("Yes")){
+                // String action3 = input5.next();
+                monsterencounter(action1);
+              } else {
+                  boolean pass  = false;
+                  while (pass == false){
+                    System.out.println("Do you want to attack again? (Yes/No)");
+                    String answer_battle1_5 = input2.next();
+                    if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                      monsterencounter(action1);
+                      pass = true;
+                    }else{
+                      System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                      pass = false;
+                    }
+                  }
+                }
+              }
+            }else{
+              boolean pass2 = false;
+              while (pass2 == false){
+              System.out.println("I don't understand, do you want to kick, bite, or, escape?");
+              action1 = input.nextLine();
+              while(monsterencounter(action1) == false){
+                Scanner input5 = new Scanner(System.in);
+                System.out.println("Do you want to attack again?");
+                String answer_battle1 = input5.next();
+                if ( answer_battle1.equalsIgnoreCase("Yes")){
+                    // String action3 = input5.next();
+                    monsterencounter(action1);
+                  } else {
+                      boolean pass  = false;
+                      while (pass == false){
+                        System.out.println("Do you want to attack again? (Yes/No)");
+                        String answer_battle1_5 = input2.next();
+                        if (answer_battle1_5.equalsIgnoreCase("Yes")){
+                          monsterencounter(action1);
+                          pass = true;
+                        }else{
+                          System.out.println("I don't understand where you want to go... Where do you want to go? (East/Northeast)");
+                          pass = false;
+                        }
+                      }
+                    }
+                  }
+                }
+            } 
+            System.out.println("To your right, there is a path leading to east. Do you go east? (East/North)");
+            String answer9 = input2.next();
+            if (answer9.equalsIgnoreCase("East")){
+              walk("East");
+            }else if (answer9.equalsIgnoreCase("North")){
+              walk("North");
+            }else{
+              boolean pass  = false;
+              while (pass == false){
+                System.out.println("I don't understand where you want to go...do you want to go forward? (East/North)");
+                String answer6_5 = input2.next();
+                if (answer6_5.equalsIgnoreCase("East")){
+                  walk("East");
+                  pass = true;
+                }else if (answer6_5.equalsIgnoreCase("North")){
+                  walk("North");
+                  pass = true;
+                }else{
+                  System.out.println("I don't understand where you want to go... Where do you want to go? (South/East)");
+                  pass = false;
+                }
+              }
+            }
+        }
+        if(north == -5 && east == 3){
+          System.out.println("To your North, there is another bunker. Do you want to go North? (West/North)");
+          String answer12 = input2.next();
+          if (answer12.equalsIgnoreCase("West")){
+            walk("West");
+          }else if (answer12.equalsIgnoreCase("North")){
+            walk("North");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go North? (West/North)");
+              String answer12_5 = input2.next();
+              if (answer12_5.equalsIgnoreCase("West")){
+                walk("West");
+                pass = true;
+              }else if (answer12_5.equalsIgnoreCase("North")){
+                walk("North");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (West/North)");
+                pass = false;
+              }
+            }
+          }
+
+        }
+        if(north == -4 && east == 3){
+          System.out.println("On the wall scribbled: THERE IS NO LIGHT. NOTHING AT ALL. There is a passage to the East, do you want to go East? (East/South)");
+          String answer12 = input2.next();
+          if (answer12.equalsIgnoreCase("East")){
+            walk("East");
+          }else if (answer12.equalsIgnoreCase("South")){
+            walk("South");
+          }else{
+            boolean pass  = false;
+            while (pass == false){
+              System.out.println("I don't understand where you want to go... do you want to go East? (East/South)");
+              String answer12_5 = input2.next();
+              if (answer12_5.equalsIgnoreCase("East")){
+                walk("East");
+                pass = true;
+              }else if (answer12_5.equalsIgnoreCase("South")){
+                walk("South");
+                pass = true;
+              }else{
+                System.out.println("I don't understand where you want to go... Where do you want to go? (East/South)");
+                pass = false;
+              }
+            }
+          }
+
+        }
+        if(north == -4 && east == 4){
+          System.out.println("There is nothing. Only an Abyss leading to the depth. Perhaps there is no light at all and all the idea regading the World Beyond is fake. You returned to the colony and lived the in the perpetual darkness until the end...");
+          break;
+        }
+      }
+
+    
         
-        
-        
-        else if (action.equalsIgnoreCase("hunt")){
-            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. /nYou hear rumors of burnt meadows with slim pickings. \nYou decide to set out on a mission to collect goods. \nYou see a path towards a smouldering forest.");
+        if (action.equalsIgnoreCase("hunt")){
+            System.out.println("You and your fellow cats set up camp in a burrow hidden by dense vegetation. \nYou decide to set out on a mission to collect goods. \nYou see a smouldering forest to the LEFT and a burnt meadow to the RIGHT.");
             // Generate a random number between 1 and 100
         int randomNumber = random.nextInt(100) + 1;
         if (randomNumber <= 10) {
@@ -592,52 +1067,5 @@ private static Stack<String> previousActions = new Stack<>();
 }
 }
 }
-}
 
 
- /**
-          * Determines which event occurs based on the random number
-          */
-        // if (randomNumber <= 25) {
-          // 25% chance of finding a treasure
-          // System.out.println("You stumble upon a hidden treasure and gain 10 points.");
-          // playerScore += 10;
-        // } else if (randomNumber <= 50) {
-          // 25% chance of encountering a monster
-          //here we can throw in the batter mode and call methods from cat and monster class?
-          //we are going to have to build cat and monster objects 
-          //also we could add a way to keep score through battle wins
-          //we could do random again for type of battle/see what method above to call? 
-          //we could make a battle mode class?
-          // System.out.println("You encounter a monster. Do you want to kick, bite,or escape?");
-          // String action1 = input.nextLine();
-          // monsterencounter(action1);
-          // System.out.println("Do you want to attack again?");
-          // String answer3 = input3.next();
-          // if ( answer3.equalsIgnoreCase("Yes")){
-          //     String action3 = input3.next();
-          //     monsterencounter(action3);}
-          //     else{
-          //         System.out.print("n");
-          //     }
-
-        // } else if (randomNumber <= 75) {
-        //   // 25% chance of finding nothing
-        //   System.out.println("You find nothing of interest.");
-        //   System.out.println("do you want to meow?(Yes,No)");
-
-        //   Scanner input2 = new Scanner(System.in);
-        //   String answer1 = input2.next();
-
-        //   if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
-        //     cat.meow();
-        //     System.out.println("A monster heard you and approached you quickly");
-        //     System.out.println("Do you want to hide or attack?");
-        //     String answer4= input3.next();
-
-        //     if (answer4.equalsIgnoreCase("hide")){
-        //         cat.hide();
-        //     }
-            
-        // }
-         //code if the player goes south 
