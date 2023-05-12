@@ -374,22 +374,23 @@ private static Stack<String> previousActions = new Stack<>();
           }
 
         }
-        // Process player's action
-      } else if (action.equalsIgnoreCase("rest")) {
-        if (playerLives < 9) {
-          playerLives += 1;
-          System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
-        } else {
-          System.out.println("You already are fully rested.");
-        }
-      } else {
-        // Player enters an invalid action
-        System.out.println("I don't understand what you want to do. Please try again .");
-      }
     }
+    // Process player's action
+  } else if (action.equalsIgnoreCase("rest")) {
+    if (playerLives < 9) {
+      playerLives ++;
+      System.out.println("You take a break and rest for a while. You feel refreshed and gain a life.");
+    } else {
+      System.out.println("You already are fully rested.");
+    }
+  } else {
+    // Player enters an invalid action
+    System.out.println("I don't understand what you want to do. Please try again .");
+  }
 
 
   }
+  
   
   }}
 
