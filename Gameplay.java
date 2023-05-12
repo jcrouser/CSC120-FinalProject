@@ -235,9 +235,9 @@ public class Gameplay {
         System.out.println("Welcome to CATaclysm!");
 
         System.out.println("What cat do you want to be?");
-        System.out.println("1. Sunny - Slightly slow but strong");
-        System.out.println("2. Yuki - Nimble but tiny");
-        System.out.println("3. Babka - Wise but wrinkly");
+        System.out.println("1. Sunny - low iq. high strength");
+        System.out.println("2. Yuki - high dexterity, low strength");
+        System.out.println("3. Babka - high iq, low dexterity");
 
         //* prompts user enter the number of the cat that they wanr to be */ 
         System.out.print("Enter the NUMBER of the cat you want to be: ");
