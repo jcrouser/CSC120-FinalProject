@@ -289,18 +289,6 @@ public class Gameplay {
         //* The game loop continues as long as the player has lives left.*/ 
         while (playerLives > 0 && playerScore<50) {
 
-            //  Check if the player has run out of lives.
-            if (playerLives == 0) {
-                System.out.println("You have no lives left. Game over!");
-                System.out.println("Your final score is {score}");
-                break;
-            }
-              if (playerScore == 50) {
-                System.out.println("Yay you won the game!");
-                System.out.println("Your final score is {score}");
-                break;
-            }
-
             // Display the player's current lives and score.
             System.out.println("You have " + playerLives + " lives left.");
             System.out.println("Your score is " + playerScore);
@@ -315,7 +303,7 @@ public class Gameplay {
                 System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
                 // Generate a random number between 1 and 100
                 int randomNumber = random.nextInt(100) + 1;
-
+                
                 if (randomNumber <= 10) {
                     System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
@@ -395,6 +383,17 @@ public class Gameplay {
             }
 
 
+        }
+          //  Check if the player has run out of lives.
+          if (playerLives == 0) {
+            System.out.println("You have no lives left. Game over!");
+            System.out.println("Your final score is"+playerScore);
+           
+        }
+          if (playerScore == 50) {
+            System.out.println("Yay you won the game!");
+            System.out.println("Your final score is "+ playerScore);
+            
         }
 
 

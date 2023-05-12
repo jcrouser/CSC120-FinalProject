@@ -26,9 +26,5 @@ Yes/No: Used to respond to prompts or questions in the game.
 # SPOILER ALERT
 
 If your game includes challenges that must be overcome to win, also list them below.
-<<<<<<< HEAD
-- defeating the monster 
-=======
 
 the player must gain more than 5 lives in some cases to attack the monster. So the player must look for a first aid kit to be able to gain a life.
->>>>>>> 9e53a7398cb7cf4b8c7bee67b65b23053b1760b3
