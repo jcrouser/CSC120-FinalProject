@@ -2,7 +2,7 @@
 
 __2___ 2 pts: Game has a **robust, understandable text-based interface** that allows the player to control their movement through the game.  Player should be able to enter any command at any time, and if it makes sense in the current context it will be carried out.
 
-_____ 2 pts: Submission includes a **cheat sheet** (`cheatsheet.md`) documenting all of the available commands, as well as a **description of the layout** of your game world's underlying physical layout; this can be described in words, or included as a separate image file if you prefer to sketch a map by hand.  If your game includes **challenges** that must be overcome to win, also describe them here.
+___2__ 2 pts: Submission includes a **cheat sheet** (`cheatsheet.md`) documenting all of the available commands, as well as a **description of the layout** of your game world's underlying physical layout; this can be described in words, or included as a separate image file if you prefer to sketch a map by hand.  If your game includes **challenges** that must be overcome to win, also describe them here.
 
 ___2__ 2 pts: Storyline driving the game is **engaging**, and individual elements of play make sense within the context of the story.
 
@@ -17,7 +17,8 @@ ___1__ 1 pt: Some paths through the game have **restricted access** until the pl
 
 __2___ 2 pts: Selected classes(s) are **effective, efficient** at supporting the desired operations and program behavior.
 
-_____ 2 pts: Design justification includes a discussion of at least one (reasonable) **alternative design** that could have been used, and the reasons why you decided against this alternative.
+___2__ 2 pts: Design justification includes a discussion of at least one (reasonable) **alternative design** that could have been used, and the reasons why you decided against this alternative.
+ our alternative design would be to have a map with different coordinates and nodes and differnet dialog will play out different coordinates and different ending to the game and story based on where you go.
 
 ___2__ 2 pts: The project makes effective use of **Java built-in classes** whenever they are appropriate.
 
