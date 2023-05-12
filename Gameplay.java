@@ -225,58 +225,6 @@ public class Gameplay {
 
        } 
 
-        
-        // Determine which event occurs based on the random number
-        if (randomNumber <= 25) {
-          // 25% chance of finding a treasure
-          System.out.println("You stumble upon a hidden treasure and gain 10 points.");
-          playerScore += 10;
-        } else if (randomNumber <= 50) {
-          // 25% chance of encountering a monster
-          //here we can throw in the batter mode and call methods from cat and monster class?
-          //we are going to have to build cat and monster objects 
-          //also we could add a way to keep score through battle wins
-          //we could do random again for type of battle/see what method above to call? 
-          //we could make a battle mode class?
-          
-          battle();
-          
-
-        } else if (randomNumber <= 75) {
-          // 25% chance of finding nothing
-          System.out.println("You find nothing of interest.");
-          // Asks the user if they want to meow and read their response
-          System.out.println("do you want to meow?(Yes,No)");
-          Scanner input2 = new Scanner(System.in);
-          String answer1 = input2.next();
-
-          // If the user wants to meow, perform some actions
-          if (answer1.equalsIgnoreCase("Yes")||  (answer1.equalsIgnoreCase("yes") )) {
-            // Invoke the "meow" method of the Cat object
-            cat.meow();
-            // Inform the user that a monster is approaching
-            System.out.println("A monster heard you and approached you quickly");
-            // Asks the user if they want to hide or attack, and read their response
-            System.out.println("Do you want to hide or attack?");
-            String answer4= input3.next();
-
-            // If the user wants to hide, the cat hides
-            if (answer4.equalsIgnoreCase("hide")){
-                cat.hide();
-            }
-            // If the user wants to attack, initiate a battle and prompt for further action
-            else if(answer4.equalsIgnoreCase("attack")){
-                battle();
-            // System.out.println("Do you want to kick, bite,or escape?");
-            // String action2 = input2.next();
-            // monsterencounter(action2);}
-
-          } else {
-            // Player enters an invalid action
-            System.out.print("I don't understand you!");
-          }
-        }
-      }
 
 
     public static void main(String[] args) {
@@ -446,4 +394,5 @@ public class Gameplay {
 
 
     }
-} }
+} 
+
