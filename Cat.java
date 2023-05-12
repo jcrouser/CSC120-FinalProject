@@ -1,6 +1,4 @@
 import java.util.Random;
-import java.util.ArrayList;
-import java.util.Arrays;
 /**
 
 The Cat class represents a cat in the game.
