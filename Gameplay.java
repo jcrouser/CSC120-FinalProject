@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Stack;
+import javax.management.RuntimeErrorException;
 
 /**
  * The Gameplay class represents the game mechanics and logic for playing the game.It includes methods for battling the monster, 
@@ -160,7 +161,7 @@ private static Stack<String> previousActions = new Stack<>();
     } else if (action1.equalsIgnoreCase("bite")) {
       return winLoseStrength();
     } else {
-      // Player enters an invalid action
+      //*Player enters an invalid action
       System.out.println("I don't understand what you want to do. Please try again.");
       return false;
 
@@ -197,9 +198,9 @@ private static Stack<String> previousActions = new Stack<>();
             String lastAction = previousActions.pop();
             playerLives++;
             pass = false;
-             // Revert the game state to what it was before the last action was taken
+             //* Revert the game state to what it was before the last action was taken*/ 
              System.out.println("Undoing action: " + lastAction);
-             // Implement the necessary logic to revert the game state
+             //* Implement the necessary logic to revert the game state*/
          } else {
              System.out.println("No actions to undo.");
              pass = true;
@@ -216,6 +217,7 @@ private static Stack<String> previousActions = new Stack<>();
   }
 }else{
   System.out.println("You have less than 5 lives, you can't attack right now");
+  System.out.println("look for a first aid kit to gain a life");
   System.out.println("Monster wins!");
   playerLives--;
 }
@@ -230,23 +232,22 @@ private static Stack<String> previousActions = new Stack<>();
     Scanner input3 = new Scanner(System.in);
 
     System.out.println("Welcome to CATaclysm!");
-    // System.out.println("What is your name");
-    // String playerName = input.next();
+    
     System.out.println("What cat do you want to be?");
     System.out.println("1. Sunny - Slightly slow but strong");
     System.out.println("2. Yuki - Nimble but tiny");
     System.out.println("3. Babka - Wise but wrinkly");
 
-    //  prompts user enter the number of the cat that they wanr to be
+    //* prompts user enter the number of the cat that they wanr to be */ 
     System.out.print("Enter the NUMBER of the cat you want to be: ");
 
     // reads user's choice
     int choice = input.nextInt();
     input.nextLine();
 
-    //  Assign a new Cat object to 'cat' based on the user's choice
+    //*  Assign a new Cat object to 'cat' based on the user's choice */ 
     if (choice == 1) {
-      // Create a new Cat object with the name "Sunny" and the attributes (5, 7, 3)
+      //*  Create a new Cat object with the name "Sunny" and the attributes (5, 7, 3)*/
       cat = new Cat("Sunny", 5, 7, 3);
       //  Print out a cat ascii art
       System.out.println("  |\\---/|");
@@ -271,18 +272,20 @@ private static Stack<String> previousActions = new Stack<>();
       System.out.println("  `-'");
 
     } else {
-      // Print an error message if the user enters anything else
-        System.out.println("Unknown input. Please enter a valid number (1, 2, or 3).");
+      //* Print an error message if the user enters anything else */
+      throw new RuntimeException("Unknown input. Please enter a valid number (1, 2, or 3)."); 
+    
     }
  
     // Prints a welcome message to the user, addressing the chosen cat by its name.
-    System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.");
+    System.out.println("Hi " + cat.toString() + ", you are a member of the colony of magical cats who live underground.(tap to continue)");
+
     // Reads the user's input without using it, effectively waiting for the user to press Enter.
     input.nextLine();
     // Asks the user if they are ready to start the game.
     System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
-    // The game loop continues as long as the player has lives left.
+    //* The game loop continues as long as the player has lives left.*/ 
     while (playerLives > 0) {
 
       //  Check if the player has run out of lives.
@@ -305,7 +308,7 @@ private static Stack<String> previousActions = new Stack<>();
         System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
         // Generate a random number between 1 and 100
         // int randomNumber = random.nextInt(100) + 1;
-        int randomNumber = 50;
+        int randomNumber = 75;
         if (randomNumber <= 10) {
           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
@@ -351,10 +354,7 @@ private static Stack<String> previousActions = new Stack<>();
             // If the user wants to attack, initiate a battle and prompt for further action
             else if(answer4.equalsIgnoreCase("attack")){
                 battle();
-            // System.out.println("Do you want to kick, bite,or escape?");
-            // String action2 = input2.next();
-            // monsterencounter(action2);}
-
+            
           } else {
             // Player enters an invalid action
             System.out.print("I don't understand you!");

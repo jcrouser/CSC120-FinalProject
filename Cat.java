@@ -64,7 +64,7 @@ public class Cat{
     */
     public int escape(){
         Random random = new Random();
-        int randomNumber = random.nextInt(21); 
+        int randomNumber = random.nextInt(iq); 
         int ttl_IQ = randomNumber + this.iq;
         return ttl_IQ;
     }
@@ -79,12 +79,6 @@ public class Cat{
      */
     public  void meow(){
         System.out.println("meow! meow! meow!");
-    }
-    /**
-     * the cat purr 
-     */
-    public  void purr(){
-        System.out.println("The cats collectively purrs");
     }
     /**
     * Gets the name of the cat.
@@ -111,24 +105,7 @@ public class Cat{
         return this.name;
    
 
-    // public boolean walk(String direction){
-    //     this.north = 0;
-    //     this.east = 0;
-    //     this.south = 0;
-    //     this.west = 0;
-    //     if (direction ==directionalcmd.get(0)){
-    //         this.north += 1;    
-    //     }else if (direction ==directionalcmd.get(1)){
-    //         this.east += 1;
-    //     }else if (direction ==directionalcmd.get(2)){
-    //         this.north -= 1;
-    //     }else if (direction ==directionalcmd.get(3)){
-    //         this.east -= 1;
-    //     }else{
-    //     throw new RuntimeException("I don't understand where to go...");
-    //     }
-    //     return true;
-    //     }
+   
     
     
 
