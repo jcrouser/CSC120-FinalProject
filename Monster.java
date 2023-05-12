@@ -10,7 +10,6 @@ public class Monster {
     private int dexterity = 5; // The dexterity of the monster
     private int strength = 5; // The strength of the monster; added onto attack damage
     private int iq = 5; // The intelligence of the monster; added onto defense
-    private Gameplay gameplay; // The gameplay object that the monster is a part of
 
     /**
     
@@ -18,9 +17,7 @@ public class Monster {
     *@param name the name of the monster
     *@param strength the strength of the monster
     *@param iq the intelligence of the monster
-    *@param hp the health points of the monster
     *@param dexterity the dexterity of the monster
-    *@param gameplay the gameplay object that the monster is a part of
     */
     public Monster(String name, int strength, int iq, int dexterity) {
         this.name = name;
