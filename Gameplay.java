@@ -184,15 +184,15 @@ public class Gameplay {
                 System.out.println("Kick");
                 System.out.println("Escape");
                 System.out.println("Bite");
-                Scanner input4 = new Scanner(System.in);
-                String action5 = input4.next();
+                Scanner battleInput = new Scanner(System.in);
+                String action5 = battleInput.next();
                 // monsterencounter(action5);
                 previousActions.push(action5);
                 if (monsterencounter(action5) == false) {
                     boolean pass = true;
                     while (pass == true) {
                         System.out.println("do you want to undo");
-                        String action6 = input4.next();
+                        String action6 = battleInput.next();
                         if (action6.equalsIgnoreCase("undo") || (action6.equalsIgnoreCase("yes"))) {
                             if (!previousActions.isEmpty()) {
                                 String lastAction = previousActions.pop();
