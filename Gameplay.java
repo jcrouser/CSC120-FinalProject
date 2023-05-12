@@ -116,7 +116,7 @@ public class Gameplay {
         } else {
             System.out.println("You are not strong enough to win.");
             System.out.println("Monster wins!");
-            playerLives--;
+            playerLives-=3;
             return false;
 
         }
@@ -140,7 +140,7 @@ public class Gameplay {
         } else {
             System.out.println("you are not smart enough to escape");
             System.out.println("Monster wins!");
-            playerLives--;
+            playerLives-=2;
             return false;
         }
     }
@@ -287,11 +287,16 @@ public class Gameplay {
         System.out.println("You've been chosen to explore the surface and start a new life. Are you ready?");
 
         //* The game loop continues as long as the player has lives left.*/ 
-        while (playerLives > 0) {
+        while (playerLives > 0 && playerScore<50) {
 
             //  Check if the player has run out of lives.
             if (playerLives == 0) {
                 System.out.println("You have no lives left. Game over!");
+                System.out.println("Your final score is {score}");
+                break;
+            }
+              if (playerScore == 50) {
+                System.out.println("Yay you won the game!");
                 System.out.println("Your final score is {score}");
                 break;
             }
