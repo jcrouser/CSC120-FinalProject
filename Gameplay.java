@@ -308,8 +308,8 @@ private static Stack<String> previousActions = new Stack<>();
         // Player chooses to explore the ruins
         System.out.println("You venture out of the underground and explore the ruins of the post-apocalyptic world.");
         // Generate a random number between 1 and 100
-        // int randomNumber = random.nextInt(100) + 1;
-        int randomNumber = 75;
+        int randomNumber = random.nextInt(100) + 1;
+       
         if (randomNumber <= 10) {
           System.out.println("You are lost in the woods. You hear a howling in the distance. The leaves are rustling as wind picks up.");
 
