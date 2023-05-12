@@ -340,7 +340,7 @@ private static Stack<String> previousActions = new Stack<>();
             cat.meow();
             // Inform the user that a monster is approaching
             System.out.println("A monster heard you and approached you quickly");
-            //Asks the user if they want to hide or attack, and read their response
+            // Asks the user if they want to hide or attack, and read their response
             System.out.println("Do you want to hide or attack?");
             String answer4= input3.next();
 
