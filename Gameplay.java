@@ -211,6 +211,7 @@ private static Stack<String> previousActions = new Stack<>();
         }
     }
         }else{
+          playerScore+= 10;
           pass1 = false;
         }
   }
