@@ -10,11 +10,6 @@ public class Cat {
     private int dexterity; //dex is the number you add on to a long range attack, which is a random attack number from 0-20, specifically for kick 
     private int strength; //strength is the number you add onto a attack, specifically for bite 
     private int iq; //iq is intelligence and the ability to escape, it adds onto a random 0-20 number 
-
-    public static Gameplay gameplay;
-    public int east;
-    public int north;
-    public ArrayList < String > directionalcmd = new ArrayList < String > (Arrays.asList("North", "East", "South", "West"));
     /**
      * Constructor for the Cat class.
      * @param name The name of the cat.
@@ -31,13 +26,6 @@ public class Cat {
         this.iq = iq;
 
     }
-    /**
-     * we don't know yet.
-     */
-    public void hunt() {
-        System.out.println("Hunt");
-    }
-
     /**
      * The cat kicks
      * @return The total damage dealt by the cat's kick.

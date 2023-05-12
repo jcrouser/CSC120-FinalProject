@@ -184,15 +184,15 @@ public class Gameplay {
                 System.out.println("Kick");
                 System.out.println("Escape");
                 System.out.println("Bite");
-                Scanner input4 = new Scanner(System.in);
-                String action5 = input4.next();
+                Scanner battleInput = new Scanner(System.in);
+                String action5 = battleInput.next();
                 // monsterencounter(action5);
                 previousActions.push(action5);
                 if (monsterencounter(action5) == false) {
                     boolean pass = true;
                     while (pass == true) {
                         System.out.println("do you want to undo");
-                        String action6 = input4.next();
+                        String action6 = battleInput.next();
                         if (action6.equalsIgnoreCase("undo") || (action6.equalsIgnoreCase("yes"))) {
                             if (!previousActions.isEmpty()) {
                                 String lastAction = previousActions.pop();
@@ -287,9 +287,9 @@ public class Gameplay {
         System.out.println("Welcome to CATaclysm!");
 
         System.out.println("What cat do you want to be?");
-        System.out.println("1. Sunny - Slightly slow but strong");
-        System.out.println("2. Yuki - Nimble but tiny");
-        System.out.println("3. Babka - Wise but wrinkly");
+        System.out.println("1. Sunny - low iq. high strength");
+        System.out.println("2. Yuki - high dexterity, low strength");
+        System.out.println("3. Babka - high iq, low dexterity");
 
         //* prompts user enter the number of the cat that they wanr to be */ 
         System.out.print("Enter the NUMBER of the cat you want to be: ");
