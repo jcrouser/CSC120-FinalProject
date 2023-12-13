@@ -13,27 +13,25 @@ public class gameController{
     // public double dailyGoal = Math.pow(day, 2);
     // public double dailyIncome;
 
-    static gameController gameController = new gameController();
-
     /**
      * @param store
      * @param menu
      * @param inventory
      * @param in
      */
-    public void helpPage(Store store, Menu menu, Inventory inventory, Scanner in){
+    public static void helpPage(Store store, Menu menu, Inventory inventory, Scanner in){
         System.out.println("What aspect of the store would you like to know about?" 
                 + "\n a. Basic Infomation" 
                 + "\n b. Menu"
                 + "\n c. Inventory"
                 + "\n d. Game Process");
-        handleInput.handleHelpPageInput(store, menu, inventory, gameController, in, true);
+        handleInput.handleHelpPageInput(store, menu, inventory, in, true);
     }
 
     /**
      * @return
      */
-    public String description(){
+    public static String description(){
         String description = ("- Your business will be run on a day to day basis, during the day you will make orders to earn money, and at the end of the day you will have the opportunity to review your bills, extend your opning hours, and restock inventory!" 
         + "\n - openingTime represents the total opening hour of your store. You will earn more money with longer opening time per day. The maximum value is 10 hours and each extra hour costs 50.00." + "\n - The goal of your game is to imrpove your store to acheive daily goal for 7 days!");
         // System.out.println("equipment represents the equipments in your store. Better equipments brings higher income, and you can improve equipment by money. The maximum value is 10 points and each extra point costs 300.00.");
@@ -43,12 +41,20 @@ public class gameController{
         return description;
     }
 
-    public double dailyOrder(Store store, Menu menu, Inventory inventory, Hashtable<Integer, String> dailyReceipt) {
+    /**
+     * @param store
+     * @param menu
+     * @param inventory
+     * @param dailyReceipt
+     * @return
+     */
+    public static double dailyOrder(Store store, Menu menu, Inventory inventory, Hashtable<Integer, String> dailyReceipt) {
         double dailyIncome = 0;
-        for (int time = 1; time <= store.openingTime; time++) {
+        int openingTime = store.getOpeningTime();
+        for (int time = 1; time <= openingTime; time++) {
             MenuItem order = menu.getRandomMenuItem();
-            String name = order.name;
-            double price = order.price;
+            String name = order.getName();
+            double price = order.getPrice();
     
             if (orderAvailability(inventory, order)) {
                 dailyIncome += price;
@@ -61,20 +67,38 @@ public class gameController{
         return dailyIncome;
     }
     
-    private boolean orderAvailability(Inventory inventory, MenuItem order) {
-        return inventory.cup >= 1 && inventory.milk >= order.milk && inventory.tea >= order.tea && (!order.boba || inventory.boba >= 1);
+    /**
+     * @param inventory
+     * @param order
+     * @return
+     */
+    private static boolean orderAvailability(Inventory inventory, MenuItem order) {
+        return inventory.getCup() >= 1 && 
+               inventory.getMilk() >= order.getMilk() && 
+               inventory.getTea() >= order.getTea() && 
+               (!order.isBoba() || inventory.getBoba() >= 1);
     }
     
-    private void updateInventory(Inventory inventory, MenuItem order) {
-        inventory.cup -= 1;
-        inventory.milk -= order.milk;
-        inventory.tea -= order.tea;
-        if (order.boba) {
-            inventory.boba -= 1;
+    /**
+     * @param inventory
+     * @param order
+     */
+    private static void updateInventory(Inventory inventory, MenuItem order) {
+        inventory.setCup(inventory.getCup() - 1);
+        inventory.setMilk(inventory.getMilk() - order.getMilk());
+        inventory.setTea(inventory.getTea() - order.getTea());
+        if (order.isBoba()) {
+            inventory.setBoba(inventory.getBoba() - 1);
         }
-    }    
+    }  
 
-    public String getReceipt(Integer day, Hashtable<Integer, String> dailyReceipt, double dailyIncome){
+    /**
+     * @param day
+     * @param dailyReceipt
+     * @param dailyIncome
+     * @return
+     */
+    public static String getReceipt(Integer day, Hashtable<Integer, String> dailyReceipt, double dailyIncome){
         StringBuilder receipt = new StringBuilder();
         receipt.append("\nCheck your receipt: \n");
         receipt.append("Day " + day);
@@ -87,16 +111,50 @@ public class gameController{
         return receipt.toString();        
     }
 
-    public void manageTab(Inventory inventory, Menu menu, Store store, double dailyIncome, Scanner in){
-        store.balance += dailyIncome;
+    /**
+     * @param inventory
+     * @param menu
+     * @param store
+     * @param dailyIncome
+     * @param in
+     */
+    public static void manageTab(Inventory inventory, Menu menu, Store store, double dailyIncome, Scanner in){
+        store.setBalance(store.getBalance() + dailyIncome); 
         boolean loop = true;
-        System.out.println("You worked very hard today! How do you want to manage your store?" 
-            + "\n a. Check inventory and restock" 
-            + "\n b. Extend opening hour"
-            + "\n c. Exit management tab");
+        System.out.println("You've earned " + dailyIncome + " today and your store balance is " + store.getBalance() + " ! How do you want to manage your store?" );
         while (loop) {
-            loop = handleInput.handleManageInput(store, menu, inventory, gameController, in, loop);
+            loop = handleInput.handleManageInput(store, menu, inventory, in, loop);
         }
+    }    
+
+    /**
+     * @param totalReceipt
+     * @return
+     */
+    public static String getTotalReceipt(Hashtable<Integer, Double> totalReceipt){
+        StringBuilder receipt = new StringBuilder();
+        receipt.append("\nReceipt Records: ");
+        receipt.append("\n----------------\n");
+        for (Integer key : totalReceipt.keySet()) {
+            receipt.append("Day ").append(key).append(": ").append(totalReceipt.get(key)).append("\n");
+        }
+        receipt.append("----------------\n");
+        return receipt.toString();
+    }
+
+    /**
+     * @param store
+     * @param inventory
+     * @param totalReceipt
+     */
+    public static void finalResult(Store store, Inventory inventory, Hashtable<Integer, Double> totalReceipt){
+        String storeInfo = store.getStoreInfo();
+        String inventoryList = inventory.getInventoryList();
+        String gameRecord = gameController.getTotalReceipt(totalReceipt);
+        System.out.println("Here's a summary of your game records. We hope you've enjoyed the game!");
+        System.out.println(storeInfo);
+        System.out.println(inventoryList);
+        System.out.println(gameRecord);
     }
 
     /**
@@ -107,6 +165,7 @@ public class gameController{
          * Initialization
          */
         Store bobaStore = new Store("Boba Fever");
+        String storeName = bobaStore.getName();
         Inventory inventory = new Inventory();
         Menu menu = new Menu();
         menu.addMenuItem(new MenuItem("Small Milk Tea", 1, 1, false, false, 4.00));
@@ -116,13 +175,14 @@ public class gameController{
         menu.addMenuItem(new MenuItem("Small Milk with Boba",0, 2, false, true, 5.00));
         menu.addMenuItem(new MenuItem("Large Milk with Boba",0, 3, true, true, 7.50));
         handleInput handle = new handleInput();
+        Hashtable<Integer, Double> totalReceipt= new Hashtable<>();
         Scanner in = new Scanner (System.in);
 
         /*
          * Welcome
          */
         System.out.println("\nWelcome to Boba Fever! Get ready to fulfill customer orders and keep your business running to survive for a week!");
-        System.out.print("The initial store is named " + bobaStore.name + ". ");
+        System.out.print("The initial store is named " + storeName + ". ");
         handle.handleResetNameInput(bobaStore, in);
 
         /*
@@ -149,14 +209,17 @@ public class gameController{
                 double dailyIncome = gameController.dailyOrder(bobaStore, menu, inventory, dailyReceipt);
                 String Receipt = gameController.getReceipt(day, dailyReceipt, dailyIncome);
                 System.out.println(Receipt);
+                totalReceipt.put(day, dailyIncome);
 
                 if (dailyIncome < dailyGoal) {
-                    System.out.println("Today's goal was not achieved. Game Over!");
+                    System.out.println("Today's goal was not achieved. Game Over!\n");
+                    gameController.finalResult(bobaStore, inventory, totalReceipt);
                     break; 
                 } else {
                     System.out.println("Congratulations! You achieved today's goal! Let's switch to the management tab...\n");
                     gameController.manageTab(inventory, menu, bobaStore, dailyIncome, in);
                 }
+            gameController.finalResult(bobaStore, inventory, totalReceipt);
             }
         }
     in.close();

@@ -7,19 +7,51 @@ public class Store {
     /*
      * attributes
      */
-    public String name;
+    private String name;
     // public double income;
     // public double cost;
-    public double balance;
-    public int openingTime;
+    private double balance;
+    private int openingTime;
     // public int equipment;
     // public int technique;
     // public int cleanliness;
     // public double satisfaction;
 
-    /*
+    /**
+     * setter of balance
+     * @param balance
+     */
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    /**
+     * getter of name
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * getter of opening time
+     * @return openingTime
+     */
+    public int getOpeningTime() {
+        return openingTime;
+    }
+
+    /**
+     * getter of balance
+     * @return balance
+     */
+    public double getBalance() {
+        return balance;
+    }
+
+    /**
      * constructor that build a store in default value
-     * @param   name    store name  
+     * @param name
      */
     public Store(String name){
         this.name = name;
@@ -30,9 +62,10 @@ public class Store {
         // this.cleanliness = 10;
     }
 
-    /*
+
+    /**
      * mutator of store name
-     * @param   name    new name of the store
+     * @param in
      */
     public void setName(Scanner in){
         System.out.println("Enter a name for your store: ");
@@ -41,11 +74,12 @@ public class Store {
         System.out.println("Update successful! Your store is now named " + this.name + ".");
     }
 
-    /*
+
+    /**
      * method to extend opening time
+     * @param store
+     * @param in
      * @param hours number of hour that player wants to extend
-     * @return  OpeningTime new opening time
-     * @return  Balance     new balance
      */
     public void extendOpeningTime(Store store, Scanner in) {
         System.out.println("Enter number of hours you want to extend: ");
@@ -136,10 +170,11 @@ public class Store {
     //     this.satisfaction = value;
     // }
 
-    /*
+    /**
      * Method that print out all attributes and value of a store
+     * @return storeInfo list that contains store information
      */
-    public String getstoreInfo() {
+    public String getStoreInfo() {
         String storeInfo =  "Store Information: \n" + "----------------"
             + "\nName: " + this.name
             + "\nBalance: " + this.balance 

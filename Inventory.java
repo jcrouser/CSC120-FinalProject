@@ -7,31 +7,127 @@ public class Inventory {
     /*
      * attributes
      */
-    public int cup;
-    public int tea;
-    public int milk;
-    public int boba;
-    public double cupBuyIn;
-    public double teaBuyIn;
-    public double milkBuyIn;
-    public double bobaBuyIn;
+    private int cup;
+    private int tea;
+    private int milk;
+    private int boba;
+    private double cupBuyIn;
+    private double teaBuyIn;
+    private double milkBuyIn;
+    private double bobaBuyIn;
+
+    /**
+     * Setter of cup
+     * @param cup
+     */
+    public void setCup(int cup) {
+        this.cup = cup;
+    }
+
+    /**
+     * Setter of tea
+     * @param tea
+     */
+    public void setTea(int tea) {
+        this.tea = tea;
+    }
+
+    /**
+     * Setter of milk
+     * @param milk
+     */
+    public void setMilk(int milk) {
+        this.milk = milk;
+    }
+
+    /**
+     * Setter of boba
+     * @param boba
+     */
+    public void setBoba(int boba) {
+        this.boba = boba;
+    }
+
+    /**
+     * getter of cup quantity
+     * @return cup
+     */
+    public int getCup() {
+        return cup;
+    }
+
+    /**
+     * getter of tea quantity
+     * @return tea
+     */
+    public int getTea() {
+        return tea;
+    }
+
+    /**
+     * getter of milk quantity
+     * @return milk
+     */
+    public int getMilk() {
+        return milk;
+    }
+
+    /**
+     * getter of boba quantity
+     * @return boba
+     */
+    public int getBoba() {
+        return boba;
+    }
+
+    /**
+     * getter of cup price
+     * @return cupBuyIn
+     */
+    public double getCupBuyIn() {
+        return cupBuyIn;
+    }
+
+    /**
+     * getter of tea price
+     * @return teaBuyIn
+     */
+    public double getTeaBuyIn() {
+        return teaBuyIn;
+    }
+
+    /**
+     * getter of milk price
+     * @return milkBuyIn
+     */
+    public double getMilkBuyIn() {
+        return milkBuyIn;
+    }
+
+    /** getter of boba price
+     * @return bobaBuyIn
+     */
+    public double getBobaBuyIn() {
+        return bobaBuyIn;
+    }
 
     /*
      * constructor that create inventory with default value
      */
     public Inventory(){
-        this.cup = 10;
-        this.tea = 10;
-        this.milk = 10;
-        this.boba = 10;
+        this.cup = 5;
+        this.tea = 5;
+        this.milk = 5;
+        this.boba = 5;
         this.cupBuyIn = 0.5;
         this.teaBuyIn = 1;
         this.milkBuyIn = 1;
         this.bobaBuyIn = 0.5;
     }
 
-    /*
+    /**
      * accessor of inventory
+     * @return inventoryList string that describes inventory
      */
     public String getInventoryList() {
         String inventoryList = "\nCurrent Inventory:\n" +"----------------\n"
@@ -43,21 +139,42 @@ public class Inventory {
         return inventoryList;
     }
 
-    /*
-     * method to restock
-     * @param   name    category of inventory
-     * @param   number  number for restock
-     * @return  stockList   updated stockList
+    /**
+     * @param itemType
+     * @param quantity
+     * @return
+     */
+    public double restockCost(String itemType, int quantity) {
+        switch (itemType) {
+            case "a": 
+                return cupBuyIn * quantity;
+            case "b": 
+                return teaBuyIn * quantity;
+            case "c":
+                return milkBuyIn * quantity;
+            case "d":
+                return bobaBuyIn * quantity;
+            default:
+                return 0;
+        }
+    }
+
+    /**
+     * method that restock in different cases
+     * @param store
+     * @param input
+     * @param number
+     * @param in
      */
     public void restock(Store store, String input, int number, Scanner in){
         boolean response;
         switch (input) {
             case "a":
-                if (store.balance >= cupBuyIn * number) {
+                if (store.getBalance() >= cupBuyIn * number) {
                     System.out.println("Purchase confirmed?");
                     response = handleInput.handleYesNoInput(in);
                     if (response) {
-                        store.balance -= cupBuyIn * number;
+                        store.setBalance(store.getBalance() - cupBuyIn * number);
                         this.cup += number;
                     }
                 } else {
@@ -66,11 +183,11 @@ public class Inventory {
                 break;
     
             case "b": 
-                if (store.balance >= teaBuyIn * number) {
+                if (store.getBalance() >= teaBuyIn * number) {
                     System.out.println("Purchase confirmed?");
                     response = handleInput.handleYesNoInput(in);
                     if (response) {
-                        store.balance -= teaBuyIn * number;
+                        store.setBalance(store.getBalance() - teaBuyIn * number);
                         this.tea += number;
                     }
                 } else {
@@ -79,11 +196,11 @@ public class Inventory {
                 break;
     
             case "c": 
-                if (store.balance >= milkBuyIn * number) {
+                if (store.getBalance() >= milkBuyIn * number) {
                     System.out.println("Purchase confirmed?");
                     response = handleInput.handleYesNoInput(in);
                     if (response) {
-                        store.balance -= milkBuyIn * number;
+                        store.setBalance(store.getBalance() - milkBuyIn * number);
                         this.milk += number;
                     }
                 } else {
@@ -92,11 +209,11 @@ public class Inventory {
                 break;
     
             case "d": 
-                if (store.balance >= bobaBuyIn * number) {
+                if (store.getBalance() >= bobaBuyIn * number) {
                     System.out.println("Purchase confirmed?");
                     response = handleInput.handleYesNoInput(in);
                     if (response) {
-                        store.balance -= bobaBuyIn * number;
+                        store.setBalance(store.getBalance() - bobaBuyIn * number);
                         this.boba += number;
                     }
                 } else {
@@ -108,8 +225,6 @@ public class Inventory {
                 System.out.println("Invalid input.");
                 break;
         }
-    
-        
     }
 }
 

@@ -4,6 +4,12 @@
 import java.util.Scanner;
 
 public class handleInput {
+
+    /**
+     * method that deal with name change of the store
+     * @param store
+     * @param in
+     */
     public void handleResetNameInput(Store store, Scanner in) {
         while (true) {
             System.out.println("Would you like to make a change? (yes/no): ");
@@ -22,8 +28,16 @@ public class handleInput {
         }
     }
 
-    public static void handleHelpPageInput(Store store, Menu menu, Inventory inventory, gameController gameController, Scanner in, Boolean loop) {
-        String storeInfo = store.getstoreInfo();
+    /**
+     * method that deal with help page at the beginning of the game
+     * @param store
+     * @param menu
+     * @param inventory
+     * @param in
+     * @param loop
+     */
+    public static void handleHelpPageInput(Store store, Menu menu, Inventory inventory, Scanner in, Boolean loop) {
+        String storeInfo = store.getStoreInfo();
         String menuList = menu.getMenuList();
         String inventoryList = inventory.getInventoryList();
         String description = gameController.description();
@@ -51,18 +65,29 @@ public class handleInput {
         }
     }
 
-    public static boolean handleManageInput(Store store, Menu menu, Inventory inventory, gameController gameController, Scanner in, Boolean loop){
+    /**
+     * method that handle manage tab process
+     * @param store
+     * @param menu
+     * @param inventory
+     * @param in
+     * @param loop
+     * @return
+     */
+    public static boolean handleManageInput(Store store, Menu menu, Inventory inventory, Scanner in, Boolean loop){
         while (loop){
-        System.out.println("(a/b/c): ");
+        System.out.println("\n a. Check inventory and restock" 
+        + "\n b. Extend opening hour"
+        + "\n c. Exit management tab" + "\n(a/b/c): ");
         String input = in.next().trim().toLowerCase();
             if (input.equals("a")) {
                 System.out.println("Loading...");
-                handleRestockInput(store, menu, inventory, gameController, in, true);
+                handleRestockInput(store, inventory, in);
             } else if (input.equals("b")) {
                 System.out.println("Loading...");
                 store.extendOpeningTime(store, in);
             } else if (input.equals("c")) {
-                System.out.println("Moving on to the next day...\n");
+                System.out.println("\nMoving on to the next day...\n");
                 return false; 
             } else {
                 System.out.println("Invalid input. Please enter 'a' or 'b'.");
@@ -72,57 +97,78 @@ public class handleInput {
         return handleInput.handleYesNoInput(in);
     }
 
-    public static void handleRestockInput(Store store, Menu menu, Inventory inventory, gameController gameController, Scanner in, Boolean loop){
-        while (loop){
-        String inventoryList = inventory.getInventoryList();
-        System.out.println(inventoryList);
-    
-        System.out.println("Enter the index that you want to purchase (a/b/c/d): ");
-        String input = in.next().trim().toLowerCase();
-
-        if (input.equals("a") || input.equals("b") || input.equals("c") || input.equals("d")) {
-            handleRestockNumberInput(store, inventory, input, in);
-            inventoryList = inventory.getInventoryList();
+    /**
+     * method that deal with restock - part 1
+     * @param store
+     * @param menu
+     * @param inventory
+     * @param in
+     * @param loop
+     */
+    public static void handleRestockInput(Store store, Inventory inventory, Scanner in) {
+        while (true) {
+            String inventoryList = inventory.getInventoryList();
             System.out.println(inventoryList);
-            System.out.println("You have " + store.balance + " left.");
-        } else {
-            System.out.println("Invalid input.");
-        }
-        System.out.println("\nDo you have other item to restock?");
-        loop = handleInput.handleYesNoInput(in);
+
+            System.out.println("Enter the index that you want to purchase (a/b/c/d), or 'e' to exit: ");
+            String input = in.next().trim().toLowerCase();
+
+            if ("e".equals(input)) {
+                break; // Exit the restock loop
+            }
+
+            if (input.equals("a") || input.equals("b") || input.equals("c") || input.equals("d")) {
+                int number = handleRestockNumberInput("Enter the number of items you want to purchase: ", in);
+                double cost = inventory.restockCost(input, number);
+
+                if (store.getBalance() >= cost) {
+                    inventory.restock(store, input, number, in);
+                    store.setBalance(store.getBalance()-cost); 
+                    System.out.println("Restock successful. New balance: " + store.getBalance());
+                } else {
+                    System.out.println("Insufficient balance.");
+                }
+            } else {
+                System.out.println("Invalid input.");
+            }
         }
     }
 
-    public static void handleRestockNumberInput(Store store, Inventory inventory, String input, Scanner in){
-        System.out.println("Loading...");
-        System.out.println("Enter the number of item that you want to purchase: ");
-        int number = in.nextInt();
-        inventory.restock(store, input, number, in);
+    /**
+     * method that deal with restock - part 2
+     * @param store
+     * @param inventory
+     * @param input
+     * @param in
+     */
+    private static int handleRestockNumberInput(String message, Scanner in) {
+        System.out.println(message);
+        while (!in.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number.");
+            in.next(); // Consume the invalid input
+        }
+        return in.nextInt();
     }
 
-    // public void restock(Store store, Scanner in){
-        //         System.out.println("Purchase successful!");
-        //         String newInventoryList = getInventoryList();
-        //         System.out.println(newInventoryList + "\nBalance: " + store.balance);
-        //     } else {
-        //         System.out.println("Insufficient balance. Purchase canceled.");
-        //     }
-        // } else {
-        //     System.out.println("Purchase canceled.");
-        // }
-
+    /**
+     * method that deal with request for extending opening hour
+     * @param store
+     * @param in
+     */
     public static void handleExtendHourInput(Store store, Scanner in){
         int input = in.nextInt();
-            if (store.openingTime >= 10) {
-                System.out.println("Invalid number.");
-            } else if (store.openingTime + input <= 10) {
+        int openingTime = store.getOpeningTime();
+        double balance = store.getBalance();
+            if (openingTime == 10 || openingTime + input > 10) {
+                System.out.println("Invalid number. Back to main tab...");
+            } else if (openingTime + input <= 10) {
             System.out.println("Extend " + input + " of opening hour will cost you 20.00. Purchase confirmed?");
             boolean response = handleYesNoInput(in);
             if (response) {
-                if (store.balance >= input * 20) {
-                store.openingTime += input;
-                store.balance -= input * 20;
-                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take" + store.openingTime + "orders per day and your balance is " + store.balance + " .");
+                if (balance >= input * 20) {
+                openingTime += input;
+                store.setBalance(store.getBalance()-input * 20);
+                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take " + openingTime + " orders per day and your balance is " + balance + " .");
                 } else {
                 System.out.println("Insufficient balance, please try again.");
                 }
@@ -132,6 +178,11 @@ public class handleInput {
         }
     }
     
+    /**
+     * method that deal with general yes/no response questions
+     * @param in
+     * @return
+     */
     public static boolean handleYesNoInput(Scanner in) {
         while (true) {
             System.out.println(" (yes/no): ");
