@@ -23,11 +23,11 @@
 
     public String getMenuItem() {
         return "Name: " + name +
-        ", Tea: " + tea + 
-        ", Milk: " + milk + 
-        ", Extra Size: " + extraSize +
-        ", Boba: " + boba +
-        ", Price: " + price;
+        "\t Tea: " + tea + 
+        "\tMilk: " + milk + 
+        "\tExtra Size: " + extraSize +
+        "\tBoba: " + boba +
+        "\tPrice: " + price;
     }
 }
 

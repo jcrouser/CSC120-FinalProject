@@ -1,7 +1,6 @@
 /*
  * Represents the store
  */
-
 import java.util.Scanner;
 
 public class Store {
@@ -36,10 +35,10 @@ public class Store {
      * @param   name    new name of the store
      */
     public void setName(Scanner in){
-        System.out.println("Enter name for your store: ");
+        System.out.println("Enter a name for your store: ");
         String newName = in.next();
         this.name = newName;
-        System.out.println("Update successful! Your store name is " + this.name + " now.");
+        System.out.println("Update successful! Your store is now named " + this.name + ".");
     }
 
     /*
@@ -48,18 +47,9 @@ public class Store {
      * @return  OpeningTime new opening time
      * @return  Balance     new balance
      */
-    public void extendOpeningTime(int hours, Scanner in) {
+    public void extendOpeningTime(Store store, Scanner in) {
         System.out.println("Enter number of hours you want to extend: ");
-        int value = in.nextInt();
-        if (this.openingTime == 10) {
-            System.out.println("The opening hour of the store is updated to maximum! You have made great progress.");
-        } else if (this.openingTime + hours <= 10) {
-            this.openingTime += value;
-            this.balance = balance - value*100;
-            System.out.println("You spend" + value*100 + "to extend your store's opening time! You can take" + openingTime + "orders per day and your balance is" + balance + ".");
-        } else {
-            System.out.println("The number you have entered may have exceeded the upgrade limit, please try again.");
-        }
+        handleInput.handleExtendHourInput(store, in);
     }
 
     // /*
@@ -151,9 +141,9 @@ public class Store {
      */
     public String getstoreInfo() {
         String storeInfo =  "Store Information: \n" + "----------------"
-                                    + "\nName: " + this.name
-                                    + "\nBalance: " + this.balance 
-                                    + "\nOpening Time: " + this.openingTime + "\n----------------";
+            + "\nName: " + this.name
+            + "\nBalance: " + this.balance 
+            + "\nOpening Time: " + this.openingTime + "\n----------------";
             return storeInfo;
         }
 }

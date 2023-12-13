@@ -1,7 +1,6 @@
 /*
  * Tracks the restaurant's inventory of ingredients and supplies
  */
-
 import java.util.Scanner;
 
 public class Inventory {
@@ -21,21 +20,21 @@ public class Inventory {
      * constructor that create inventory with default value
      */
     public Inventory(){
-        this.cup = 5;
-        this.tea = 5;
-        this.milk = 5;
-        this.boba = 5;
-        this.cupBuyIn = 1;
+        this.cup = 10;
+        this.tea = 10;
+        this.milk = 10;
+        this.boba = 10;
+        this.cupBuyIn = 0.5;
         this.teaBuyIn = 1;
         this.milkBuyIn = 1;
-        this.bobaBuyIn = 1;
+        this.bobaBuyIn = 0.5;
     }
 
     /*
      * accessor of inventory
      */
     public String getInventoryList() {
-        String inventoryList = "Current Inventory:\n" +"----------------\n"
+        String inventoryList = "\nCurrent Inventory:\n" +"----------------\n"
                                     + "a. Cups: " + cup + "\tBuy in price: " + cupBuyIn 
                                     + "\nb. Tea: " + tea + "\tBuy in price: " + teaBuyIn 
                                     + "\nc. Milk: " + milk  + "\tBuy in price: " + milkBuyIn 
@@ -50,76 +49,67 @@ public class Inventory {
      * @param   number  number for restock
      * @return  stockList   updated stockList
      */
-    public void restock(Store store, Scanner in){
-        String inventoryList = getInventoryList();
-        System.out.println(inventoryList);
-
-        System.out.println("Enter the index that you want to purchase (a/b/c/d): ");
-        String name = in.next();
-
-        int number;
-        double price;
-        double totalPrice;
-
-        switch (name.toLowerCase()) {
-            case "a": // Cups
-                System.out.println("Enter the number of cups to purchase: ");
-                number = in.nextInt();
-                price = cupBuyIn;
-                break;
-            case "b": // Tea
-                System.out.println("Enter the number of tea units to purchase: ");
-                number = in.nextInt();
-                price = teaBuyIn;
-                break;
-            case "c": // Milk
-                System.out.println("Enter the number of milk units to purchase: ");
-                number = in.nextInt();
-                price = milkBuyIn;
-                break;
-            case "d": // Boba
-                System.out.println("Enter the number of boba units to purchase: ");
-                number = in.nextInt();
-                price = bobaBuyIn;
-                break;
-            default:
-                System.out.println("Invalid index.");
-                return; // Exit the method if invalid input
-            }
-            
-        totalPrice = price * number;
-        System.out.println("Buying in " + number + " units will cost you " + totalPrice);
-        System.out.println("Purchase confirmed? (yes/no)");
-        String response = in.next();
-
-        if ("yes".equalsIgnoreCase(response)) {
-            if (store.balance >= totalPrice) {
-                switch (name.toLowerCase()) {
-                case "a":
-                    cup += number;
-                    store.balance -= totalPrice;
-                    break;
-                case "b":
-                    tea += number;
-                    store.balance -= totalPrice;
-                    break;
-                case "c":
-                    milk += number;
-                    store.balance -= totalPrice;
-                    break;
-                case "d":
-                    boba += number;
-                    store.balance -= totalPrice;
-                    break;
+    public void restock(Store store, String input, int number, Scanner in){
+        boolean response;
+        switch (input) {
+            case "a":
+                if (store.balance >= cupBuyIn * number) {
+                    System.out.println("Purchase confirmed?");
+                    response = handleInput.handleYesNoInput(in);
+                    if (response) {
+                        store.balance -= cupBuyIn * number;
+                        this.cup += number;
+                    }
+                } else {
+                    System.out.println("Insufficient balance.");
                 }
-                System.out.println("Purchase successful!");
-                String newInventoryList = getInventoryList();
-                System.out.println(newInventoryList + "\nBalance: " + store.balance);
-            } else {
-                System.out.println("Insufficient balance. Purchase canceled.");
-            }
-        } else {
-            System.out.println("Purchase canceled.");
+                break;
+    
+            case "b": 
+                if (store.balance >= teaBuyIn * number) {
+                    System.out.println("Purchase confirmed?");
+                    response = handleInput.handleYesNoInput(in);
+                    if (response) {
+                        store.balance -= teaBuyIn * number;
+                        this.tea += number;
+                    }
+                } else {
+                    System.out.println("Insufficient balance.");
+                }
+                break;
+    
+            case "c": 
+                if (store.balance >= milkBuyIn * number) {
+                    System.out.println("Purchase confirmed?");
+                    response = handleInput.handleYesNoInput(in);
+                    if (response) {
+                        store.balance -= milkBuyIn * number;
+                        this.milk += number;
+                    }
+                } else {
+                    System.out.println("Insufficient balance.");
+                }
+                break;
+    
+            case "d": 
+                if (store.balance >= bobaBuyIn * number) {
+                    System.out.println("Purchase confirmed?");
+                    response = handleInput.handleYesNoInput(in);
+                    if (response) {
+                        store.balance -= bobaBuyIn * number;
+                        this.boba += number;
+                    }
+                } else {
+                    System.out.println("Insufficient balance.");
+                }
+                break;
+    
+            default:
+                System.out.println("Invalid input.");
+                break;
         }
+    
+        
     }
 }
+
