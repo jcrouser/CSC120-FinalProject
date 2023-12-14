@@ -32,8 +32,8 @@ public class gameController{
      * @return
      */
     public static String description(){
-        String description = ("- Your business will be run on a day to day basis, during the day you will make orders to earn money, and at the end of the day you will have the opportunity to review your bills, extend your opning hours, and restock inventory!" 
-        + "\n - openingTime represents the total opening hour of your store. You will earn more money with longer opening time per day. The maximum value is 10 hours and each extra hour costs 50.00." + "\n - The goal of your game is to imrpove your store to acheive daily goal for 7 days!");
+        String description = ("- Your business will be run on a day to day basis, during the day you will make orders to earn money, and at the end of the day you will have the opportunity to review your bills, extend your opening hours, and c inventory!" 
+        + "\n - openingTime represents the total opening hour of your store. You will earn more money with longer opening time per day. The maximum value is 10 hours and each extra hour costs 20.00." + "\n - The goal of your game is to imrpove your store to achieve daily goal for 7 days!");
         // System.out.println("equipment represents the equipments in your store. Better equipments brings higher income, and you can improve equipment by money. The maximum value is 10 points and each extra point costs 300.00.");
         // System.out.println("- technique represents your technique of making orders. Better technique enhance income as well as satisfaction from customers. The maximum value is 10 points and you can improve technique by reaching goals in income.");
         // System.out.println("- cleaniness represents the environment of your store. The more dirty your store is, the less customers you will take. The maximum value is 10 points and you need to close your store to take a deep clean.");
@@ -61,7 +61,8 @@ public class gameController{
                 updateInventory(inventory, order);
                 dailyReceipt.put(time, name + "\t " + price);
             } else {
-                dailyReceipt.put(time, "Insufficient inventory" + "\t " + "0.0");
+                String identifier = orderAvailabilityIdentifier(order, inventory);
+                dailyReceipt.put(time, "Insufficient inventory (" + identifier + " )\t " + "0.0");
             }
         }
         return dailyIncome;
@@ -77,6 +78,28 @@ public class gameController{
                inventory.getMilk() >= order.getMilk() && 
                inventory.getTea() >= order.getTea() && 
                (!order.isBoba() || inventory.getBoba() >= 1);
+    }
+
+    /**
+     * @param order
+     * @param inventory
+     * @return
+     */
+    private static String orderAvailabilityIdentifier(MenuItem order, Inventory inventory) {
+        StringBuilder identifier = new StringBuilder();
+        if (inventory.getCup() < 1) {
+            identifier.append(" cup");
+        } 
+        if (inventory.getMilk() < order.getMilk()) {
+            identifier.append(" milk");
+        } 
+        if (inventory.getTea() < order.getTea()) {
+            identifier.append(" tea");
+        } 
+        if ((order.isBoba() && inventory.getBoba() < 1)) {
+            identifier.append(" boba");
+        };
+        return identifier.toString();
     }
     
     /**

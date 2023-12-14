@@ -123,7 +123,6 @@ public class handleInput {
 
                 if (store.getBalance() >= cost) {
                     inventory.restock(store, input, number, in);
-                    store.setBalance(store.getBalance()-cost); 
                     System.out.println("Restock successful. New balance: " + store.getBalance());
                 } else {
                     System.out.println("Insufficient balance.");
@@ -162,7 +161,7 @@ public class handleInput {
             if (openingTime == 10 || openingTime + input > 10) {
                 System.out.println("Invalid number. Back to main tab...");
             } else if (openingTime + input <= 10) {
-            System.out.println("Extend " + input + " of opening hour will cost you 20.00. Purchase confirmed?");
+            System.out.println("Extend " + input + " of opening hour will cost you " + input * 20 + ". Purchase confirmed?");
             boolean response = handleYesNoInput(in);
             if (response) {
                 if (balance >= input * 20) {

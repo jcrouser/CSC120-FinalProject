@@ -134,7 +134,7 @@ public class Inventory {
                                     + "a. Cups: " + cup + "\tBuy in price: " + cupBuyIn 
                                     + "\nb. Tea: " + tea + "\tBuy in price: " + teaBuyIn 
                                     + "\nc. Milk: " + milk  + "\tBuy in price: " + milkBuyIn 
-                                    + "\nd. Boba: " + boba + "\tBuy in price: " + bobaBuyIn 
+                                    + "\nnd. Boba: " + boba + "\tBuy in price: " + bobaBuyIn 
                                     + "\n----------------";
         return inventoryList;
     }
