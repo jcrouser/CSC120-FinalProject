@@ -155,9 +155,10 @@ public class handleInput {
      * @param in
      */
     public static void handleExtendHourInput(Store store, Scanner in){
-        int input = in.nextInt();
-        int openingTime = store.getOpeningTime();
-        double balance = store.getBalance();
+        if (in.hasNextInt()) {
+            int input = in.nextInt();
+            int openingTime = store.getOpeningTime();
+            double balance = store.getBalance();
             if (openingTime == 10 || openingTime + input > 10) {
                 System.out.println("Invalid number. Back to main tab...");
             } else if (openingTime + input <= 10) {
@@ -165,14 +166,18 @@ public class handleInput {
             boolean response = handleYesNoInput(in);
             if (response) {
                 if (balance >= input * 20) {
-                openingTime += input;
-                store.setBalance(store.getBalance()-input * 20);
-                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take " + openingTime + " orders per day and your balance is " + balance + " .");
+                store.setOpeningTime(store.getOpeningTime()  + input);
+                store.setBalance(store.getBalance() - input * 20);
+                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take " + openingTime + " orders per day and your balance is " + store.getBalance() + " .");
                 } else {
                 System.out.println("Insufficient balance, please try again.");
                 }
             } else {
                 System.out.println("Returning to the previous step...");
+            }
+            } else {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            in.next(); 
             }
         }
     }

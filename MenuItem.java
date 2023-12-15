@@ -80,7 +80,7 @@
      */
     public String getMenuItem() {
         return "Name: " + name +
-        "\t Tea: " + tea + 
+        "\tTea: " + tea + 
         "\tMilk: " + milk + 
         "\tExtra Size: " + extraSize +
         "\tBoba: " + boba +

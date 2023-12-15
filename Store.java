@@ -18,6 +18,14 @@ public class Store {
     // public double satisfaction;
 
     /**
+     * setter for opening time
+     * @param openingTime
+     */
+    public void setOpeningTime(int openingTime) {
+        this.openingTime = openingTime;
+    }
+
+    /**
      * setter of balance
      * @param balance
      */

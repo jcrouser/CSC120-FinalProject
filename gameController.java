@@ -50,8 +50,7 @@ public class gameController{
      */
     public static double dailyOrder(Store store, Menu menu, Inventory inventory, Hashtable<Integer, String> dailyReceipt) {
         double dailyIncome = 0;
-        int openingTime = store.getOpeningTime();
-        for (int time = 1; time <= openingTime; time++) {
+        for (int time = 1; time <= store.getOpeningTime(); time++) {
             MenuItem order = menu.getRandomMenuItem();
             String name = order.getName();
             double price = order.getPrice();
