@@ -1,10 +1,9 @@
 /*
- * 
+ * class that aggregate all scanner during the game
  */
 import java.util.Scanner;
 
 public class handleInput {
-
     /**
      * method that deal with name change of the store
      * @param store
@@ -72,7 +71,7 @@ public class handleInput {
      * @param inventory
      * @param in
      * @param loop
-     * @return
+     * @return boolean value about whether player wants to stay in manage tab
      */
     public static boolean handleManageInput(Store store, Menu menu, Inventory inventory, Scanner in, Boolean loop){
         while (loop){
@@ -168,7 +167,7 @@ public class handleInput {
                 if (balance >= input * 20) {
                 store.setOpeningTime(store.getOpeningTime()  + input);
                 store.setBalance(store.getBalance() - input * 20);
-                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take " + openingTime + " orders per day and your balance is " + store.getBalance() + " .");
+                System.out.println("Purchase Successful. You spend " + input * 20 + " to extend your store's opening time! You can take " + store.getOpeningTime() + " orders per day and your balance is " + store.getBalance() + " .");
                 } else {
                 System.out.println("Insufficient balance, please try again.");
                 }
@@ -185,7 +184,7 @@ public class handleInput {
     /**
      * method that deal with general yes/no response questions
      * @param in
-     * @return
+     * @return boolean value that turns yes/no into true/false
      */
     public static boolean handleYesNoInput(Scanner in) {
         while (true) {

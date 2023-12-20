@@ -14,6 +14,7 @@ public class gameController{
     // public double dailyIncome;
 
     /**
+     * method printed at the beginning of the game as help page
      * @param store
      * @param menu
      * @param inventory
@@ -29,7 +30,8 @@ public class gameController{
     }
 
     /**
-     * @return
+     * method that prints out description of the game
+     * @return description
      */
     public static String description(){
         String description = ("- Your business will be run on a day to day basis, during the day you will make orders to earn money, and at the end of the day you will have the opportunity to review your bills, extend your opening hours, and c inventory!" 
@@ -42,16 +44,17 @@ public class gameController{
     }
 
     /**
+     * method that generate order and record income per day
      * @param store
      * @param menu
      * @param inventory
      * @param dailyReceipt
-     * @return
+     * @return dailyIncome
      */
     public static double dailyOrder(Store store, Menu menu, Inventory inventory, Hashtable<Integer, String> dailyReceipt) {
         double dailyIncome = 0;
         for (int time = 1; time <= store.getOpeningTime(); time++) {
-            MenuItem order = menu.getRandomMenuItem();
+            menuItem order = menu.getRandomMenuItem();
             String name = order.getName();
             double price = order.getPrice();
     
@@ -68,11 +71,12 @@ public class gameController{
     }
     
     /**
+     * method that evaluate whether inventory is sufficient for a specific order
      * @param inventory
      * @param order
-     * @return
+     * @return boolean value for order availability
      */
-    private static boolean orderAvailability(Inventory inventory, MenuItem order) {
+    private static boolean orderAvailability(Inventory inventory, menuItem order) {
         return inventory.getCup() >= 1 && 
                inventory.getMilk() >= order.getMilk() && 
                inventory.getTea() >= order.getTea() && 
@@ -80,11 +84,12 @@ public class gameController{
     }
 
     /**
+     * method that returns which kind(s) of ingredient is out of stock for a specific order
      * @param order
      * @param inventory
-     * @return
+     * @return identifier that contains insufficient ingredient(s)
      */
-    private static String orderAvailabilityIdentifier(MenuItem order, Inventory inventory) {
+    private static String orderAvailabilityIdentifier(menuItem order, Inventory inventory) {
         StringBuilder identifier = new StringBuilder();
         if (inventory.getCup() < 1) {
             identifier.append(" cup");
@@ -102,10 +107,11 @@ public class gameController{
     }
     
     /**
+     * method that update inventory after taking an order
      * @param inventory
      * @param order
      */
-    private static void updateInventory(Inventory inventory, MenuItem order) {
+    private static void updateInventory(Inventory inventory, menuItem order) {
         inventory.setCup(inventory.getCup() - 1);
         inventory.setMilk(inventory.getMilk() - order.getMilk());
         inventory.setTea(inventory.getTea() - order.getTea());
@@ -115,10 +121,11 @@ public class gameController{
     }  
 
     /**
+     * method that return receipt which shows order records within a day
      * @param day
      * @param dailyReceipt
      * @param dailyIncome
-     * @return
+     * @return receipt for one day
      */
     public static String getReceipt(Integer day, Hashtable<Integer, String> dailyReceipt, double dailyIncome){
         StringBuilder receipt = new StringBuilder();
@@ -134,6 +141,7 @@ public class gameController{
     }
 
     /**
+     * method that shows manage tab after one day's business is over
      * @param inventory
      * @param menu
      * @param store
@@ -150,8 +158,9 @@ public class gameController{
     }    
 
     /**
+     * method that prints out all receipt during the game
      * @param totalReceipt
-     * @return
+     * @return receipt for all days
      */
     public static String getTotalReceipt(Hashtable<Integer, Double> totalReceipt){
         StringBuilder receipt = new StringBuilder();
@@ -165,6 +174,7 @@ public class gameController{
     }
 
     /**
+     * method that print out all informations again after the game is done
      * @param store
      * @param inventory
      * @param totalReceipt
@@ -190,12 +200,14 @@ public class gameController{
         String storeName = bobaStore.getName();
         Inventory inventory = new Inventory();
         Menu menu = new Menu();
-        menu.addMenuItem(new MenuItem("Small Milk Tea", 1, 1, false, false, 4.00));
-        menu.addMenuItem(new MenuItem("Large Milk Tea",2, 1, true, false, 6.00));
-        menu.addMenuItem(new MenuItem("Small Boba Milk Tea",1, 1, false, true, 5.00));
-        menu.addMenuItem(new MenuItem("Large Boba Milk Tea",2, 1, true, true, 7.50));
-        menu.addMenuItem(new MenuItem("Small Milk with Boba",0, 2, false, true, 5.00));
-        menu.addMenuItem(new MenuItem("Large Milk with Boba",0, 3, true, true, 7.50));
+        menu.addMenuItem(new menuItem("Small Milk Tea", 1, 1, false, false, 4.00));
+        menu.addMenuItem(new menuItem("Large Milk Tea",2, 1, true, false, 6.00));
+        menu.addMenuItem(new menuItem("Small Boba Milk Tea",1, 1, false, true, 5.00));
+        menu.addMenuItem(new menuItem("Large Boba Milk Tea",2, 1, true, true, 7.50));
+        menu.addMenuItem(new menuItem("Small Milk with Boba",0, 2, false, true, 5.00));
+        menu.addMenuItem(new menuItem("Large Milk with Boba",0, 3, true, true, 7.50));
+        menu.addMenuItem(new menuItem("Small Tea",2, 0, false, false, 4.00));
+        menu.addMenuItem(new menuItem("Large Tea",3, 0, false, false, 6.00));
         handleInput handle = new handleInput();
         Hashtable<Integer, Double> totalReceipt= new Hashtable<>();
         Scanner in = new Scanner (System.in);
@@ -208,7 +220,7 @@ public class gameController{
         handle.handleResetNameInput(bobaStore, in);
 
         /*
-         * Print store information and rules, begin
+         * Print store information and rules
          */
         System.out.println("\nNow, let's explore your store.");
         gameController.helpPage(bobaStore, menu, inventory, in);
@@ -216,7 +228,7 @@ public class gameController{
         Boolean loop = handleInput.handleYesNoInput(in);
 
         /*
-         * 
+         * Processing the game
          */
         if (!loop) {
             System.out.println("\nThat's perfectly fine. Hope to see you back soon! ");

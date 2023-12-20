@@ -9,7 +9,7 @@ public class Menu {
     /*
      * aggregation of objects in menuItem class
      */
-    public List<MenuItem> items;
+    public List<menuItem> items;
 
     /**
      * constructor
@@ -22,7 +22,7 @@ public class Menu {
      * method that add menuitem to the list
      * @param item
      */
-    public void addMenuItem(MenuItem item) {
+    public void addMenuItem(menuItem item) {
         items.add(item);
     }
 
@@ -32,7 +32,7 @@ public class Menu {
      */
     public String getMenuList() {
         StringBuilder menuList = new StringBuilder("Menu Details:\n" + "----------------\n");
-        for (MenuItem item : items) {
+        for (menuItem item : items) {
             menuList.append(item.getMenuItem()).append("\n");
         }
         menuList.append("----------------");
@@ -43,7 +43,7 @@ public class Menu {
      * method that randomly generate a menu item
      * @return an object from menuItem
      */
-    public MenuItem getRandomMenuItem() {
+    public menuItem getRandomMenuItem() {
         Random random = new Random();
         int index = random.nextInt(items.size());
         return items.get(index);

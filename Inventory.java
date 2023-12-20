@@ -16,36 +16,18 @@ public class Inventory {
     private double milkBuyIn;
     private double bobaBuyIn;
 
-    /**
-     * Setter of cup
-     * @param cup
+    /*
+     * constructor that create inventory with default value
      */
-    public void setCup(int cup) {
-        this.cup = cup;
-    }
-
-    /**
-     * Setter of tea
-     * @param tea
-     */
-    public void setTea(int tea) {
-        this.tea = tea;
-    }
-
-    /**
-     * Setter of milk
-     * @param milk
-     */
-    public void setMilk(int milk) {
-        this.milk = milk;
-    }
-
-    /**
-     * Setter of boba
-     * @param boba
-     */
-    public void setBoba(int boba) {
-        this.boba = boba;
+    public Inventory(){
+        this.cup = 5;
+        this.tea = 5;
+        this.milk = 5;
+        this.boba = 5;
+        this.cupBuyIn = 0.5;
+        this.teaBuyIn = 1;
+        this.milkBuyIn = 1;
+        this.bobaBuyIn = 0.5;
     }
 
     /**
@@ -111,18 +93,36 @@ public class Inventory {
         return bobaBuyIn;
     }
 
-    /*
-     * constructor that create inventory with default value
+    /**
+     * Setter of cup
+     * @param cup
      */
-    public Inventory(){
-        this.cup = 5;
-        this.tea = 5;
-        this.milk = 5;
-        this.boba = 5;
-        this.cupBuyIn = 0.5;
-        this.teaBuyIn = 1;
-        this.milkBuyIn = 1;
-        this.bobaBuyIn = 0.5;
+    public void setCup(int cup) {
+        this.cup = cup;
+    }
+
+    /**
+     * Setter of tea
+     * @param tea
+     */
+    public void setTea(int tea) {
+        this.tea = tea;
+    }
+
+    /**
+     * Setter of milk
+     * @param milk
+     */
+    public void setMilk(int milk) {
+        this.milk = milk;
+    }
+
+    /**
+     * Setter of boba
+     * @param boba
+     */
+    public void setBoba(int boba) {
+        this.boba = boba;
     }
 
     /**
@@ -142,7 +142,7 @@ public class Inventory {
     /**
      * @param itemType
      * @param quantity
-     * @return
+     * @return cost for restock
      */
     public double restockCost(String itemType, int quantity) {
         switch (itemType) {

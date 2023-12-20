@@ -1,5 +1,5 @@
 /*
- * Represents the store
+ * class that represents the store
  */
 import java.util.Scanner;
 
@@ -18,46 +18,6 @@ public class Store {
     // public double satisfaction;
 
     /**
-     * setter for opening time
-     * @param openingTime
-     */
-    public void setOpeningTime(int openingTime) {
-        this.openingTime = openingTime;
-    }
-
-    /**
-     * setter of balance
-     * @param balance
-     */
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    /**
-     * getter of name
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * getter of opening time
-     * @return openingTime
-     */
-    public int getOpeningTime() {
-        return openingTime;
-    }
-
-    /**
-     * getter of balance
-     * @return balance
-     */
-    public double getBalance() {
-        return balance;
-    }
-
-    /**
      * constructor that build a store in default value
      * @param name
      */
@@ -70,6 +30,29 @@ public class Store {
         // this.cleanliness = 10;
     }
 
+    /**
+     * getter of name
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * getter of balance
+     * @return balance
+     */
+    public double getBalance() {
+        return balance;
+    }
+
+    /**
+     * getter of opening time
+     * @return openingTime
+     */
+    public int getOpeningTime() {
+        return openingTime;
+    }
 
     /**
      * mutator of store name
@@ -82,6 +65,21 @@ public class Store {
         System.out.println("Update successful! Your store is now named " + this.name + ".");
     }
 
+    /**
+     * setter of balance
+     * @param balance
+     */
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    /**
+     * setter for opening time
+     * @param openingTime
+     */
+    public void setOpeningTime(int openingTime) {
+        this.openingTime = openingTime;
+    }
 
     /**
      * method to extend opening time
@@ -92,6 +90,18 @@ public class Store {
     public void extendOpeningTime(Store store, Scanner in) {
         System.out.println("Enter number of hours you want to extend: ");
         handleInput.handleExtendHourInput(store, in);
+    }
+
+    /**
+     * Method that print out all attributes and value of a store
+     * @return storeInfo list that contains store information
+     */
+    public String getStoreInfo() {
+        String storeInfo =  "Store Information: \n" + "----------------"
+            + "\nName: " + this.name
+            + "\nBalance: " + this.balance 
+            + "\nOpening Time: " + this.openingTime + "\n----------------";
+            return storeInfo;
     }
 
     // /*
@@ -177,16 +187,4 @@ public class Store {
     //     double value = cleanliness*-0.1 + technique*0.05 + 2.5;
     //     this.satisfaction = value;
     // }
-
-    /**
-     * Method that print out all attributes and value of a store
-     * @return storeInfo list that contains store information
-     */
-    public String getStoreInfo() {
-        String storeInfo =  "Store Information: \n" + "----------------"
-            + "\nName: " + this.name
-            + "\nBalance: " + this.balance 
-            + "\nOpening Time: " + this.openingTime + "\n----------------";
-            return storeInfo;
-        }
 }
